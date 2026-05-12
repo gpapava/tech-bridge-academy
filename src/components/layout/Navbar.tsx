@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import {
@@ -42,7 +43,7 @@ export function Navbar() {
       <div className="bg-brand-950 px-4 py-1">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <span className="text-xs text-brand-300">
-            🇪🇺 Erasmus+ KA220-VET · TECH BRIDGE VET
+            🇪🇺 Erasmus+ KA220-VET · TECH BRIDGE VET · Project No. 2024-1-IT01-KA220-VET-000255000
           </span>
           <span className="text-xs text-brand-400 hidden sm:block">
             Funded by the European Union
@@ -51,12 +52,16 @@ export function Navbar() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/20">
-              <span className="text-lg font-bold text-white">TB</span>
-            </div>
+            <Image
+              src="/images/tech_bridge_logo.jpg"
+              alt="Tech Bridge Academy"
+              width={80}
+              height={80}
+              className="rounded-lg object-contain"
+            />
             <div className="hidden sm:block">
               <span className="block text-base font-bold text-white leading-tight">Tech Bridge Academy</span>
               <span className="block text-[10px] text-brand-300 leading-tight">School · Enterprise · Partnership</span>

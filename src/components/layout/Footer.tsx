@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Globe, ExternalLink } from "lucide-react";
 
 const footerLinks = {
@@ -34,14 +35,14 @@ export function Footer() {
       {/* EU Funding Banner */}
       <div className="border-b border-brand-800 bg-brand-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 text-2xl">🇪🇺</div>
-              <div>
-                <p className="text-sm font-semibold text-white">Funded by the European Union</p>
-                <p className="text-xs text-brand-400">Erasmus+ Programme · KA220-VET · Project TECH BRIDGE VET</p>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <Image
+              src="/images/co_funded.png"
+              alt="Co-funded by the European Union"
+              width={280}
+              height={60}
+              className="object-contain"
+            />
             <div className="sm:ml-auto text-center sm:text-right">
               <p className="text-xs text-brand-400">
                 Views and opinions expressed are those of the authors only and do not necessarily reflect
@@ -58,9 +59,13 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/20">
-                <span className="text-sm font-bold text-white">TB</span>
-              </div>
+              <Image
+                src="/images/tech_bridge_logo.jpg"
+                alt="Tech Bridge Academy"
+                width={32}
+                height={32}
+                className="rounded-lg object-contain"
+              />
               <span className="font-bold text-white">Tech Bridge Academy</span>
             </div>
             <p className="text-sm text-brand-400 leading-relaxed">
@@ -99,7 +104,7 @@ export function Footer() {
             © {new Date().getFullYear()} Tech Bridge Academy. All rights reserved. Erasmus+ TECH BRIDGE VET Consortium.
           </p>
           <div className="flex items-center gap-4">
-            <span className="text-xs text-brand-500">Project Agreement No. 2024-XX-XXXXX</span>
+            <span className="text-xs text-brand-500">Project No. 2024-1-IT01-KA220-VET-000255000</span>
             <a
               href="https://erasmus-plus.ec.europa.eu"
               target="_blank"
