@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
-import { ConditionalServicesSidebar } from "@/components/layout/ConditionalServicesSidebar";
+import { AppShell } from "@/components/layout/AppShell";
 import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -34,8 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-slate-50 font-sans">
         <AuthProvider>
-          <ConditionalServicesSidebar />
-          {children}
+          <AppShell>{children}</AppShell>
           <Toaster
             position="top-right"
             toastOptions={{

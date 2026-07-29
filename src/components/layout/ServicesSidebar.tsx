@@ -22,7 +22,8 @@ const services = [
   },
   {
     href: "/bridge",
-    label: "Bridging the Two Worlds",
+    label: "Bridge",
+    fullLabel: "Bridging the Two Worlds",
     icon: GitMerge,
     color: "text-target-bridge",
     activeBg: "bg-target-bridge/10",
@@ -34,26 +35,27 @@ export function ServicesSidebar() {
 
   return (
     <aside
-      className="hidden lg:block group fixed left-0 top-[104px] bottom-0 z-40 w-14 hover:w-64 bg-white border-r border-slate-200 shadow-sm hover:shadow-lg transition-[width] duration-200 ease-out overflow-hidden"
+      className="hidden lg:flex lg:flex-col fixed left-0 top-[104px] bottom-0 z-40 w-20 bg-white border-r border-slate-200 shadow-sm"
       aria-label="Our Services"
     >
-      <p className="px-4 pt-4 pb-2 text-xs font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-        Our Services
+      <p className="px-2 pt-4 pb-2 text-center text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+        Services
       </p>
-      <nav className="py-2">
+      <nav className="flex flex-col py-2">
         {services.map((item) => {
           const isActive = pathname.startsWith(item.href);
           return (
             <Link
               key={item.href}
               href={item.href}
+              title={item.fullLabel ?? item.label}
               className={cn(
-                "flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors",
+                "flex flex-col items-center gap-1.5 px-2 py-3 text-center transition-colors",
                 isActive ? item.activeBg : "hover:bg-slate-50"
               )}
             >
               <item.icon className={cn("h-5 w-5 flex-shrink-0", item.color)} />
-              <span className={cn("whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity", item.color)}>
+              <span className={cn("text-[11px] font-medium leading-tight", item.color)}>
                 {item.label}
               </span>
             </Link>
