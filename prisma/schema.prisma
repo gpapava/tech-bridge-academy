@@ -155,6 +155,10 @@ model OrganisationProfile {
   regions            String[]
   sectors            String[]
   tags               String[]
+  city               String?
+  country            String?
+  latitude           Float?
+  longitude          Float?
   contactEmail       String?
   telephone          String?
   website            String?

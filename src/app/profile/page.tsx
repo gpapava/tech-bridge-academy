@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SECTORS, REGIONS, SCHOOL_TYPE_LABELS, COMPANY_TYPE_LABELS } from "@/lib/utils";
-import { PlusCircle, Save, User, Building2, GraduationCap } from "lucide-react";
+import { PlusCircle, Save, User, Building2, GraduationCap, MapPin, X } from "lucide-react";
 import toast from "react-hot-toast";
 
 interface ProfileData {
@@ -23,11 +23,23 @@ interface ProfileData {
   regions: string[];
   sectors: string[];
   tags: string;
+  city: string;
+  country: string;
+  latitude: number | null;
+  longitude: number | null;
   contactEmail: string;
   telephone: string;
   website: string;
   visibilityStatus: string;
   validationStatus?: string;
+}
+
+interface GeocodeResult {
+  label: string;
+  city: string;
+  country: string;
+  latitude: number;
+  longitude: number;
 }
 
 const defaultForm: ProfileData = {
@@ -41,6 +53,10 @@ const defaultForm: ProfileData = {
   regions: [],
   sectors: [],
   tags: "",
+  city: "",
+  country: "",
+  latitude: null,
+  longitude: null,
   contactEmail: "",
   telephone: "",
   website: "",
@@ -54,6 +70,9 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [isNew, setIsNew] = useState(true);
+  const [locationQuery, setLocationQuery] = useState("");
+  const [locationResults, setLocationResults] = useState<GeocodeResult[]>([]);
+  const [locationSearching, setLocationSearching] = useState(false);
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/auth/login");
@@ -72,6 +91,9 @@ export default function ProfilePage() {
             regions: data.data.regions ?? [],
             sectors: data.data.sectors ?? [],
           });
+          if (data.data.city || data.data.country) {
+            setLocationQuery([data.data.city, data.data.country].filter(Boolean).join(", "));
+          }
           setIsNew(false);
         }
         setLoading(false);
@@ -86,6 +108,35 @@ export default function ProfilePage() {
       setForm((f) => ({ ...f, orgType: "COMPANY" }));
     }
   }, [session, form.orgType]);
+
+  useEffect(() => {
+    const query = locationQuery.trim();
+    // Don't re-search right after selecting a result (query already matches the selection)
+    if (query.length < 3 || (form.city && query === [form.city, form.country].filter(Boolean).join(", "))) {
+      setLocationResults([]);
+      return;
+    }
+    setLocationSearching(true);
+    const timeout = setTimeout(() => {
+      fetch(`/api/geocode?q=${encodeURIComponent(query)}`)
+        .then((r) => r.json())
+        .then((d) => setLocationResults(d.data ?? []))
+        .finally(() => setLocationSearching(false));
+    }, 400);
+    return () => clearTimeout(timeout);
+  }, [locationQuery, form.city, form.country]);
+
+  const selectLocation = (result: GeocodeResult) => {
+    setForm((f) => ({ ...f, city: result.city, country: result.country, latitude: result.latitude, longitude: result.longitude }));
+    setLocationQuery([result.city, result.country].filter(Boolean).join(", ") || result.label);
+    setLocationResults([]);
+  };
+
+  const clearLocation = () => {
+    setForm((f) => ({ ...f, city: "", country: "", latitude: null, longitude: null }));
+    setLocationQuery("");
+    setLocationResults([]);
+  };
 
   const handleSectorToggle = (sector: string) => {
     setForm((f) => ({
@@ -330,6 +381,54 @@ export default function ProfilePage() {
                   </button>
                 ))}
               </div>
+            </section>
+
+            {/* Location */}
+            <section className="card p-6">
+              <h2 className="font-semibold text-slate-900 mb-2">Location</h2>
+              <p className="text-sm text-slate-500 mb-4">Search for your organisation&apos;s city so it can appear on the public <a href="/bridge/map" className="text-brand-600 hover:underline">Stakeholder Map</a>. This is separate from the operating regions above.</p>
+
+              <div className="relative">
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <input
+                    type="text"
+                    value={locationQuery}
+                    onChange={(e) => { setLocationQuery(e.target.value); if (form.city) setForm((f) => ({ ...f, city: "", country: "", latitude: null, longitude: null })); }}
+                    className="input pl-9 pr-9"
+                    placeholder="Start typing a city, e.g. Turin, Italy"
+                  />
+                  {locationQuery && (
+                    <button type="button" onClick={clearLocation} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+
+                {locationSearching && (
+                  <p className="text-xs text-slate-400 mt-1.5">Searching…</p>
+                )}
+
+                {locationResults.length > 0 && (
+                  <ul className="absolute z-10 mt-1 w-full rounded-xl border border-slate-200 bg-white shadow-lg max-h-56 overflow-auto">
+                    {locationResults.map((r, i) => (
+                      <li key={i}>
+                        <button
+                          type="button"
+                          onClick={() => selectLocation(r)}
+                          className="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-700"
+                        >
+                          {r.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              {form.latitude != null && (
+                <p className="text-xs text-emerald-600 mt-2">✓ Location set — will appear on the Stakeholder Map once approved.</p>
+              )}
             </section>
 
             {/* Tags & Contact */}

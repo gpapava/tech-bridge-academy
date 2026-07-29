@@ -53,6 +53,10 @@ export interface ProfileCreateInput {
   regions: string[];
   sectors: string[];
   tags: string[];
+  city?: string;
+  country?: string;
+  latitude?: number;
+  longitude?: number;
   contactEmail?: string;
   telephone?: string;
   website?: string;

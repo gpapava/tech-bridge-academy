@@ -46,6 +46,7 @@ export default withAuth(
           "/auth/error",
           "/bridge",
           "/bridge/career-guidance",
+          "/bridge/map",
         ];
 
         if (publicPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))) {
@@ -63,7 +64,9 @@ export default withAuth(
           pathname === "/api/repository" ||
           pathname === "/api/repository/tags" ||
           pathname === "/api/networking" ||
-          pathname === "/api/admin/stats"
+          pathname === "/api/admin/stats" ||
+          pathname === "/api/profiles/map" ||
+          pathname === "/api/geocode"
         ) {
           return true;
         }

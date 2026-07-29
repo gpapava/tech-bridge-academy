@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
-import { Search, BookOpen, Play, GitMerge, GraduationCap, ArrowRight, Megaphone } from "lucide-react";
+import { Search, BookOpen, Play, GitMerge, GraduationCap, ArrowRight, Megaphone, MapPin } from "lucide-react";
 
 export const metadata = { title: "The Bridge" };
 
@@ -52,6 +52,14 @@ const bridgeAreas = [
     desc: "A shared notice board to post announcements, look for partners, or offer collaboration opportunities across the network.",
     href: "/bridge/networking",
     color: "smes",
+    badge: "Public",
+  },
+  {
+    title: "Stakeholder Map",
+    icon: MapPin,
+    desc: "See validated schools, companies, and organisations plotted on an interactive map. Click a pin for a quick preview and link to the full profile.",
+    href: "/bridge/map",
+    color: "brand",
     badge: "Public",
   },
 ];
