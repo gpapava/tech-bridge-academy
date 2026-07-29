@@ -119,7 +119,7 @@ export default async function ProfileDetailPage({ params }: { params: { id: stri
               {profile.dialogueExperience && (
                 <section className="card p-6">
                   <h2 className="font-semibold text-slate-900 mb-4">
-                    {profile.orgType === "SCHOOL" ? "Experience with Industry Dialogue" : "Experience with School Partnerships"}
+                    {profile.orgType === "SCHOOL" ? "School-Enterprise Synergy" : "Experience with School Partnerships"}
                   </h2>
                   <p className="text-slate-600 leading-relaxed whitespace-pre-wrap">{profile.dialogueExperience}</p>
                 </section>

@@ -14,7 +14,7 @@ export default withAuth(
     }
 
     // SME-only routes
-    if (pathname.startsWith("/smes/skills-needs") || pathname.startsWith("/smes/coaching")) {
+    if (pathname.startsWith("/smes/coaching")) {
       if (token?.role !== "COMPANY" && token?.role !== "ADMIN") {
         return NextResponse.redirect(new URL("/dashboard", req.url));
       }
@@ -61,6 +61,8 @@ export default withAuth(
           pathname === "/api/events" ||
           pathname === "/api/news" ||
           pathname === "/api/repository" ||
+          pathname === "/api/repository/tags" ||
+          pathname === "/api/networking" ||
           pathname === "/api/admin/stats"
         ) {
           return true;

@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { KPICard } from "@/components/dashboard/KPICard";
 import {
   Building2, GraduationCap, GitMerge, Calendar, BookOpen,
-  Users, ArrowRight, CheckCircle, Globe, Zap, Shield,
+  Users, CheckCircle, Globe, Zap, Shield,
   ChevronRight, Star
 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
@@ -77,9 +77,19 @@ export default async function HomePage() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/auth/register" className="btn-accent text-base px-6 py-3">
-                Register Your Organisation
-                <ArrowRight className="h-5 w-5" />
+              <Link
+                href="/auth/register?role=SCHOOL"
+                className="inline-flex items-center gap-2 rounded-lg bg-target-schools px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
+              >
+                <GraduationCap className="h-5 w-5" />
+                Register as VET School
+              </Link>
+              <Link
+                href="/auth/register?role=COMPANY"
+                className="inline-flex items-center gap-2 rounded-lg bg-target-smes px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
+              >
+                <Building2 className="h-5 w-5" />
+                Register as SME
               </Link>
               <Link href="/bridge/profiles" className="btn-secondary text-base px-6 py-3 bg-white/10 text-white ring-white/30 hover:bg-white/20">
                 Explore Directory
@@ -229,10 +239,7 @@ export default async function HomePage() {
                 color: "amber",
                 features: [
                   "SME networking & directory",
-                  "HR coaching resources",
-                  "Annual skills needs survey",
-                  "Personalised skills gap reports",
-                  "Industry benchmark analysis",
+                  "Learning Expert coaching resources",
                 ],
                 href: "/smes",
                 badge: "Members Only",
@@ -247,7 +254,7 @@ export default async function HomePage() {
                   "Teacher & staff development",
                   "Curriculum educational observatory",
                   "Company visit & tour calendar",
-                  "PCTO / WBL planning resources",
+                  "Curricular Internships / WBL planning resources",
                 ],
                 href: "/schools",
                 badge: "Members Only",
@@ -324,13 +331,19 @@ export default async function HomePage() {
             Create your free organisation profile and start connecting with schools or companies in your sector. Registration is free for all Erasmus+ partner organisations and their networks.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/auth/register?role=SCHOOL" className="btn-accent text-base px-8 py-3">
+            <Link
+              href="/auth/register?role=SCHOOL"
+              className="inline-flex items-center gap-2 rounded-lg bg-target-schools px-8 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
+            >
               <GraduationCap className="h-5 w-5" />
-              Register as School / VET
+              Register as VET School
             </Link>
-            <Link href="/auth/register?role=COMPANY" className="text-base px-8 py-3 rounded-lg ring-1 ring-white/30 text-white hover:bg-white/10 inline-flex items-center gap-2 font-medium transition-colors">
+            <Link
+              href="/auth/register?role=COMPANY"
+              className="inline-flex items-center gap-2 rounded-lg bg-target-smes px-8 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
+            >
               <Building2 className="h-5 w-5" />
-              Register as Company / SME
+              Register as SME
             </Link>
           </div>
         </div>

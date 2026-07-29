@@ -6,8 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import {
-  Menu, X, ChevronDown, Building2, GraduationCap,
-  LayoutDashboard, LogOut, User, Bell, Shield
+  Menu, X, GraduationCap, Building2, GitMerge,
+  LayoutDashboard, LogOut, Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,25 +17,19 @@ const publicNav = [
   { href: "/partners", label: "Partners" },
   { href: "/news", label: "News" },
   { href: "/events", label: "Events" },
-  {
-    label: "Bridge",
-    children: [
-      { href: "/bridge/profiles", label: "Organisation Directory", icon: Building2 },
-      { href: "/bridge/repository", label: "Repository of Practices", icon: GraduationCap },
-      { href: "/bridge/career-guidance", label: "Career Guidance", icon: User },
-      { href: "/bridge/co-design", label: "Co-Design Service", icon: LayoutDashboard },
-      { href: "/bridge/educational-collaboration", label: "Educational Collaboration", icon: GraduationCap },
-    ],
-  },
+];
+
+const servicesNav = [
+  { href: "/schools", label: "Schools", icon: GraduationCap, colorClass: "text-target-schools" },
+  { href: "/smes", label: "SMEs", icon: Building2, colorClass: "text-target-smes" },
+  { href: "/bridge", label: "Bridging the Two Worlds", icon: GitMerge, colorClass: "text-target-bridge" },
 ];
 
 export function Navbar() {
   const { data: session } = useSession();
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
-
   const role = session?.user?.role;
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-brand-900 shadow-md">
@@ -64,71 +58,26 @@ export function Navbar() {
             />
             <div className="hidden sm:block">
               <span className="block text-base font-bold text-white leading-tight">Tech Bridge Academy</span>
-              <span className="block text-[10px] text-brand-300 leading-tight">School · Enterprise · Partnership</span>
+              <span className="block text-[10px] italic text-brand-300 leading-tight">Connecting education and industry.</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {publicNav.map((item) =>
-              item.children ? (
-                <div key={item.label} className="relative">
-                  <button
-                    onClick={() => setDropdownOpen(dropdownOpen === item.label ? null : item.label)}
-                    className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-brand-100 hover:bg-white/10 transition-colors"
-                  >
-                    {item.label}
-                    <ChevronDown className={cn("h-4 w-4 transition-transform", dropdownOpen === item.label && "rotate-180")} />
-                  </button>
-                  {dropdownOpen === item.label && (
-                    <div className="absolute left-0 top-full mt-1 w-64 rounded-xl bg-white shadow-lg ring-1 ring-slate-200 py-1 z-50">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setDropdownOpen(null)}
-                          className={cn(
-                            "flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-brand-50 transition-colors",
-                            pathname === child.href ? "text-brand-700 font-medium" : "text-slate-700"
-                          )}
-                        >
-                          <child.icon className="h-4 w-4 text-brand-600" />
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  className={cn(
-                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    pathname === item.href
-                      ? "bg-white/15 text-white"
-                      : "text-brand-100 hover:bg-white/10"
-                  )}
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
-
-            {session && (
-              <>
-                {(role === "SCHOOL" || role === "ADMIN") && (
-                  <Link href="/schools" className={cn("rounded-md px-3 py-2 text-sm font-medium transition-colors", pathname.startsWith("/schools") ? "bg-white/15 text-white" : "text-brand-100 hover:bg-white/10")}>
-                    Schools
-                  </Link>
+            {publicNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  pathname === item.href
+                    ? "bg-white/15 text-white"
+                    : "text-brand-100 hover:bg-white/10"
                 )}
-                {(role === "COMPANY" || role === "ADMIN") && (
-                  <Link href="/smes" className={cn("rounded-md px-3 py-2 text-sm font-medium transition-colors", pathname.startsWith("/smes") ? "bg-white/15 text-white" : "text-brand-100 hover:bg-white/10")}>
-                    SMEs
-                  </Link>
-                )}
-              </>
-            )}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* Right Side */}
@@ -184,22 +133,22 @@ export function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden border-t border-brand-800 bg-brand-900">
           <div className="px-4 py-4 space-y-1">
-            {publicNav.map((item) =>
-              item.children ? (
-                <div key={item.label}>
-                  <p className="px-3 py-1 text-xs font-semibold text-brand-400 uppercase tracking-wider">{item.label}</p>
-                  {item.children.map((child) => (
-                    <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block rounded-md px-3 py-2 text-sm text-brand-200 hover:bg-white/10">
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <Link key={item.href} href={item.href!} onClick={() => setMobileOpen(false)} className="block rounded-md px-3 py-2 text-sm text-brand-100 hover:bg-white/10">
+            {publicNav.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="block rounded-md px-3 py-2 text-sm text-brand-100 hover:bg-white/10">
+                {item.label}
+              </Link>
+            ))}
+
+            <div className="pt-2">
+              <p className="px-3 py-1 text-xs font-semibold text-brand-400 uppercase tracking-wider">Our Services</p>
+              {servicesNav.map((item) => (
+                <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-brand-100 hover:bg-white/10">
+                  <item.icon className={cn("h-4 w-4", item.colorClass)} />
                   {item.label}
                 </Link>
-              )
-            )}
+              ))}
+            </div>
+
             <div className="border-t border-brand-800 pt-3 mt-3">
               {session ? (
                 <>
@@ -218,11 +167,6 @@ export function Navbar() {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Click-outside handler for dropdowns */}
-      {dropdownOpen && (
-        <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(null)} />
       )}
     </nav>
   );

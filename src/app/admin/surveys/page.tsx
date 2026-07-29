@@ -3,8 +3,6 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
-import { PlusCircle } from "lucide-react";
-import Link from "next/link";
 import AdminSurveyActions from "./AdminSurveyActions";
 
 export const metadata = { title: "Surveys — Admin" };
@@ -22,15 +20,9 @@ export default async function AdminSurveysPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900">Surveys</h1>
-          <p className="text-slate-500 mt-1">{surveys.length} surveys</p>
-        </div>
-        <Link href="/smes/skills-needs" className="btn-primary">
-          <PlusCircle className="h-4 w-4" />
-          Preview Surveys
-        </Link>
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-slate-900">Surveys</h1>
+        <p className="text-slate-500 mt-1">{surveys.length} surveys</p>
       </div>
 
       <div className="space-y-4">

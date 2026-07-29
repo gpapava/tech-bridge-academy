@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowLeft, Send } from "lucide-react";
+import { ArrowLeft, Send, Plus, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -14,31 +14,43 @@ const INITIATIVE_TYPES = [
   "CURRICULUM_INNOVATION",
   "PARTNERSHIP",
   "MOBILITY",
-  "RESEARCH",
-  "TOOL",
+  "INTERNATIONAL_TRAINING_ACTIVITIES",
   "OTHER",
 ];
+
+interface AnnexRow {
+  name: string;
+  url: string;
+}
 
 export default function SubmitInitiativePage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     title: "",
-    description: "",
     initiativeType: "PARTNERSHIP",
+    description: "",
     country: "",
     region: "",
     actors: "",
-    outcomes: "",
-    sectors: [] as string[],
+    results: "",
+    sector: "",
     tags: "",
+    contactEmail: "",
+    externalLinks: "",
   });
+  const [annexes, setAnnexes] = useState<AnnexRow[]>([{ name: "", url: "" }]);
 
-  function toggleSector(s: string) {
-    setForm((f) => ({
-      ...f,
-      sectors: f.sectors.includes(s) ? f.sectors.filter((x) => x !== s) : [...f.sectors, s],
-    }));
+  function updateAnnex(index: number, field: keyof AnnexRow, value: string) {
+    setAnnexes((rows) => rows.map((row, i) => (i === index ? { ...row, [field]: value } : row)));
+  }
+
+  function addAnnex() {
+    setAnnexes((rows) => [...rows, { name: "", url: "" }]);
+  }
+
+  function removeAnnex(index: number) {
+    setAnnexes((rows) => rows.filter((_, i) => i !== index));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -47,8 +59,9 @@ export default function SubmitInitiativePage() {
     try {
       const body = {
         ...form,
-        actors: form.actors.split(",").map((a) => a.trim()).filter(Boolean),
         tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
+        externalLinks: form.externalLinks.split(",").map((l) => l.trim()).filter(Boolean),
+        documents: annexes.filter((a) => a.name.trim() && a.url.trim()),
       };
       const res = await fetch("/api/repository", {
         method: "POST",
@@ -145,40 +158,34 @@ export default function SubmitInitiativePage() {
                 <label className="label">Actors Involved</label>
                 <input
                   className="input"
+                  required
                   value={form.actors}
                   onChange={(e) => setForm({ ...form, actors: e.target.value })}
-                  placeholder="Comma-separated, e.g. Schools, SMEs, Regional Authority"
+                  placeholder="e.g. 3 VET schools, 5 manufacturing SMEs, Regional Authority"
                 />
               </div>
 
               <div>
-                <label className="label">Outcomes &amp; Results</label>
+                <label className="label">Results &amp; Outcomes <span className="text-red-500">*</span></label>
                 <textarea
                   className="input min-h-[100px] resize-y"
-                  value={form.outcomes}
-                  onChange={(e) => setForm({ ...form, outcomes: e.target.value })}
+                  required
+                  value={form.results}
+                  onChange={(e) => setForm({ ...form, results: e.target.value })}
                   placeholder="What results or impact did this initiative achieve?"
                 />
               </div>
 
               <div>
-                <label className="label">Relevant Sectors</label>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {SECTORS.slice(0, 12).map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => toggleSector(s)}
-                      className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-                        form.sectors.includes(s)
-                          ? "bg-brand-600 text-white border-brand-600"
-                          : "bg-white text-slate-600 border-slate-200 hover:border-brand-300"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
+                <label className="label">Sector</label>
+                <select
+                  className="input"
+                  value={form.sector}
+                  onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                >
+                  <option value="">Select sector</option>
+                  {SECTORS.map((s) => <option key={s} value={s}>{s}</option>)}
+                </select>
               </div>
 
               <div>
@@ -189,6 +196,74 @@ export default function SubmitInitiativePage() {
                   onChange={(e) => setForm({ ...form, tags: e.target.value })}
                   placeholder="Comma-separated, e.g. WBL, dual system, apprenticeship"
                 />
+              </div>
+
+              {/* Contact & Web Links */}
+              <div className="border-t border-slate-100 pt-6 space-y-6">
+                <div>
+                  <label className="label">Contact Email</label>
+                  <input
+                    type="email"
+                    className="input"
+                    value={form.contactEmail}
+                    onChange={(e) => setForm({ ...form, contactEmail: e.target.value })}
+                    placeholder="contact@organisation.eu"
+                  />
+                </div>
+
+                <div>
+                  <label className="label">Web Links</label>
+                  <input
+                    className="input"
+                    value={form.externalLinks}
+                    onChange={(e) => setForm({ ...form, externalLinks: e.target.value })}
+                    placeholder="Comma-separated — institutional website, LinkedIn profile, or other social/professional links"
+                  />
+                </div>
+              </div>
+
+              {/* Annexes */}
+              <div className="border-t border-slate-100 pt-6">
+                <label className="label">Annexes</label>
+                <p className="text-xs text-slate-400 mb-3">
+                  Link to downloadable materials such as corporate brochures, school presentations, or other supporting documents.
+                </p>
+                <div className="space-y-3">
+                  {annexes.map((annex, i) => (
+                    <div key={i} className="flex gap-2">
+                      <input
+                        className="input flex-1"
+                        value={annex.name}
+                        onChange={(e) => updateAnnex(i, "name", e.target.value)}
+                        placeholder="Document name, e.g. Programme Brochure"
+                      />
+                      <input
+                        className="input flex-1"
+                        value={annex.url}
+                        onChange={(e) => updateAnnex(i, "url", e.target.value)}
+                        placeholder="https://..."
+                      />
+                      {annexes.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeAnnex(i)}
+                          className="flex-shrink-0 rounded-lg border border-slate-200 p-2.5 text-slate-400 hover:text-red-500 hover:border-red-200 transition-colors"
+                          aria-label="Remove annex"
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={addAnnex}
+                  className="mt-3 flex items-center gap-1.5 text-sm font-medium text-target-smes hover:opacity-80 transition-opacity"
+                >
+                  <Plus className="h-4 w-4" />
+                  Add another annex
+                </button>
               </div>
 
               <div className="pt-4 border-t border-slate-100">

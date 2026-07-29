@@ -11,7 +11,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const body = await req.json();
   const item = await prisma.repositoryInitiative.update({
     where: { id: params.id },
-    data: { isPublished: body.isPublished },
+    data: { publishStatus: body.isPublished ? "APPROVED" : "PENDING" },
   });
 
   return NextResponse.json(item);

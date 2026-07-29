@@ -37,7 +37,6 @@ export default async function AdminContentPage() {
                   <Badge variant={post.isPublished ? "green" : "amber"} dot>
                     {post.isPublished ? "Published" : "Draft"}
                   </Badge>
-                  {post.isFeatured && <Badge variant="blue">Featured</Badge>}
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {post.tags.map((t) => (
@@ -53,7 +52,7 @@ export default async function AdminContentPage() {
                 <a href={`/news/${post.id}`} target="_blank" className="btn-secondary text-xs py-2 px-3">
                   View
                 </a>
-                <AdminContentActions postId={post.id} isPublished={post.isPublished} isFeatured={post.isFeatured} />
+                <AdminContentActions postId={post.id} isPublished={post.isPublished} isFeatured={false} />
               </div>
             </div>
           ))

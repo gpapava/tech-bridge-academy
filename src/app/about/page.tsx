@@ -140,7 +140,7 @@ export default function AboutPage() {
                 {
                   title: "SME Services Area",
                   icon: Users,
-                  features: ["B2B networking tools", "HR coaching for hosting learners", "Periodic skills needs surveys", "Personalised company reports", "Industry benchmark analytics"],
+                  features: ["B2B networking tools", "Learning Expert coaching for hosting learners"],
                   color: "amber",
                 },
                 {

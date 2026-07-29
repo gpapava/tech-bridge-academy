@@ -17,11 +17,14 @@ interface InitiativeCardProps {
   hasVideo?: boolean;
   createdAt: Date;
   href?: string;
+  onTagClick?: (tag: string) => void;
+  onSectorClick?: (sector: string) => void;
 }
 
 export function InitiativeCard({
   id, title, description, actors, country, region,
-  sector, tags, viewCount, downloadCount, hasVideo, createdAt, href
+  sector, tags, viewCount, downloadCount, hasVideo, createdAt, href,
+  onTagClick, onSectorClick,
 }: InitiativeCardProps) {
   const cardHref = href ?? `/bridge/repository/${id}`;
 
@@ -30,7 +33,19 @@ export function InitiativeCard({
       <div className="p-6">
         {/* Tags row */}
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          {sector && <Badge variant="blue">{sector}</Badge>}
+          {sector && (
+            <button
+              type="button"
+              onClick={(e) => {
+                if (!onSectorClick) return;
+                e.preventDefault();
+                e.stopPropagation();
+                onSectorClick(sector);
+              }}
+            >
+              <Badge variant="bridge">{sector}</Badge>
+            </button>
+          )}
           {hasVideo && (
             <Badge variant="purple">
               <Film className="h-3 w-3 mr-1" />
@@ -65,11 +80,23 @@ export function InitiativeCard({
 
         {/* Tags */}
         {tags.length > 0 && (
-          <div className="mt-3 flex items-center gap-1.5">
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
             <Tag className="h-3 w-3 text-slate-300 flex-shrink-0" />
-            <p className="text-xs text-slate-400 truncate">
-              {tags.slice(0, 6).join(" · ")}
-            </p>
+            {tags.slice(0, 6).map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={(e) => {
+                  if (!onTagClick) return;
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onTagClick(tag);
+                }}
+                className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500 hover:bg-target-smes/10 hover:text-target-smes transition-colors"
+              >
+                {tag}
+              </button>
+            ))}
           </div>
         )}
 

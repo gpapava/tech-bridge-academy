@@ -3,9 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { ProfileCard } from "@/components/profiles/ProfileCard";
+import { DirectoryBrowser } from "@/components/profiles/DirectoryBrowser";
 import { GraduationCap, Calendar } from "lucide-react";
-import { ValidationStatus } from "@prisma/client";
 import Link from "next/link";
 import { formatDateTime } from "@/lib/utils";
 
@@ -15,19 +14,12 @@ export default async function SchoolNetworkingPage() {
   const session = await getSession();
   if (!session) redirect("/auth/login?callbackUrl=/schools/networking");
 
-  const [schools, events] = await Promise.all([
-    prisma.organisationProfile.findMany({
-      where: { orgType: "SCHOOL", validationStatus: ValidationStatus.APPROVED },
-      orderBy: { createdAt: "desc" },
-      take: 9,
-    }),
-    prisma.event.findMany({
-      where: { isPublished: true, startDate: { gte: new Date() } },
-      orderBy: { startDate: "asc" },
-      take: 5,
-      include: { _count: { select: { registrations: true } } },
-    }),
-  ]);
+  const events = await prisma.event.findMany({
+    where: { isPublished: true, startDate: { gte: new Date() } },
+    orderBy: { startDate: "asc" },
+    take: 5,
+    include: { _count: { select: { registrations: true } } },
+  });
 
   return (
     <>
@@ -52,17 +44,9 @@ export default async function SchoolNetworkingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h2 className="text-xl font-bold text-slate-900 mb-6">School Directory</h2>
-              {schools.length === 0 ? (
-                <p className="text-slate-400">No schools registered yet.</p>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {schools.map((s) => (
-                    <ProfileCard key={s.id} {...s} description={s.description ?? ""} mission={s.mission ?? ""} />
-                  ))}
-                </div>
-              )}
+              <DirectoryBrowser orgType="SCHOOL" />
               <Link href="/bridge/profiles?orgType=SCHOOL" className="btn-secondary mt-6 inline-flex">
-                View All Schools →
+                View Full Directory →
               </Link>
             </div>
 

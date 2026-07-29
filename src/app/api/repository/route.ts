@@ -1,23 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession, requireRole } from "@/lib/auth";
-import { ValidationStatus } from "@prisma/client";
+import { InitiativeType, ValidationStatus } from "@prisma/client";
 import { z } from "zod";
 
 const initiativeSchema = z.object({
   title: z.string().min(3).max(300),
+  initiativeType: z.nativeEnum(InitiativeType).optional(),
   actors: z.string().min(5),
   description: z.string().min(20),
   results: z.string().min(10),
   challenges: z.string().optional(),
   lessons: z.string().optional(),
+  contactEmail: z.string().email().optional().or(z.literal("")),
   externalLinks: z.array(z.string().url()).optional().default([]),
   videoUrl: z.string().url().optional().or(z.literal("")),
   tags: z.array(z.string()).default([]),
   country: z.string().optional(),
   region: z.string().optional(),
   sector: z.string().optional(),
+  documents: z.array(z.object({
+    name: z.string().min(1),
+    url: z.string().url(),
+  })).optional().default([]),
 });
+
+function inferFileType(url: string): string {
+  const match = url.split("?")[0].match(/\.([a-zA-Z0-9]+)$/);
+  return match ? match[1].toUpperCase() : "LINK";
+}
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -73,12 +84,21 @@ export async function POST(req: NextRequest) {
   }
 
   const isAdmin = session.user.role === "ADMIN";
+  const { documents, ...initiativeData } = parsed.data;
 
   const initiative = await prisma.repositoryInitiative.create({
     data: {
-      ...parsed.data,
-      videoUrl: parsed.data.videoUrl || null,
+      ...initiativeData,
+      contactEmail: initiativeData.contactEmail || null,
+      videoUrl: initiativeData.videoUrl || null,
       publishStatus: isAdmin ? ValidationStatus.APPROVED : ValidationStatus.PENDING,
+      documents: {
+        create: documents.map((doc) => ({
+          name: doc.name,
+          url: doc.url,
+          fileType: inferFileType(doc.url),
+        })),
+      },
     },
   });
 

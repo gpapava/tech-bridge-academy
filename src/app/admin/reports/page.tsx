@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
-import { FileText, Download } from "lucide-react";
+import { FileText } from "lucide-react";
 
 export const metadata = { title: "Reports — Admin" };
 
@@ -12,7 +12,7 @@ export default async function AdminReportsPage() {
   if (!session || session.user.role !== "ADMIN") redirect("/dashboard");
 
   const reports = await prisma.report.findMany({
-    orderBy: { generatedAt: "desc" },
+    orderBy: { createdAt: "desc" },
   });
 
   const stats = await Promise.all([
@@ -68,19 +68,8 @@ export default async function AdminReportsPage() {
                   <p className="font-medium text-slate-900">{report.title}</p>
                   <Badge variant="blue">{report.reportType}</Badge>
                 </div>
-                <p className="text-xs text-slate-400">Generated {formatDate(report.generatedAt)}</p>
+                <p className="text-xs text-slate-400">Generated {formatDate(report.createdAt)}</p>
               </div>
-              {report.fileUrl && (
-                <a
-                  href={report.fileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-xs py-2 px-3 flex items-center gap-1.5"
-                >
-                  <Download className="h-3.5 w-3.5" />
-                  Download
-                </a>
-              )}
             </div>
           ))}
         </div>

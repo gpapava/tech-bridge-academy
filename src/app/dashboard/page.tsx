@@ -6,8 +6,8 @@ import { Footer } from "@/components/layout/Footer";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { Badge, OrgTypeBadge, MatchStatusBadge } from "@/components/ui/Badge";
 import {
-  Building2, GraduationCap, GitMerge, Bell, ClipboardList,
-  ArrowRight, PlusCircle, CheckCircle, Clock, AlertCircle
+  Building2, GraduationCap, GitMerge, Bell,
+  ArrowRight, PlusCircle, Clock, AlertCircle
 } from "lucide-react";
 import Link from "next/link";
 import { MATCH_SCORE_LABEL, formatRelative } from "@/lib/utils";
@@ -27,7 +27,7 @@ export default async function DashboardPage() {
     select: { id: true, name: true, orgType: true, validationStatus: true, visibilityStatus: true },
   });
 
-  const [notifications, matches, surveys] = await Promise.all([
+  const [notifications, matches] = await Promise.all([
     prisma.notification.findMany({
       where: { userId, isRead: false },
       orderBy: { createdAt: "desc" },
@@ -47,22 +47,7 @@ export default async function DashboardPage() {
           take: 3,
         })
       : Promise.resolve([]),
-    prisma.survey.findMany({
-      where: {
-        isActive: true,
-        OR: [{ targetRole: null }, { targetRole: role }],
-      },
-      select: { id: true, title: true, _count: { select: { responses: true } } },
-      take: 3,
-    }),
   ]);
-
-  // Check if user has already responded to surveys
-  const respondedSurveyIds = await prisma.surveyResponse.findMany({
-    where: { userId, surveyId: { in: surveys.map((s) => s.id) } },
-    select: { surveyId: true },
-  });
-  const respondedIds = new Set(respondedSurveyIds.map((r) => r.surveyId));
 
   const firstName = session.user.name?.split(" ")[0] ?? "there";
 
@@ -203,41 +188,6 @@ export default async function DashboardPage() {
                 </section>
               )}
 
-              {/* Surveys */}
-              {surveys.length > 0 && (
-                <section className="card p-6">
-                  <h2 className="font-semibold text-slate-900 mb-5 flex items-center gap-2">
-                    <ClipboardList className="h-5 w-5 text-purple-600" />
-                    Active Surveys
-                  </h2>
-                  <div className="space-y-3">
-                    {surveys.map((survey) => {
-                      const done = respondedIds.has(survey.id);
-                      return (
-                        <div key={survey.id} className="flex items-center gap-4 p-4 rounded-xl border border-slate-100">
-                          <div className={`flex h-9 w-9 items-center justify-center rounded-lg flex-shrink-0 ${done ? "bg-emerald-50" : "bg-purple-50"}`}>
-                            {done
-                              ? <CheckCircle className="h-5 w-5 text-emerald-600" />
-                              : <ClipboardList className="h-5 w-5 text-purple-600" />
-                            }
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-slate-900 truncate">{survey.title}</p>
-                            <p className="text-xs text-slate-400 mt-0.5">
-                              {done ? "Response submitted · Thank you!" : `${survey._count.responses} responses so far`}
-                            </p>
-                          </div>
-                          {!done && (
-                            <Link href={`/smes/skills-needs#survey-${survey.id}`} className="btn-primary text-xs py-2 px-3">
-                              Complete
-                            </Link>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-              )}
             </div>
 
             {/* Sidebar */}
@@ -252,7 +202,6 @@ export default async function DashboardPage() {
                     { label: "Career Guidance Content", href: "/bridge/career-guidance", icon: GraduationCap },
                     ...(role === "COMPANY" ? [
                       { label: "SME Networking", href: "/smes/networking", icon: Building2 },
-                      { label: "Skills Needs Survey", href: "/smes/skills-needs", icon: ClipboardList },
                     ] : []),
                     ...(role === "SCHOOL" ? [
                       { label: "School Networking", href: "/schools/networking", icon: GraduationCap },

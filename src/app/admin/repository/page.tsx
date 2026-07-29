@@ -16,13 +16,13 @@ export default async function AdminRepositoryPage({
   const session = await getSession();
   if (!session || session.user.role !== "ADMIN") redirect("/dashboard");
 
-  const publishedFilter =
-    searchParams.status === "published" ? true :
-    searchParams.status === "pending" ? false :
+  const statusFilter =
+    searchParams.status === "published" ? "APPROVED" :
+    searchParams.status === "pending" ? "PENDING" :
     undefined;
 
   const initiatives = await prisma.repositoryInitiative.findMany({
-    where: publishedFilter !== undefined ? { isPublished: publishedFilter } : {},
+    where: statusFilter !== undefined ? { publishStatus: statusFilter } : {},
     orderBy: { createdAt: "desc" },
     include: { _count: { select: { documents: true } } },
   });
@@ -68,10 +68,10 @@ export default async function AdminRepositoryPage({
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
                   <h3 className="font-semibold text-slate-900">{item.title}</h3>
-                  <Badge variant={item.isPublished ? "green" : "amber"} dot>
-                    {item.isPublished ? "Published" : "Pending Review"}
+                  <Badge variant={item.publishStatus === "APPROVED" ? "green" : "amber"} dot>
+                    {item.publishStatus === "APPROVED" ? "Published" : "Pending Review"}
                   </Badge>
-                  <Badge variant="blue">{item.initiativeType.replace(/_/g, " ")}</Badge>
+                  {item.sector && <Badge variant="blue">{item.sector}</Badge>}
                   {item.country && <Badge variant="slate">{item.country}</Badge>}
                 </div>
                 <p className="text-sm text-slate-500 mb-3 line-clamp-2">{item.description}</p>
@@ -87,7 +87,7 @@ export default async function AdminRepositoryPage({
                 <Link href={`/bridge/repository/${item.id}`} className="btn-secondary text-xs py-2 px-3">
                   Preview
                 </Link>
-                <AdminRepositoryActions initiativeId={item.id} isPublished={item.isPublished} />
+                <AdminRepositoryActions initiativeId={item.id} isPublished={item.publishStatus === "APPROVED"} />
               </div>
             </div>
           ))

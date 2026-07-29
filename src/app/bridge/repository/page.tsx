@@ -1,9 +1,9 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { InitiativeCard } from "@/components/repository/InitiativeCard";
+import { RepositoryBrowser } from "@/components/repository/RepositoryBrowser";
 import { prisma } from "@/lib/prisma";
 import { ValidationStatus } from "@prisma/client";
-import { BookOpen, TrendingUp, MapPin, Download } from "lucide-react";
+import { BookOpen, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = { title: "Repository of Good Practices" };
@@ -11,22 +11,13 @@ export const metadata = { title: "Repository of Good Practices" };
 export const revalidate = 3600;
 
 export default async function RepositoryPage() {
-  const [initiatives, stats] = await Promise.all([
-    prisma.repositoryInitiative.findMany({
+  const [total, agg] = await Promise.all([
+    prisma.repositoryInitiative.count({ where: { publishStatus: ValidationStatus.APPROVED } }),
+    prisma.repositoryInitiative.aggregate({
       where: { publishStatus: ValidationStatus.APPROVED },
-      orderBy: { viewCount: "desc" },
-      take: 12,
+      _sum: { viewCount: true, downloadCount: true },
     }),
-    Promise.all([
-      prisma.repositoryInitiative.count({ where: { publishStatus: ValidationStatus.APPROVED } }),
-      prisma.repositoryInitiative.aggregate({
-        where: { publishStatus: ValidationStatus.APPROVED },
-        _sum: { viewCount: true, downloadCount: true },
-      }),
-    ]),
   ]);
-
-  const [total, agg] = stats;
 
   return (
     <>
@@ -83,34 +74,8 @@ export default async function RepositoryPage() {
             </Link>
           </div>
 
-          {/* Grid */}
-          {initiatives.length === 0 ? (
-            <div className="text-center py-24">
-              <BookOpen className="h-12 w-12 text-slate-200 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-slate-700">No initiatives published yet</h3>
-              <p className="text-slate-400 mt-2">Be the first to submit a good practice to the repository.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 animate-fade-in">
-              {initiatives.map((init) => (
-                <InitiativeCard
-                  key={init.id}
-                  id={init.id}
-                  title={init.title}
-                  description={init.description}
-                  actors={init.actors}
-                  country={init.country}
-                  region={init.region}
-                  sector={init.sector}
-                  tags={init.tags}
-                  viewCount={init.viewCount}
-                  downloadCount={init.downloadCount}
-                  hasVideo={Boolean(init.videoUrl)}
-                  createdAt={init.createdAt}
-                />
-              ))}
-            </div>
-          )}
+          {/* Categorised, filterable browser */}
+          <RepositoryBrowser />
         </div>
       </main>
       <Footer />

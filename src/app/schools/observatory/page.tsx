@@ -4,7 +4,6 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { BarChart3, Globe, TrendingUp, BookOpen, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import Link from "next/link";
 
 export const metadata = { title: "Curriculum Educational Observatory" };
 
@@ -14,7 +13,7 @@ const observatoryItems = [
     icon: BookOpen,
     items: [
       { title: "Italian ITS Model: Post-Diploma Technical Education", country: "Italy", tags: ["ITS", "post-diploma", "mechanics"], year: "2024" },
-      { title: "PCTO Work Placement Framework: Updated Guidelines", country: "Italy", tags: ["PCTO", "WBL", "VET"], year: "2024" },
+      { title: "Curricular Internships Work Placement Framework: Updated Guidelines", country: "Italy", tags: ["Curricular Internships", "WBL", "VET"], year: "2024" },
     ],
   },
   {
@@ -116,11 +115,8 @@ export default async function ObservatoryPage() {
             <BarChart3 className="h-10 w-10 text-brand-300 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-white mb-2">Periodic Observatory Reports</h2>
             <p className="text-brand-300 text-sm max-w-lg mx-auto leading-relaxed mb-6">
-              The observatory publishes quarterly reports summarising curriculum trends, skills demands, and innovation benchmarks. Reports are available to all registered school members.
+              The observatory publishes annual reports summarising curriculum trends, skills demands, and innovation benchmarks. Reports are available to all registered school members.
             </p>
-            <Link href="/bridge/repository" className="btn-accent">
-              Browse Repository →
-            </Link>
           </div>
         </div>
       </main>

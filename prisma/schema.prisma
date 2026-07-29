@@ -43,6 +43,15 @@ enum ValidationStatus {
   REJECTED
 }
 
+enum InitiativeType {
+  WORK_BASED_LEARNING
+  CURRICULUM_INNOVATION
+  PARTNERSHIP
+  MOBILITY
+  INTERNATIONAL_TRAINING_ACTIVITIES
+  OTHER
+}
+
 enum VisibilityStatus {
   PUBLIC
   MEMBERS_ONLY
@@ -125,7 +134,8 @@ model User {
   eventRegistrations EventRegistration[]
   surveyResponses    SurveyResponse[]
   analyticsEvents    AnalyticsEvent[]
-  coDesignRequests   CoDesignRequest[]   @relation("CoDesignRequester")
+  coDesignRequests   CoDesignRequest[]    @relation("CoDesignRequester")
+  networkingPosts    NetworkingPost[]
 }
 
 // ─── Organisation Profiles ────────────────────────────────────────────────────
@@ -155,11 +165,11 @@ model OrganisationProfile {
   createdAt          DateTime         @default(now())
   updatedAt          DateTime         @updatedAt
 
-  user             User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   documents        ProfileDocument[]
-  matchesAsA       Match[]             @relation("MatchProfileA")
-  matchesAsB       Match[]             @relation("MatchProfileB")
-  coDesignRequests CoDesignRequest[]   @relation("CoDesignProfile")
+  matchesAsA       Match[]           @relation("MatchProfileA")
+  matchesAsB       Match[]           @relation("MatchProfileB")
+  coDesignRequests CoDesignRequest[] @relation("CoDesignProfile")
   skillNeeds       SkillNeed[]
   surveyResponses  SurveyResponse[]
 }
@@ -198,12 +208,12 @@ model Match {
 }
 
 model MatchReport {
-  id          String   @id @default(cuid())
-  matchId     String   @unique
-  content     String   @db.Text
-  generatedBy String   @default("rule-based")
+  id          String    @id @default(cuid())
+  matchId     String    @unique
+  content     String    @db.Text
+  generatedBy String    @default("rule-based")
   sentAt      DateTime?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
 
   match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
 }
@@ -211,25 +221,27 @@ model MatchReport {
 // ─── Repository of Initiatives ────────────────────────────────────────────────
 
 model RepositoryInitiative {
-  id            String           @id @default(cuid())
-  title         String
-  actors        String           @db.Text
-  description   String           @db.Text
-  results       String           @db.Text
-  challenges    String?          @db.Text
-  lessons       String?          @db.Text
-  externalLinks String[]
-  videoUrl      String?
-  images        String[]
-  tags          String[]
-  country       String?
-  region        String?
-  sector        String?
-  publishStatus ValidationStatus @default(PENDING)
-  viewCount     Int              @default(0)
-  downloadCount Int              @default(0)
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
+  id             String           @id @default(cuid())
+  title          String
+  initiativeType InitiativeType   @default(PARTNERSHIP)
+  actors         String           @db.Text
+  description    String           @db.Text
+  results        String           @db.Text
+  challenges     String?          @db.Text
+  lessons        String?          @db.Text
+  contactEmail   String?
+  externalLinks  String[]
+  videoUrl       String?
+  images         String[]
+  tags           String[]
+  country        String?
+  region         String?
+  sector         String?
+  publishStatus  ValidationStatus @default(PENDING)
+  viewCount      Int              @default(0)
+  downloadCount  Int              @default(0)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
 
   documents RepositoryDocument[]
 }
@@ -280,12 +292,32 @@ model CoDesignRequest {
   profile   OrganisationProfile @relation("CoDesignProfile", fields: [profileId], references: [id])
 }
 
+// ─── Networking Board ─────────────────────────────────────────────────────────
+
+enum NetworkingPostType {
+  ANNOUNCEMENT
+  REQUEST
+  OFFER
+}
+
+model NetworkingPost {
+  id        String             @id @default(cuid())
+  authorId  String
+  type      NetworkingPostType
+  title     String
+  message   String             @db.Text
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
 // ─── Educational Resources ────────────────────────────────────────────────────
 
 model EducationalResource {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   title         String
-  description   String   @db.Text
+  description   String    @db.Text
   category      String
   resourceType  String
   fileUrl       String?
@@ -294,10 +326,10 @@ model EducationalResource {
   tags          String[]
   effort        String?
   targetRole    UserRole?
-  isPublished   Boolean  @default(false)
-  downloadCount Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  isPublished   Boolean   @default(false)
+  downloadCount Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
 // ─── Events ───────────────────────────────────────────────────────────────────
@@ -361,7 +393,7 @@ model SurveyQuestion {
   order        Int
   createdAt    DateTime           @default(now())
 
-  survey  Survey         @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  survey  Survey           @relation(fields: [surveyId], references: [id], onDelete: Cascade)
   answers QuestionAnswer[]
 }
 

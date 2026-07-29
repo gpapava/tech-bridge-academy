@@ -9,9 +9,9 @@ import { GitMerge, CheckCircle, ArrowRight, Lock, Send } from "lucide-react";
 import toast from "react-hot-toast";
 
 const phases = [
-  { step: "1", title: "Expression of Interest", desc: "A school or company submits a co-design request via the platform, describing their training needs or educational offer." },
-  { step: "2", title: "Admin Review & Matching", desc: "Platform administrators review the request, validate the profile, and identify suitable partner organisations using the matching engine." },
-  { step: "3", title: "Partner Introduction", desc: "Both parties receive a formal introduction report and are invited to an exploratory meeting facilitated by the consortium." },
+  { step: "1", title: "Expression of Interest", desc: "Submit your co-design request via the platform. Clearly outline your school's educational offer or your company's technical skill needs to kickstart the collaborative curriculum design process." },
+  { step: "2", title: "Tailored Skill Matching", desc: "Our dedicated team acts as a premium curation service. We actively review your request and customize the matching process to align mechanical SMEs and VET schools with maximum precision." },
+  { step: "3", title: "Guided Partnership Introduction", desc: "To build a strong foundation for co-design, both parties receive a curated introduction report. Our consortium directly facilitates your first exploratory meeting, guiding you smoothly into active cooperation." },
   { step: "4", title: "Co-Design Workshop", desc: "Partners participate in facilitated workshops to map current curricula, identify gaps, and co-create training objectives." },
   { step: "5", title: "Programme Development", desc: "A joint working group develops the curriculum unit, including assessments, learning outcomes, and company tutor guidance." },
   { step: "6", title: "Pilot & Validation", desc: "The co-designed programme is piloted with a student cohort and evaluated jointly by school and company representatives." },

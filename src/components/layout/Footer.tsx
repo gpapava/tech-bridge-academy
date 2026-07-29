@@ -14,6 +14,7 @@ const footerLinks = {
     { label: "Repository of Practices", href: "/bridge/repository" },
     { label: "Career Guidance", href: "/bridge/career-guidance" },
     { label: "Co-Design Service", href: "/bridge/co-design" },
+    { label: "Networking", href: "/bridge/networking" },
   ],
   "For Members": [
     { label: "SME Services", href: "/smes" },

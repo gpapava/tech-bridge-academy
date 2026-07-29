@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 
-type BadgeVariant = "blue" | "green" | "amber" | "red" | "slate" | "purple" | "teal";
+export type BadgeVariant =
+  | "blue" | "green" | "amber" | "red" | "slate" | "purple" | "teal"
+  | "schools" | "smes" | "bridge" | "general";
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -17,6 +19,11 @@ const variants: Record<BadgeVariant, string> = {
   slate:  "bg-slate-100 text-slate-600 ring-1 ring-slate-200/60",
   purple: "bg-purple-100 text-purple-700 ring-1 ring-purple-200/60",
   teal:   "bg-teal-100 text-teal-700 ring-1 ring-teal-200/60",
+  // Target-group color coding
+  schools: "bg-target-schools/10 text-target-schools ring-1 ring-target-schools/30",
+  smes:    "bg-target-smes/10 text-target-smes ring-1 ring-target-smes/30",
+  bridge:  "bg-target-bridge/10 text-target-bridge ring-1 ring-target-bridge/30",
+  general: "bg-target-general/40 text-target-schools ring-1 ring-target-general",
 };
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -27,6 +34,10 @@ const dotColors: Record<BadgeVariant, string> = {
   slate:  "bg-slate-400",
   purple: "bg-purple-500",
   teal:   "bg-teal-500",
+  schools: "bg-target-schools",
+  smes:    "bg-target-smes",
+  bridge:  "bg-target-bridge",
+  general: "bg-target-general",
 };
 
 export function Badge({ children, variant = "slate", className, dot }: BadgeProps) {
@@ -40,8 +51,8 @@ export function Badge({ children, variant = "slate", className, dot }: BadgeProp
 
 export function OrgTypeBadge({ type }: { type: string }) {
   return type === "SCHOOL"
-    ? <Badge variant="blue" dot>School / VET</Badge>
-    : <Badge variant="amber" dot>Company / SME</Badge>;
+    ? <Badge variant="schools" dot>School / VET</Badge>
+    : <Badge variant="smes" dot>Company / SME</Badge>;
 }
 
 export function ValidationBadge({ status }: { status: string }) {

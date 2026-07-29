@@ -36,6 +36,13 @@ export async function GET(req: NextRequest) {
   const tag = searchParams.get("tag");
   const schoolType = searchParams.get("schoolType");
   const companyType = searchParams.get("companyType");
+  const sort = searchParams.get("sort") ?? "newest";
+
+  const orderBy: Record<string, "asc" | "desc"> =
+    sort === "oldest" ? { createdAt: "asc" } :
+    sort === "name_asc" ? { name: "asc" } :
+    sort === "name_desc" ? { name: "desc" } :
+    { createdAt: "desc" };
 
   const where: Record<string, unknown> = {
     validationStatus: ValidationStatus.APPROVED,
@@ -86,7 +93,7 @@ export async function GET(req: NextRequest) {
       },
       skip: (page - 1) * perPage,
       take: perPage,
-      orderBy: { createdAt: "desc" },
+      orderBy,
     }),
     prisma.organisationProfile.count({ where }),
   ]);

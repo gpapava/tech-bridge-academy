@@ -24,7 +24,7 @@ export default async function AdminAnalyticsPage() {
     prisma.match.count(),
     prisma.organisationProfile.count({ where: { orgType: "SCHOOL" } }),
     prisma.organisationProfile.count({ where: { orgType: "COMPANY" } }),
-    prisma.repositoryInitiative.count({ where: { isPublished: true } }),
+    prisma.repositoryInitiative.count({ where: { publishStatus: "APPROVED" } }),
     prisma.event.count({ where: { isPublished: true } }),
     prisma.survey.count({ where: { isActive: true } }),
     prisma.surveyResponse.count(),

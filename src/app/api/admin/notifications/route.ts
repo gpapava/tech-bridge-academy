@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   });
 
   await prisma.notification.createMany({
-    data: users.map((u) => ({ userId: u.id, title, message })),
+    data: users.map((u) => ({ userId: u.id, title, message, type: "ADMIN" })),
   });
 
   return NextResponse.json({ sent: users.length });
