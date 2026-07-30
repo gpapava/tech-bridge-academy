@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand ramp anchored on target-schools (#184c5e) at 900
+        // Brand ramp — Tech Bridge's dark navy chrome (navbar, hero backgrounds)
         brand: {
           50:  "#eff8fb",
           100: "#dbeff6",
@@ -39,8 +39,11 @@ const config: Config = {
           900: "#0c5c82",
         },
         // Target-group color coding: Schools, SMEs, Bridging the Two Worlds, General
+        // schools was #184c5e — same value as brand-900, so it read as navy/near-black
+        // against the navbar instead of a distinct teal. Moved to a more saturated,
+        // unambiguously teal hue that still passes AA contrast with white button text.
         target: {
-          schools: "#184c5e",
+          schools: "#0f766e",
           smes:    "#15a1e4",
           bridge:  "#5e7d89",
           general: "#acd1de",

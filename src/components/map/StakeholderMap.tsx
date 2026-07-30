@@ -21,7 +21,7 @@ interface MapProfile {
 }
 
 const MARKER_COLOR: Record<string, string> = {
-  SCHOOL: "#184c5e",
+  SCHOOL: "#0f766e",
   COMPANY: "#15a1e4",
 };
 
