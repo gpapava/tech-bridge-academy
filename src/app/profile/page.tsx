@@ -315,7 +315,7 @@ export default function ProfilePage() {
               </div>
 
               <div>
-                <label className="label">Experience of Dialogue with {form.orgType === "SCHOOL" ? "Industry" : "Schools / VET"}</label>
+                <label className="label">School-Enterprise Synergy</label>
                 <textarea value={form.dialogueExperience} onChange={(e) => setForm({ ...form, dialogueExperience: e.target.value })} className="input" rows={3} placeholder="Describe any previous collaborations, partnerships, or dialogue you have had with your counterpart organisations." />
               </div>
             </section>
