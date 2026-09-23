@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
-import { Search, BookOpen, Play, GitMerge, GraduationCap, ArrowRight, Megaphone, MapPin } from "lucide-react";
+import { Search, BookOpen, Play, GitMerge, GraduationCap, ArrowRight, Megaphone, MapPin, Sparkles } from "lucide-react";
 
 export const metadata = { title: "The Bridge" };
 
@@ -19,6 +19,14 @@ const bridgeAreas = [
     icon: BookOpen,
     desc: "A curated library of successful school–enterprise collaboration models, co-design initiatives, and good practices from across Europe.",
     href: "/bridge/repository",
+    color: "accent",
+    badge: "Public",
+  },
+  {
+    title: "Best Practice Guides",
+    icon: Sparkles,
+    desc: "In-depth, interactive walkthroughs of proven collaboration models — read the story, take the lessons for your role, check your readiness, and design your own initiative.",
+    href: "/bridge/best-practices",
     color: "accent",
     badge: "Public",
   },

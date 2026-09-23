@@ -3,7 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { RepositoryBrowser } from "@/components/repository/RepositoryBrowser";
 import { prisma } from "@/lib/prisma";
 import { ValidationStatus } from "@prisma/client";
-import { BookOpen, TrendingUp } from "lucide-react";
+import { BookOpen, TrendingUp, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = { title: "Repository of Good Practices" };
@@ -71,6 +71,22 @@ export default async function RepositoryPage() {
             </div>
             <Link href="/bridge/repository/submit" className="btn-accent flex-shrink-0">
               Submit a Case →
+            </Link>
+          </div>
+
+          {/* Cross-link to the interactive Best Practice Guides */}
+          <div className="rounded-2xl bg-brand-50 border border-brand-100 p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-brand-800">
+              <Sparkles className="h-6 w-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-slate-900">Looking for something more in-depth?</h3>
+              <p className="text-sm text-slate-500 mt-0.5">
+                Explore our interactive Best Practice Guides — step-by-step walkthroughs with lessons for your role and a tool to design your own initiative.
+              </p>
+            </div>
+            <Link href="/bridge/best-practices" className="btn-secondary flex-shrink-0">
+              View Best Practice Guides →
             </Link>
           </div>
 
