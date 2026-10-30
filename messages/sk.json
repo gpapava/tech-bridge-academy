@@ -51,5 +51,23 @@
     "rights": "Všetky práva vyhradené.",
     "consortium": "Konzorcium Erasmus+ TECH BRIDGE VET.",
     "projectNo": "Projekt č. 2024-1-IT01-KA220-VET-000255000"
+  },
+  "feedback": {
+    "button": "Navrhnúť opravu",
+    "title": "Navrhnúť opravu prekladu",
+    "intro": "Našli ste chybu v texte? Napíšte nám, ako má znieť. Náš tím ju posúdi.",
+    "tip": "Tip: pred otvorením tohto formulára označte chybný text na stránke a automaticky sa vyplní.",
+    "language": "Jazyk",
+    "page": "Stránka",
+    "original": "Text s chybou",
+    "suggestion": "Ako má text znieť",
+    "comment": "Komentár (nepovinné)",
+    "name": "Vaše meno (nepovinné)",
+    "email": "Váš e-mail (nepovinné)",
+    "send": "Odoslať návrh",
+    "sending": "Odosielam…",
+    "cancel": "Zrušiť",
+    "thanks": "Ďakujeme! Váš návrh bol odoslaný.",
+    "error": "Návrh sa nepodarilo odoslať. Skúste to znova."
   }
 }

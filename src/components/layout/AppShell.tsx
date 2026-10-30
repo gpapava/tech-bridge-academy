@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { ServicesSidebar } from "@/components/layout/ServicesSidebar";
+import { TranslationFeedback } from "@/components/layout/TranslationFeedback";
 import { cn } from "@/lib/utils";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -12,6 +13,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <>
       {showSidebar && <ServicesSidebar />}
       <div className={cn(showSidebar && "lg:pl-20")}>{children}</div>
+      <TranslationFeedback />
     </>
   );
 }

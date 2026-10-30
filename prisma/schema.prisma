@@ -493,3 +493,29 @@ model AnalyticsEvent {
 
   user User? @relation(fields: [userId], references: [id])
 }
+
+// ─── Translation Suggestions ──────────────────────────────────────────────────
+
+enum SuggestionStatus {
+  PENDING
+  APPLIED
+  REJECTED
+}
+
+model TranslationSuggestion {
+  id            String           @id @default(cuid())
+  locale        String
+  pageUrl       String
+  originalText  String           @db.Text
+  suggestedText String           @db.Text
+  comment       String?          @db.Text
+  authorName    String?
+  authorEmail   String?
+  userId        String?
+  status        SuggestionStatus @default(PENDING)
+  adminNotes    String?          @db.Text
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([status, createdAt])
+}

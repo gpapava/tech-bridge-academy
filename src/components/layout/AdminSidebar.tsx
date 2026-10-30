@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Users, Building2, GitMerge, FileText,
   ClipboardList, BarChart3, Bell, Archive, Shield, Settings,
-  BookOpen, ChevronRight
+  BookOpen, ChevronRight, Languages
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +20,7 @@ const adminNav = [
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/notifications", label: "Notifications", icon: Bell },
   { href: "/admin/content", label: "Content & News", icon: Archive },
+  { href: "/admin/translations", label: "Translations", icon: Languages },
 ];
 
 export function AdminSidebar() {

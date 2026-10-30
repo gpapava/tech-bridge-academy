@@ -51,5 +51,23 @@
     "rights": "Tutti i diritti riservati.",
     "consortium": "Consorzio Erasmus+ TECH BRIDGE VET.",
     "projectNo": "Progetto n. 2024-1-IT01-KA220-VET-000255000"
+  },
+  "feedback": {
+    "button": "Suggerisci una correzione",
+    "title": "Suggerisci una correzione della traduzione",
+    "intro": "Hai trovato un errore nel testo? Dicci come dovrebbe essere. Il nostro team lo esaminerà.",
+    "tip": "Suggerimento: seleziona il testo errato nella pagina prima di aprire questo modulo e verrà compilato automaticamente.",
+    "language": "Lingua",
+    "page": "Pagina",
+    "original": "Testo con l'errore",
+    "suggestion": "Come dovrebbe essere",
+    "comment": "Commento (facoltativo)",
+    "name": "Il tuo nome (facoltativo)",
+    "email": "La tua email (facoltativo)",
+    "send": "Invia suggerimento",
+    "sending": "Invio in corso…",
+    "cancel": "Annulla",
+    "thanks": "Grazie! Il tuo suggerimento è stato inviato.",
+    "error": "Impossibile inviare il suggerimento. Riprova."
   }
 }

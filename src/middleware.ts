@@ -68,7 +68,8 @@ export default withAuth(
           pathname === "/api/admin/stats" ||
           pathname === "/api/profiles/map" ||
           pathname === "/api/geocode" ||
-          pathname === "/api/locale"
+          pathname === "/api/locale" ||
+          pathname === "/api/translation-suggestions"
         ) {
           return true;
         }
