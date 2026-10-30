@@ -133,13 +133,6 @@ function LoginForm() {
               )}
             </button>
           </form>
-
-          <div className="mt-6 border-t border-slate-100 pt-5">
-            <p className="text-xs text-slate-400 text-center">
-              {t("demo")} <code className="bg-slate-50 px-1 rounded">admin@techbridgeacademy.eu</code> /{" "}
-              <code className="bg-slate-50 px-1 rounded">Admin@TBA2024</code>
-            </p>
-          </div>
         </div>
 
         <p className="text-center text-xs text-brand-400 mt-6">

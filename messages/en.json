@@ -281,7 +281,6 @@
       "forgot": "Forgot password?",
       "signingIn": "Signing in…",
       "signIn": "Sign In",
-      "demo": "Demo accounts:",
       "terms": "By signing in, you agree to our <terms>Terms of Use</terms> and <privacy>Privacy Policy</privacy>.",
       "toastError": "Invalid email or password. Please try again.",
       "toastOk": "Welcome back!"
