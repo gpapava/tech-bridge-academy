@@ -70,5 +70,425 @@
     "cancel": "Cancel",
     "thanks": "Thank you! Your suggestion was sent.",
     "error": "Could not send your suggestion. Please try again."
+  },
+  "home": {
+    "heroTitle": "Connecting VET Schools <accent>& Industry</accent> Across Europe",
+    "heroText": "Tech Bridge Academy is the digital hub where vocational schools, technical colleges, and manufacturing SMEs collaborate to reduce skills mismatch and build the workforce of tomorrow.",
+    "registerSchool": "Register as VET School",
+    "registerSme": "Register as SME",
+    "exploreDirectory": "Explore Directory",
+    "stats": {
+      "schools": "Schools & VET",
+      "companies": "Companies & SMEs",
+      "matches": "Matches Made",
+      "practices": "Good Practices"
+    },
+    "about": {
+      "badge": "About the Platform",
+      "title": "Bridging the Gap Between Education and Industry",
+      "text": "Tech Bridge Academy is the operational platform of the <strong>TECH BRIDGE VET</strong> Erasmus+ project — designed to create structured, two-way collaboration between VET schools and SMEs in the mechanical engineering and manufacturing sector.",
+      "f1": "Structured profiles for schools and companies with AI-powered matching",
+      "f2": "Curriculum co-design tools connecting school programmes with industry needs",
+      "f3": "Repository of best practices from across Europe",
+      "f4": "Multilingual platform connecting partners from 5+ EU countries",
+      "learnMore": "Learn More About TECH BRIDGE VET",
+      "cardSchools": "VET Schools",
+      "cardCompanies": "SMEs & Companies",
+      "cardMatches": "Active Matches",
+      "cardEvents": "Events Hosted",
+      "aiTitle": "AI-Powered Matching",
+      "aiText": "Automatically connecting schools with the right companies"
+    },
+    "kpi": {
+      "title": "Ecosystem Dashboard",
+      "subtitle": "Live platform metrics across the Tech Bridge Academy network",
+      "schools": "Registered Schools & VET",
+      "companies": "Registered Companies & SMEs",
+      "matches": "Matches Generated",
+      "practices": "Good Practices Published"
+    },
+    "services": {
+      "title": "Platform Services",
+      "subtitle": "Three integrated areas covering the full school-enterprise collaboration lifecycle",
+      "bridge": {
+        "title": "The Bridge",
+        "subtitle": "For All Members",
+        "badge": "Core Area",
+        "f1": "AI-powered school-company matching",
+        "f2": "Organisation directory & profiles",
+        "f3": "Repository of co-operation practices",
+        "f4": "Career guidance for students",
+        "f5": "Curriculum co-design service"
+      },
+      "sme": {
+        "title": "SME Services",
+        "subtitle": "For Companies",
+        "f1": "SME networking & directory",
+        "f2": "Learning Expert coaching resources"
+      },
+      "membersOnly": "Members Only",
+      "school": {
+        "title": "School Services",
+        "subtitle": "For Schools & VET",
+        "f1": "School networking & exchange",
+        "f2": "Teacher & staff development",
+        "f3": "Curriculum educational observatory",
+        "f4": "Company visit & tour calendar",
+        "f5": "Curricular Internships / WBL planning resources"
+      },
+      "explore": "Explore {title} →"
+    },
+    "news": {
+      "title": "Latest News",
+      "subtitle": "Updates from the TECH BRIDGE VET consortium",
+      "all": "All News →"
+    },
+    "cta": {
+      "badge": "GDPR Compliant · Erasmus+ Funded",
+      "title": "Join the Tech Bridge Academy Network",
+      "text": "Create your free organisation profile and start connecting with schools or companies in your sector. Registration is free for all Erasmus+ partner organisations and their networks."
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "About TECH BRIDGE VET",
+    "title": "About Tech Bridge Academy",
+    "intro": "Tech Bridge Academy is the digital platform of the <strong>TECH BRIDGE VET</strong> Erasmus+ project — a transnational initiative connecting VET schools, technical colleges, and manufacturing SMEs across Europe to reduce skills mismatch in the mechanical engineering sector.",
+    "challengeTitle": "The Challenge",
+    "challenge1": "The mechanical engineering and manufacturing sector across Europe faces a growing skills mismatch: companies cannot find graduates with the right technical and digital competencies, while VET schools struggle to keep curricula aligned with rapidly evolving industry needs.",
+    "challenge2": "Traditional dialogue between schools and companies is fragmented, informal, and dependent on individual relationships. There is no structured, scalable mechanism to continuously connect what companies need with what schools teach.",
+    "challenge3": "TECH BRIDGE VET addresses this gap by creating a permanent digital infrastructure for two-way, structured collaboration — with AI-assisted matching, curriculum co-design tools, and a shared repository of proven practices.",
+    "objectivesTitle": "Project Objectives",
+    "obj1": "Reduce skills mismatch in the mechanical engineering and manufacturing sector",
+    "obj2": "Create a sustainable digital infrastructure for structured school-enterprise dialogue",
+    "obj3": "Develop and validate an AI-assisted matching system for VET schools and SMEs",
+    "obj4": "Produce a European repository of good practices in skills match initiatives",
+    "obj5": "Support curriculum co-design processes between educational institutions and industry",
+    "obj6": "Generate skills foresight data to inform VET curriculum planning",
+    "obj7": "Train teachers and company HR in effective school-enterprise collaboration",
+    "kf": {
+      "countries": "Countries",
+      "countriesDesc": "Italy, Greece, Slovakia, Germany, Spain",
+      "partners": "Consortium Partners",
+      "partnersDesc": "Schools, universities, companies, agencies",
+      "duration": "Project Duration",
+      "durationValue": "24 months",
+      "funding": "Funding Programme",
+      "fundingDesc": "KA220-VET · European Commission"
+    },
+    "wpTitle": "Project Work Packages",
+    "wpSubtitle": "The project is structured in five work packages, each addressing a specific set of deliverables",
+    "wp": {
+      "WP1": {
+        "title": "Project Management & Quality Assurance",
+        "desc": "Coordination of all project activities, financial management, quality monitoring, and risk mitigation across the consortium."
+      },
+      "WP2": {
+        "title": "Needs Analysis & Ecosystem Mapping",
+        "desc": "In-depth analysis of skills mismatch in the mechanical engineering sector across partner countries, mapping of existing school-enterprise dialogue mechanisms."
+      },
+      "WP3": {
+        "title": "Digital Platform Development",
+        "desc": "Design and development of the Tech Bridge Academy platform — the operational core of this project, enabling all digital collaboration services."
+      },
+      "WP4": {
+        "title": "Pilot Testing & Validation",
+        "desc": "Structured piloting of platform services with real schools and companies in all partner countries, with evaluation and iteration."
+      },
+      "WP5": {
+        "title": "Dissemination & Exploitation",
+        "desc": "Dissemination of project results across European VET networks, policy recommendations, and sustainability plan for the platform beyond the project period."
+      }
+    },
+    "youAreHere": "← You are here: Tech Bridge Academy",
+    "archTitle": "Platform Architecture",
+    "archSubtitle": "Tech Bridge Academy is structured in three integrated areas covering the full collaboration lifecycle",
+    "area": {
+      "bridge": "The Bridge Area",
+      "sme": "SME Services Area",
+      "schools": "Schools Area"
+    },
+    "b1": "AI-powered school-company matching",
+    "b2": "Organisation profiles & directory",
+    "b3": "Repository of good practices",
+    "b4": "Career guidance content",
+    "b5": "Curriculum co-design service",
+    "b6": "Educational collaboration tools",
+    "s1": "B2B networking tools",
+    "s2": "Learning Expert coaching for hosting learners",
+    "c1": "Teacher networking",
+    "c2": "Staff development resources",
+    "c3": "Curriculum observatory",
+    "c4": "Company visit calendar",
+    "c5": "WBL planning tools",
+    "c6": "International benchmarks",
+    "disclaimer": "The TECH BRIDGE VET project is funded by the European Union under the Erasmus+ Programme (KA220-VET – Cooperation Partnerships in Vocational Education and Training). The views and opinions expressed are those of the consortium and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor the EACEA can be held responsible for them."
+  },
+  "partnersPage": {
+    "p1": {
+      "description": "A leading technical institute in Puglia with extensive experience in European VET projects and school-enterprise collaboration.",
+      "role": "Project coordination, WP3 digital platform lead, piloting in Southern Italy"
+    },
+    "p2": {
+      "description": "One of the largest VET centres in Lombardy, specialised in mechanical and metalworking training.",
+      "role": "WP2 needs analysis, WP4 piloting in Northern Italy, repository contribution"
+    },
+    "p3": {
+      "description": "Research partner contributing expertise in skills foresight, competency mapping, and VET quality assurance.",
+      "role": "Skills foresight methodology, WP2 lead, curriculum observatory framework"
+    },
+    "p4": {
+      "description": "Technical secondary school with strong industry links and a dual education track.",
+      "role": "WP4 piloting in Slovakia, bilingual content, dissemination in Central Europe"
+    },
+    "p5": {
+      "description": "Bavarian Chamber of Skilled Crafts — bringing expertise from the German dual apprenticeship system.",
+      "role": "Dual system expertise, master craftsman mentoring methodology, WP5 dissemination"
+    },
+    "p6": {
+      "description": "Educational consortium managing VET programmes across the Barcelona metropolitan area.",
+      "role": "Catalan VET network, Spanish language dissemination, WP5 exploitation"
+    },
+    "metaTitle": "Partners",
+    "title": "Project Partners",
+    "intro": "The TECH BRIDGE VET consortium brings together VET institutions, research organisations, industry chambers, and educational agencies from 5 European countries.",
+    "countries": {
+      "it": "🇮🇹 Italy",
+      "gr": "🇬🇷 Greece",
+      "sk": "🇸🇰 Slovakia",
+      "de": "🇩🇪 Germany",
+      "es": "🇪🇸 Spain"
+    },
+    "types": {
+      "lead": "Lead Beneficiary",
+      "associated": "Associated Partner",
+      "partner": "Partner"
+    },
+    "projectRole": "Project Role:",
+    "website": "Website",
+    "contact": "Contact",
+    "fundedTitle": "Funded by the European Union",
+    "fundedText": "The TECH BRIDGE VET project is funded under the Erasmus+ Programme, Key Action 2 — Cooperation Partnerships in Vocational Education and Training (KA220-VET). The European Commission's support for the production of this platform does not constitute an endorsement of the contents which reflects the views only of the authors."
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to your account",
+      "noAccount": "Don't have an account?",
+      "registerFree": "Register free",
+      "errorLinked": "Email already associated with another sign-in method.",
+      "errorGeneric": "Sign-in failed. Please check your credentials.",
+      "email": "Email address",
+      "password": "Password",
+      "forgot": "Forgot password?",
+      "signingIn": "Signing in…",
+      "signIn": "Sign In",
+      "demo": "Demo accounts:",
+      "terms": "By signing in, you agree to our <terms>Terms of Use</terms> and <privacy>Privacy Policy</privacy>.",
+      "toastError": "Invalid email or password. Please try again.",
+      "toastOk": "Welcome back!"
+    },
+    "register": {
+      "title": "Create your account",
+      "already": "Already registered?",
+      "signIn": "Sign in",
+      "orgType": "Organisation Type *",
+      "school": "School / VET Institution",
+      "company": "Company / SME",
+      "name": "Full name / Contact person *",
+      "namePh": "Your name",
+      "email": "Email address *",
+      "password": "Password *",
+      "passwordPh": "Min. 8 characters",
+      "tooShort": "Too short password",
+      "weak": "Weak password",
+      "strong": "Strong password",
+      "confirm": "Confirm password *",
+      "confirmPh": "Repeat password",
+      "consentTitle": "I consent to data processing *",
+      "consentText": "I agree to the <privacy>Privacy Policy</privacy> and <gdpr>GDPR Notice</gdpr>. My data will be processed solely for platform purposes within the Erasmus+ TECH BRIDGE VET project.",
+      "creating": "Creating account…",
+      "create": "Create Account",
+      "footer": "Registration is free · Platform funded by the European Union",
+      "errMismatch": "Passwords do not match.",
+      "errLength": "Password must be at least 8 characters.",
+      "errType": "Please select your organisation type.",
+      "errConsent": "You must consent to our privacy policy to register.",
+      "errFailed": "Registration failed. Please try again.",
+      "toastOk": "Account created! Please sign in.",
+      "errNetwork": "A network error occurred. Please try again."
+    }
+  },
+  "options": {
+    "sectors": {
+      "mechanical_engineering": "Mechanical Engineering",
+      "cnc_machining": "CNC Machining",
+      "automation_robotics": "Automation & Robotics",
+      "metalworking_welding": "Metalworking & Welding",
+      "precision_mechanics": "Precision Mechanics",
+      "additive_manufacturing": "Additive Manufacturing",
+      "electronics_electrical": "Electronics & Electrical",
+      "smart_manufacturing_industry_4_0": "Smart Manufacturing / Industry 4.0",
+      "automotive": "Automotive",
+      "aerospace": "Aerospace",
+      "medical_devices": "Medical Devices",
+      "toolmaking": "Toolmaking",
+      "quality_control_metrology": "Quality Control & Metrology",
+      "hydraulics_pneumatics": "Hydraulics & Pneumatics",
+      "mechatronics": "Mechatronics",
+      "3d_printing_prototyping": "3D Printing & Prototyping",
+      "plc_scada_industrial_it": "PLC / SCADA / Industrial IT",
+      "maintenance_repair": "Maintenance & Repair",
+      "plastics_composites": "Plastics & Composites",
+      "other": "Other"
+    },
+    "regions": {
+      "northern_italy": "Northern Italy",
+      "central_italy": "Central Italy",
+      "southern_italy": "Southern Italy",
+      "lombardy": "Lombardy",
+      "puglia": "Puglia",
+      "campania": "Campania",
+      "emilia_romagna": "Emilia-Romagna",
+      "veneto": "Veneto",
+      "tuscany": "Tuscany",
+      "sicily": "Sicily",
+      "sardinia": "Sardinia",
+      "piemonte": "Piemonte",
+      "lazio": "Lazio",
+      "calabria": "Calabria",
+      "basilicata": "Basilicata",
+      "greece_attica": "Greece – Attica",
+      "greece_central_macedonia": "Greece – Central Macedonia",
+      "slovakia_bratislava_region": "Slovakia – Bratislava Region",
+      "slovakia_bansk_bystrica": "Slovakia – Banská Bystrica",
+      "germany_bavaria": "Germany – Bavaria",
+      "germany_baden_w_rttemberg": "Germany – Baden-Württemberg",
+      "spain_catalonia": "Spain – Catalonia",
+      "spain_madrid": "Spain – Madrid",
+      "cross_regional_national": "Cross-regional / National",
+      "other": "Other"
+    },
+    "schoolTypes": {
+      "SCIENTIFIC_TECHNICAL_SIXTH_FORM": "Scientific/Technical Sixth Form College",
+      "VOCATIONAL_COLLEGE": "Vocational College",
+      "VET_CENTRE": "Vocational Training Centre (VET)",
+      "HIGHER_TECHNICAL_INSTITUTE": "Higher Technical Institute (ITS)",
+      "OTHER": "Other"
+    },
+    "companyTypes": {
+      "MANUFACTURING_SME": "Manufacturing SME",
+      "MICRO_ENTERPRISE": "Micro-enterprise / Craftsman",
+      "LARGE_ENTERPRISE": "Large Enterprise",
+      "CONTINUING_EDUCATION": "Continuing Education Provider",
+      "OTHER": "Other"
+    }
+  },
+  "profilesUi": {
+    "directory": {
+      "title": "Organisation Directory",
+      "subtitle": "Find schools, VET providers, and manufacturing companies to collaborate with",
+      "all": "All Organisations",
+      "schools": "Schools & VET",
+      "companies": "Companies & SMEs",
+      "loadFailed": "Failed to load profiles",
+      "noResults": "No organisations found",
+      "noResultsHint": "Try adjusting your search filters or broadening your criteria.",
+      "previous": "← Previous",
+      "next": "Next →",
+      "pageOf": "Page {page} of {total}"
+    },
+    "filter": {
+      "search": "Search organisations by name, description, tags…",
+      "allTypes": "All Types",
+      "schoolsVet": "Schools / VET",
+      "companiesSmes": "Companies / SMEs",
+      "allSectors": "All Sectors",
+      "allRegions": "All Regions",
+      "advanced": "Advanced",
+      "clear": "Clear",
+      "found": "{count, plural, one {# organisation found} other {# organisations found}}",
+      "schoolType": "School Type",
+      "allSchoolTypes": "All School Types",
+      "companyType": "Company Type",
+      "allCompanyTypes": "All Company Types"
+    },
+    "card": {
+      "viewProfile": "View full profile"
+    },
+    "badges": {
+      "school": "School / VET",
+      "company": "Company / SME",
+      "pending": "Pending Review",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "awaiting": "Awaiting Review",
+      "reportSent": "Report Sent"
+    }
+  },
+  "profilePage": {
+    "createTitle": "Create Organisation Profile",
+    "editTitle": "Edit Organisation Profile",
+    "createSub": "Set up your profile to appear in the directory and receive match suggestions",
+    "editSub": "Update your profile information",
+    "statusLabel": "Profile Status:",
+    "statusApproved": "✓ Validated and public",
+    "statusRejected": "✗ Rejected — please review and resubmit",
+    "statusPending": "⏳ Pending validation by the platform team",
+    "orgTypeTitle": "Organisation Type",
+    "primaryType": "Primary Type *",
+    "school": "School / VET Institution",
+    "company": "Company / SME",
+    "schoolType": "School Type *",
+    "selectSchoolType": "Select school type…",
+    "companyType": "Company Type *",
+    "selectCompanyType": "Select company type…",
+    "infoTitle": "Organisation Information",
+    "name": "Organisation Name *",
+    "namePh": "Official name of your organisation",
+    "description": "Who We Are / Description *",
+    "descriptionPh": "Describe your organisation, its history, size, key activities, and what makes it distinctive in its field.",
+    "descriptionHint": "This is the public-facing description shown to all visitors.",
+    "mission": "Mission *",
+    "missionPh": "Your organisation's mission statement and strategic goals.",
+    "synergy": "School-Enterprise Synergy",
+    "synergyPh": "Describe any previous collaborations, partnerships, or dialogue you have had with your counterpart organisations.",
+    "oppTitle": "Opportunities & Needs",
+    "oppText": "This section is used by our AI matching engine to identify collaboration opportunities. Be as specific as possible.",
+    "offer": "What We Offer (Opportunities) *",
+    "offerPh": "Describe what you can offer to partner organisations: internship/WBL placements, equipment access, guest lecturing, co-design expertise, funding, etc.",
+    "need": "What We Need (Demand) *",
+    "needPh": "Describe what you are looking for from partner organisations: specific skills, types of students/graduates, training formats, industry expertise, etc.",
+    "sectors": "Sectors *",
+    "sectorsText": "Select all sectors relevant to your organisation.",
+    "sectorsCustomPh": "Not in the list? Type your sector and press Add",
+    "add": "Add",
+    "sectorsRequired": "Please select at least one sector.",
+    "regions": "Regions *",
+    "regionsText": "Select all regions where your organisation operates or is interested in collaborating.",
+    "regionsCustomPh": "Not in the list? Type your region (e.g. Poland – Silesia) and press Add",
+    "location": "Location",
+    "locationText": "Search for your organisation's city so it can appear on the public <map>Stakeholder Map</map>. This is separate from the operating regions above.",
+    "locationPh": "Start typing a city, e.g. Turin, Italy",
+    "searching": "Searching…",
+    "locationSet": "✓ Location set — will appear on the Stakeholder Map once approved.",
+    "tagsTitle": "Tags & Contact",
+    "tags": "Keywords / Tags",
+    "tagsPh": "e.g. CNC, apprenticeship, robotics, WBL (comma-separated)",
+    "tagsHint": "Separate with commas. Tags improve matching accuracy.",
+    "email": "Contact Email",
+    "phone": "Telephone",
+    "website": "Website",
+    "visibility": "Profile Visibility",
+    "visPublic": "Public — visible to all visitors",
+    "visMembers": "Members Only — full profile visible to registered users",
+    "visPrivate": "Private — only visible to me and admins",
+    "saving": "Saving…",
+    "createBtn": "Create Profile",
+    "saveBtn": "Save Changes",
+    "noteNew": "Your profile will be reviewed by the platform team before publication.",
+    "noteEdit": "Changes will require re-validation.",
+    "toastCreated": "Profile created! Awaiting validation.",
+    "toastUpdated": "Profile updated. Awaiting re-validation.",
+    "toastFailed": "Save failed",
+    "toastNetwork": "Network error — please try again"
   }
 }

@@ -69,5 +69,425 @@
     "cancel": "Annulla",
     "thanks": "Grazie! Il tuo suggerimento è stato inviato.",
     "error": "Impossibile inviare il suggerimento. Riprova."
+  },
+  "home": {
+    "heroTitle": "Colleghiamo le scuole di IFP <accent>e l'industria</accent> in tutta Europa",
+    "heroText": "Tech Bridge Academy è l'hub digitale in cui scuole professionali, istituti tecnici e PMI manifatturiere collaborano per ridurre il disallineamento di competenze e formare la forza lavoro di domani.",
+    "registerSchool": "Registrati come scuola di IFP",
+    "registerSme": "Registrati come PMI",
+    "exploreDirectory": "Esplora l'elenco",
+    "stats": {
+      "schools": "Scuole e IFP",
+      "companies": "Aziende e PMI",
+      "matches": "Abbinamenti realizzati",
+      "practices": "Buone pratiche"
+    },
+    "about": {
+      "badge": "Informazioni sulla piattaforma",
+      "title": "Colmare il divario tra istruzione e industria",
+      "text": "Tech Bridge Academy è la piattaforma operativa del progetto Erasmus+ <strong>TECH BRIDGE VET</strong>, pensata per creare una collaborazione strutturata e bidirezionale tra scuole di IFP e PMI del settore dell'ingegneria meccanica e manifatturiero.",
+      "f1": "Profili strutturati per scuole e aziende con abbinamento basato sull'IA",
+      "f2": "Strumenti di co-progettazione dei curricula che collegano i programmi scolastici alle esigenze dell'industria",
+      "f3": "Repository di buone pratiche da tutta Europa",
+      "f4": "Piattaforma multilingue che collega partner di oltre 5 paesi dell'UE",
+      "learnMore": "Scopri di più su TECH BRIDGE VET",
+      "cardSchools": "Scuole di IFP",
+      "cardCompanies": "PMI e aziende",
+      "cardMatches": "Abbinamenti attivi",
+      "cardEvents": "Eventi organizzati",
+      "aiTitle": "Abbinamento basato sull'IA",
+      "aiText": "Collega automaticamente le scuole con le aziende giuste"
+    },
+    "kpi": {
+      "title": "Dashboard dell'ecosistema",
+      "subtitle": "Metriche in tempo reale della rete Tech Bridge Academy",
+      "schools": "Scuole e IFP registrate",
+      "companies": "Aziende e PMI registrate",
+      "matches": "Abbinamenti generati",
+      "practices": "Buone pratiche pubblicate"
+    },
+    "services": {
+      "title": "Servizi della piattaforma",
+      "subtitle": "Tre aree integrate che coprono l'intero ciclo di collaborazione scuola-impresa",
+      "bridge": {
+        "title": "Il Ponte",
+        "subtitle": "Per tutti i membri",
+        "badge": "Area principale",
+        "f1": "Abbinamento scuola-azienda basato sull'IA",
+        "f2": "Elenco e profili delle organizzazioni",
+        "f3": "Repository di pratiche di cooperazione",
+        "f4": "Orientamento professionale per studenti",
+        "f5": "Servizio di co-progettazione dei curricula"
+      },
+      "sme": {
+        "title": "Servizi per le PMI",
+        "subtitle": "Per le aziende",
+        "f1": "Networking e elenco delle PMI",
+        "f2": "Risorse di coaching per Learning Expert"
+      },
+      "membersOnly": "Solo membri",
+      "school": {
+        "title": "Servizi per le scuole",
+        "subtitle": "Per scuole e IFP",
+        "f1": "Networking e scambio tra scuole",
+        "f2": "Sviluppo professionale di docenti e personale",
+        "f3": "Osservatorio educativo dei curricula",
+        "f4": "Calendario di visite e tour aziendali",
+        "f5": "Risorse per la pianificazione di tirocini curricolari / WBL"
+      },
+      "explore": "Scopri {title} →"
+    },
+    "news": {
+      "title": "Ultime notizie",
+      "subtitle": "Aggiornamenti dal consorzio TECH BRIDGE VET",
+      "all": "Tutte le notizie →"
+    },
+    "cta": {
+      "badge": "Conforme al GDPR · Finanziato da Erasmus+",
+      "title": "Entra nella rete Tech Bridge Academy",
+      "text": "Crea il profilo gratuito della tua organizzazione e inizia a entrare in contatto con scuole o aziende del tuo settore. La registrazione è gratuita per tutte le organizzazioni partner Erasmus+ e le loro reti."
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "Informazioni su TECH BRIDGE VET",
+    "title": "Informazioni su Tech Bridge Academy",
+    "intro": "Tech Bridge Academy è la piattaforma digitale del progetto Erasmus+ <strong>TECH BRIDGE VET</strong>, un'iniziativa transnazionale che collega scuole di IFP, istituti tecnici e PMI manifatturiere in tutta Europa per ridurre il disallineamento di competenze nel settore dell'ingegneria meccanica.",
+    "challengeTitle": "La sfida",
+    "challenge1": "Il settore dell'ingegneria meccanica e manifatturiero in tutta Europa affronta un crescente disallineamento di competenze: le aziende non trovano diplomati con le giuste competenze tecniche e digitali, mentre le scuole di IFP faticano ad allineare i curricula alle esigenze dell'industria, in rapida evoluzione.",
+    "challenge2": "Il dialogo tradizionale tra scuole e aziende è frammentato, informale e dipende dalle relazioni individuali. Non esiste un meccanismo strutturato e scalabile per collegare in modo continuo ciò di cui le aziende hanno bisogno con ciò che le scuole insegnano.",
+    "challenge3": "TECH BRIDGE VET affronta questo divario creando un'infrastruttura digitale permanente per una collaborazione strutturata e bidirezionale, con abbinamento assistito dall'IA, strumenti di co-progettazione dei curricula e un repository condiviso di pratiche comprovate.",
+    "objectivesTitle": "Obiettivi del progetto",
+    "obj1": "Ridurre il disallineamento di competenze nel settore dell'ingegneria meccanica e manifatturiero",
+    "obj2": "Creare un'infrastruttura digitale sostenibile per un dialogo strutturato tra scuola e impresa",
+    "obj3": "Sviluppare e validare un sistema di abbinamento assistito dall'IA per scuole di IFP e PMI",
+    "obj4": "Produrre un repository europeo di buone pratiche nelle iniziative di corrispondenza delle competenze",
+    "obj5": "Sostenere i processi di co-progettazione dei curricula tra istituzioni educative e industria",
+    "obj6": "Generare dati di previsione delle competenze a supporto della pianificazione dei curricula IFP",
+    "obj7": "Formare docenti e responsabili HR aziendali sulla collaborazione efficace tra scuola e impresa",
+    "kf": {
+      "countries": "Paesi",
+      "countriesDesc": "Italia, Grecia, Slovacchia, Germania, Spagna",
+      "partners": "Partner del consorzio",
+      "partnersDesc": "Scuole, università, aziende, agenzie",
+      "duration": "Durata del progetto",
+      "durationValue": "24 mesi",
+      "funding": "Programma di finanziamento",
+      "fundingDesc": "KA220-VET · Commissione europea"
+    },
+    "wpTitle": "Pacchetti di lavoro del progetto",
+    "wpSubtitle": "Il progetto è strutturato in cinque pacchetti di lavoro, ciascuno dedicato a un insieme specifico di risultati",
+    "wp": {
+      "WP1": {
+        "title": "Gestione del progetto e garanzia della qualità",
+        "desc": "Coordinamento di tutte le attività del progetto, gestione finanziaria, monitoraggio della qualità e mitigazione dei rischi in tutto il consorzio."
+      },
+      "WP2": {
+        "title": "Analisi dei fabbisogni e mappatura dell'ecosistema",
+        "desc": "Analisi approfondita del disallineamento di competenze nel settore dell'ingegneria meccanica nei paesi partner e mappatura dei meccanismi esistenti di dialogo tra scuola e impresa."
+      },
+      "WP3": {
+        "title": "Sviluppo della piattaforma digitale",
+        "desc": "Progettazione e sviluppo della piattaforma Tech Bridge Academy, il nucleo operativo del progetto che rende possibili tutti i servizi digitali di collaborazione."
+      },
+      "WP4": {
+        "title": "Sperimentazione pilota e validazione",
+        "desc": "Sperimentazione strutturata dei servizi della piattaforma con scuole e aziende reali in tutti i paesi partner, con valutazione e miglioramento iterativo."
+      },
+      "WP5": {
+        "title": "Diffusione e valorizzazione",
+        "desc": "Diffusione dei risultati del progetto nelle reti europee di IFP, raccomandazioni politiche e piano di sostenibilità della piattaforma oltre la durata del progetto."
+      }
+    },
+    "youAreHere": "← Sei qui: Tech Bridge Academy",
+    "archTitle": "Architettura della piattaforma",
+    "archSubtitle": "Tech Bridge Academy è strutturata in tre aree integrate che coprono l'intero ciclo di collaborazione",
+    "area": {
+      "bridge": "L'area Il Ponte",
+      "sme": "Area servizi per le PMI",
+      "schools": "Area scuole"
+    },
+    "b1": "Abbinamento scuola-azienda basato sull'IA",
+    "b2": "Profili ed elenco delle organizzazioni",
+    "b3": "Repository di buone pratiche",
+    "b4": "Contenuti di orientamento professionale",
+    "b5": "Servizio di co-progettazione dei curricula",
+    "b6": "Strumenti di collaborazione educativa",
+    "s1": "Strumenti di networking B2B",
+    "s2": "Coaching per Learning Expert sull'accoglienza dei tirocinanti",
+    "c1": "Networking tra docenti",
+    "c2": "Risorse per lo sviluppo del personale",
+    "c3": "Osservatorio dei curricula",
+    "c4": "Calendario delle visite aziendali",
+    "c5": "Strumenti di pianificazione WBL",
+    "c6": "Benchmark internazionali",
+    "disclaimer": "Il progetto TECH BRIDGE VET è finanziato dall'Unione europea nell'ambito del programma Erasmus+ (KA220-VET – Partenariati di cooperazione nell'istruzione e formazione professionale). Le opinioni espresse appartengono al consorzio e non riflettono necessariamente quelle dell'Unione europea o dell'Agenzia esecutiva europea per l'istruzione e la cultura (EACEA). Né l'Unione europea né l'EACEA possono esserne ritenute responsabili."
+  },
+  "partnersPage": {
+    "p1": {
+      "description": "Un istituto tecnico di punta in Puglia con ampia esperienza in progetti europei di IFP e nella collaborazione tra scuola e impresa.",
+      "role": "Coordinamento del progetto, responsabile del WP3 (piattaforma digitale), sperimentazione nell'Italia meridionale"
+    },
+    "p2": {
+      "description": "Uno dei più grandi centri di IFP della Lombardia, specializzato nella formazione meccanica e metalmeccanica.",
+      "role": "Analisi dei fabbisogni (WP2), sperimentazione nell'Italia settentrionale (WP4), contributo al repository"
+    },
+    "p3": {
+      "description": "Partner di ricerca che apporta competenze in previsione delle competenze, mappatura delle competenze e garanzia della qualità dell'IFP.",
+      "role": "Metodologia di previsione delle competenze, responsabile del WP2, quadro dell'osservatorio dei curricula"
+    },
+    "p4": {
+      "description": "Scuola secondaria tecnica con forti legami con l'industria e un percorso di formazione duale.",
+      "role": "Sperimentazione in Slovacchia (WP4), contenuti bilingui, diffusione nell'Europa centrale"
+    },
+    "p5": {
+      "description": "Camera artigianale della Baviera, che porta l'esperienza del sistema tedesco di apprendistato duale.",
+      "role": "Competenza sul sistema duale, metodologia di mentoring dei maestri artigiani, diffusione (WP5)"
+    },
+    "p6": {
+      "description": "Consorzio educativo che gestisce i programmi di IFP nell'area metropolitana di Barcellona.",
+      "role": "Rete catalana di IFP, diffusione in lingua spagnola, valorizzazione (WP5)"
+    },
+    "metaTitle": "Partner",
+    "title": "Partner del progetto",
+    "intro": "Il consorzio TECH BRIDGE VET riunisce istituzioni di IFP, organizzazioni di ricerca, camere di categoria e agenzie educative di 5 paesi europei.",
+    "countries": {
+      "it": "🇮🇹 Italia",
+      "gr": "🇬🇷 Grecia",
+      "sk": "🇸🇰 Slovacchia",
+      "de": "🇩🇪 Germania",
+      "es": "🇪🇸 Spagna"
+    },
+    "types": {
+      "lead": "Beneficiario capofila",
+      "associated": "Partner associato",
+      "partner": "Partner"
+    },
+    "projectRole": "Ruolo nel progetto:",
+    "website": "Sito web",
+    "contact": "Contatti",
+    "fundedTitle": "Finanziato dall'Unione europea",
+    "fundedText": "Il progetto TECH BRIDGE VET è finanziato nell'ambito del programma Erasmus+, Azione chiave 2 — Partenariati di cooperazione nell'istruzione e formazione professionale (KA220-VET). Il sostegno della Commissione europea alla produzione di questa piattaforma non costituisce un'approvazione dei contenuti, che riflettono esclusivamente il punto di vista degli autori."
+  },
+  "auth": {
+    "login": {
+      "title": "Accedi al tuo account",
+      "noAccount": "Non hai un account?",
+      "registerFree": "Registrati gratis",
+      "errorLinked": "Email già associata a un altro metodo di accesso.",
+      "errorGeneric": "Accesso non riuscito. Controlla le tue credenziali.",
+      "email": "Indirizzo email",
+      "password": "Password",
+      "forgot": "Hai dimenticato la password?",
+      "signingIn": "Accesso in corso…",
+      "signIn": "Accedi",
+      "demo": "Account demo:",
+      "terms": "Accedendo, accetti le nostre <terms>Condizioni d'uso</terms> e l'<privacy>Informativa sulla privacy</privacy>.",
+      "toastError": "Email o password non validi. Riprova.",
+      "toastOk": "Bentornato!"
+    },
+    "register": {
+      "title": "Crea il tuo account",
+      "already": "Sei già registrato?",
+      "signIn": "Accedi",
+      "orgType": "Tipo di organizzazione *",
+      "school": "Scuola / istituto di IFP",
+      "company": "Azienda / PMI",
+      "name": "Nome completo / persona di contatto *",
+      "namePh": "Il tuo nome",
+      "email": "Indirizzo email *",
+      "password": "Password *",
+      "passwordPh": "Min. 8 caratteri",
+      "tooShort": "Password troppo corta",
+      "weak": "Password debole",
+      "strong": "Password forte",
+      "confirm": "Conferma password *",
+      "confirmPh": "Ripeti la password",
+      "consentTitle": "Acconsento al trattamento dei dati *",
+      "consentText": "Accetto l'<privacy>Informativa sulla privacy</privacy> e l'<gdpr>Informativa GDPR</gdpr>. I miei dati saranno trattati esclusivamente per le finalità della piattaforma nell'ambito del progetto Erasmus+ TECH BRIDGE VET.",
+      "creating": "Creazione dell'account…",
+      "create": "Crea account",
+      "footer": "La registrazione è gratuita · Piattaforma finanziata dall'Unione europea",
+      "errMismatch": "Le password non coincidono.",
+      "errLength": "La password deve contenere almeno 8 caratteri.",
+      "errType": "Seleziona il tipo di organizzazione.",
+      "errConsent": "Per registrarti devi accettare la nostra informativa sulla privacy.",
+      "errFailed": "Registrazione non riuscita. Riprova.",
+      "toastOk": "Account creato! Accedi.",
+      "errNetwork": "Si è verificato un errore di rete. Riprova."
+    }
+  },
+  "options": {
+    "sectors": {
+      "mechanical_engineering": "Ingegneria meccanica",
+      "cnc_machining": "Lavorazioni CNC",
+      "automation_robotics": "Automazione e robotica",
+      "metalworking_welding": "Lavorazione dei metalli e saldatura",
+      "precision_mechanics": "Meccanica di precisione",
+      "additive_manufacturing": "Produzione additiva",
+      "electronics_electrical": "Elettronica ed elettrotecnica",
+      "smart_manufacturing_industry_4_0": "Produzione intelligente / Industria 4.0",
+      "automotive": "Automotive",
+      "aerospace": "Aerospaziale",
+      "medical_devices": "Dispositivi medici",
+      "toolmaking": "Costruzione di utensili e stampi",
+      "quality_control_metrology": "Controllo qualità e metrologia",
+      "hydraulics_pneumatics": "Oleodinamica e pneumatica",
+      "mechatronics": "Meccatronica",
+      "3d_printing_prototyping": "Stampa 3D e prototipazione",
+      "plc_scada_industrial_it": "PLC / SCADA / IT industriale",
+      "maintenance_repair": "Manutenzione e riparazione",
+      "plastics_composites": "Plastica e compositi",
+      "other": "Altro"
+    },
+    "regions": {
+      "northern_italy": "Italia settentrionale",
+      "central_italy": "Italia centrale",
+      "southern_italy": "Italia meridionale",
+      "lombardy": "Lombardia",
+      "puglia": "Puglia",
+      "campania": "Campania",
+      "emilia_romagna": "Emilia-Romagna",
+      "veneto": "Veneto",
+      "tuscany": "Toscana",
+      "sicily": "Sicilia",
+      "sardinia": "Sardegna",
+      "piemonte": "Piemonte",
+      "lazio": "Lazio",
+      "calabria": "Calabria",
+      "basilicata": "Basilicata",
+      "greece_attica": "Grecia – Attica",
+      "greece_central_macedonia": "Grecia – Macedonia Centrale",
+      "slovakia_bratislava_region": "Slovacchia – Regione di Bratislava",
+      "slovakia_bansk_bystrica": "Slovacchia – Banská Bystrica",
+      "germany_bavaria": "Germania – Baviera",
+      "germany_baden_w_rttemberg": "Germania – Baden-Württemberg",
+      "spain_catalonia": "Spagna – Catalogna",
+      "spain_madrid": "Spagna – Madrid",
+      "cross_regional_national": "Interregionale / nazionale",
+      "other": "Altro"
+    },
+    "schoolTypes": {
+      "SCIENTIFIC_TECHNICAL_SIXTH_FORM": "Liceo scientifico/tecnico",
+      "VOCATIONAL_COLLEGE": "Istituto professionale",
+      "VET_CENTRE": "Centro di formazione professionale (IFP)",
+      "HIGHER_TECHNICAL_INSTITUTE": "Istituto tecnico superiore (ITS)",
+      "OTHER": "Altro"
+    },
+    "companyTypes": {
+      "MANUFACTURING_SME": "PMI manifatturiera",
+      "MICRO_ENTERPRISE": "Microimpresa / artigiano",
+      "LARGE_ENTERPRISE": "Grande impresa",
+      "CONTINUING_EDUCATION": "Ente di formazione continua",
+      "OTHER": "Altro"
+    }
+  },
+  "profilesUi": {
+    "directory": {
+      "title": "Elenco delle organizzazioni",
+      "subtitle": "Trova scuole, enti di IFP e aziende manifatturiere con cui collaborare",
+      "all": "Tutte le organizzazioni",
+      "schools": "Scuole e IFP",
+      "companies": "Aziende e PMI",
+      "loadFailed": "Impossibile caricare i profili",
+      "noResults": "Nessuna organizzazione trovata",
+      "noResultsHint": "Prova a modificare i filtri di ricerca o ad ampliare i criteri.",
+      "previous": "← Precedente",
+      "next": "Successiva →",
+      "pageOf": "Pagina {page} di {total}"
+    },
+    "filter": {
+      "search": "Cerca organizzazioni per nome, descrizione, tag…",
+      "allTypes": "Tutti i tipi",
+      "schoolsVet": "Scuole / IFP",
+      "companiesSmes": "Aziende / PMI",
+      "allSectors": "Tutti i settori",
+      "allRegions": "Tutte le regioni",
+      "advanced": "Avanzate",
+      "clear": "Cancella",
+      "found": "{count, plural, one {# organizzazione trovata} other {# organizzazioni trovate}}",
+      "schoolType": "Tipo di scuola",
+      "allSchoolTypes": "Tutti i tipi di scuola",
+      "companyType": "Tipo di azienda",
+      "allCompanyTypes": "Tutti i tipi di azienda"
+    },
+    "card": {
+      "viewProfile": "Vedi il profilo completo"
+    },
+    "badges": {
+      "school": "Scuola / IFP",
+      "company": "Azienda / PMI",
+      "pending": "In attesa di revisione",
+      "approved": "Approvato",
+      "rejected": "Rifiutato",
+      "awaiting": "In attesa di revisione",
+      "reportSent": "Report inviato"
+    }
+  },
+  "profilePage": {
+    "createTitle": "Crea il profilo dell'organizzazione",
+    "editTitle": "Modifica il profilo dell'organizzazione",
+    "createSub": "Configura il tuo profilo per comparire nell'elenco e ricevere suggerimenti di abbinamento",
+    "editSub": "Aggiorna le informazioni del tuo profilo",
+    "statusLabel": "Stato del profilo:",
+    "statusApproved": "✓ Validato e pubblico",
+    "statusRejected": "✗ Rifiutato — controlla e invia di nuovo",
+    "statusPending": "⏳ In attesa di validazione da parte del team della piattaforma",
+    "orgTypeTitle": "Tipo di organizzazione",
+    "primaryType": "Tipo principale *",
+    "school": "Scuola / istituto di IFP",
+    "company": "Azienda / PMI",
+    "schoolType": "Tipo di scuola *",
+    "selectSchoolType": "Seleziona il tipo di scuola…",
+    "companyType": "Tipo di azienda *",
+    "selectCompanyType": "Seleziona il tipo di azienda…",
+    "infoTitle": "Informazioni sull'organizzazione",
+    "name": "Nome dell'organizzazione *",
+    "namePh": "Nome ufficiale della tua organizzazione",
+    "description": "Chi siamo / Descrizione *",
+    "descriptionPh": "Descrivi la tua organizzazione, la sua storia, le dimensioni, le attività principali e ciò che la distingue nel suo settore.",
+    "descriptionHint": "Questa è la descrizione pubblica mostrata a tutti i visitatori.",
+    "mission": "Missione *",
+    "missionPh": "La dichiarazione di missione e gli obiettivi strategici della tua organizzazione.",
+    "synergy": "Sinergia scuola-impresa",
+    "synergyPh": "Descrivi eventuali collaborazioni, partenariati o dialoghi avuti in passato con organizzazioni omologhe.",
+    "oppTitle": "Opportunità ed esigenze",
+    "oppText": "Questa sezione è utilizzata dal nostro motore di abbinamento basato sull'IA per individuare opportunità di collaborazione. Sii il più specifico possibile.",
+    "offer": "Cosa offriamo (opportunità) *",
+    "offerPh": "Descrivi cosa puoi offrire alle organizzazioni partner: tirocini/posti WBL, accesso alle attrezzature, lezioni di esperti, competenze di co-progettazione, finanziamenti, ecc.",
+    "need": "Di cosa abbiamo bisogno (richiesta) *",
+    "needPh": "Descrivi cosa cerchi dalle organizzazioni partner: competenze specifiche, tipi di studenti/diplomati, formati formativi, competenze del settore, ecc.",
+    "sectors": "Settori *",
+    "sectorsText": "Seleziona tutti i settori rilevanti per la tua organizzazione.",
+    "sectorsCustomPh": "Non è nell'elenco? Scrivi il tuo settore e premi Aggiungi",
+    "add": "Aggiungi",
+    "sectorsRequired": "Seleziona almeno un settore.",
+    "regions": "Regioni *",
+    "regionsText": "Seleziona tutte le regioni in cui la tua organizzazione opera o è interessata a collaborare.",
+    "regionsCustomPh": "Non è nell'elenco? Scrivi la tua regione (es. Polonia – Slesia) e premi Aggiungi",
+    "location": "Sede",
+    "locationText": "Cerca la città della tua organizzazione per farla comparire sulla <map>Mappa degli stakeholder</map> pubblica. È indipendente dalle regioni operative indicate sopra.",
+    "locationPh": "Inizia a digitare una città, es. Torino, Italia",
+    "searching": "Ricerca in corso…",
+    "locationSet": "✓ Sede impostata: comparirà sulla Mappa degli stakeholder dopo l'approvazione.",
+    "tagsTitle": "Tag e contatti",
+    "tags": "Parole chiave / tag",
+    "tagsPh": "es. CNC, apprendistato, robotica, WBL (separati da virgole)",
+    "tagsHint": "Separa con virgole. I tag migliorano la precisione dell'abbinamento.",
+    "email": "Email di contatto",
+    "phone": "Telefono",
+    "website": "Sito web",
+    "visibility": "Visibilità del profilo",
+    "visPublic": "Pubblico — visibile a tutti i visitatori",
+    "visMembers": "Solo membri — profilo completo visibile agli utenti registrati",
+    "visPrivate": "Privato — visibile solo a me e agli amministratori",
+    "saving": "Salvataggio in corso…",
+    "createBtn": "Crea profilo",
+    "saveBtn": "Salva le modifiche",
+    "noteNew": "Il tuo profilo sarà esaminato dal team della piattaforma prima della pubblicazione.",
+    "noteEdit": "Le modifiche richiederanno una nuova validazione.",
+    "toastCreated": "Profilo creato! In attesa di validazione.",
+    "toastUpdated": "Profilo aggiornato. In attesa di nuova validazione.",
+    "toastFailed": "Salvataggio non riuscito",
+    "toastNetwork": "Errore di rete — riprova"
   }
 }

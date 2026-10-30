@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { MapPin, Tag, Building2, GraduationCap, ArrowRight } from "lucide-react";
 import { Badge, OrgTypeBadge, ValidationBadge } from "@/components/ui/Badge";
-import { cn, SCHOOL_TYPE_LABELS, COMPANY_TYPE_LABELS, truncate } from "@/lib/utils";
+import { cn, truncate } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { useOptionLabels } from "@/i18n/labels";
 
 interface ProfileCardProps {
   id: string;
@@ -25,9 +27,11 @@ export function ProfileCard({
   regions, sectors, tags, validationStatus, logoUrl,
   showValidation = false, href
 }: ProfileCardProps) {
+  const t = useTranslations("profilesUi.card");
+  const label = useOptionLabels();
   const subTypeLabel = orgType === "SCHOOL"
-    ? (schoolType ? SCHOOL_TYPE_LABELS[schoolType] : null)
-    : (companyType ? COMPANY_TYPE_LABELS[companyType] : null);
+    ? (schoolType ? label.schoolType(schoolType) : null)
+    : (companyType ? label.companyType(companyType) : null);
 
   const profileHref = href ?? `/bridge/profiles/${id}`;
 
@@ -72,7 +76,7 @@ export function ProfileCard({
         {regions.length > 0 && (
           <div className="mt-4 flex items-center gap-1.5 text-xs text-slate-400">
             <MapPin className="h-3.5 w-3.5 text-slate-300 flex-shrink-0" />
-            <span className="truncate">{regions.slice(0, 3).join(" · ")}</span>
+            <span className="truncate">{regions.slice(0, 3).map(label.region).join(" · ")}</span>
           </div>
         )}
 
@@ -80,7 +84,7 @@ export function ProfileCard({
         {sectors.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1.5">
             {sectors.slice(0, 3).map((s) => (
-              <Badge key={s} variant="blue">{s}</Badge>
+              <Badge key={s} variant="blue">{label.sector(s)}</Badge>
             ))}
             {sectors.length > 3 && (
               <Badge variant="slate">+{sectors.length - 3}</Badge>
@@ -100,7 +104,7 @@ export function ProfileCard({
 
         {/* CTA */}
         <div className="mt-5 flex items-center text-xs font-medium text-brand-600 group-hover:text-brand-800 transition-colors">
-          View full profile
+          {t("viewProfile")}
           <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
         </div>
       </div>

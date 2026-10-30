@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export type BadgeVariant =
   | "blue" | "green" | "amber" | "red" | "slate" | "purple" | "teal"
@@ -50,27 +51,30 @@ export function Badge({ children, variant = "slate", className, dot }: BadgeProp
 }
 
 export function OrgTypeBadge({ type }: { type: string }) {
+  const t = useTranslations("profilesUi.badges");
   return type === "SCHOOL"
-    ? <Badge variant="schools" dot>School / VET</Badge>
-    : <Badge variant="smes" dot>Company / SME</Badge>;
+    ? <Badge variant="schools" dot>{t("school")}</Badge>
+    : <Badge variant="smes" dot>{t("company")}</Badge>;
 }
 
 export function ValidationBadge({ status }: { status: string }) {
+  const t = useTranslations("profilesUi.badges");
   const map: Record<string, { label: string; variant: BadgeVariant }> = {
-    PENDING:  { label: "Pending Review", variant: "amber" },
-    APPROVED: { label: "Approved", variant: "green" },
-    REJECTED: { label: "Rejected", variant: "red" },
+    PENDING:  { label: t("pending"), variant: "amber" },
+    APPROVED: { label: t("approved"), variant: "green" },
+    REJECTED: { label: t("rejected"), variant: "red" },
   };
   const cfg = map[status] ?? { label: status, variant: "slate" };
   return <Badge variant={cfg.variant} dot>{cfg.label}</Badge>;
 }
 
 export function MatchStatusBadge({ status }: { status: string }) {
+  const t = useTranslations("profilesUi.badges");
   const map: Record<string, { label: string; variant: BadgeVariant }> = {
-    PENDING_REVIEW: { label: "Awaiting Review", variant: "amber" },
-    APPROVED:       { label: "Approved", variant: "green" },
-    REJECTED:       { label: "Rejected", variant: "red" },
-    SENT:           { label: "Report Sent", variant: "blue" },
+    PENDING_REVIEW: { label: t("awaiting"), variant: "amber" },
+    APPROVED:       { label: t("approved"), variant: "green" },
+    REJECTED:       { label: t("rejected"), variant: "red" },
+    SENT:           { label: t("reportSent"), variant: "blue" },
   };
   const cfg = map[status] ?? { label: status, variant: "slate" };
   return <Badge variant={cfg.variant} dot>{cfg.label}</Badge>;

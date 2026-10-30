@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { cn, SECTORS, REGIONS, SCHOOL_TYPE_LABELS, COMPANY_TYPE_LABELS } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { useOptionLabels } from "@/i18n/labels";
 
 interface ProfileFilterProps {
   onFilter: (filters: {
@@ -17,6 +19,8 @@ interface ProfileFilterProps {
 }
 
 export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
+  const t = useTranslations("profilesUi.filter");
+  const label = useOptionLabels();
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [filters, setFilters] = useState({
     search: "",
@@ -52,7 +56,7 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
         <input
           type="text"
-          placeholder="Search organisations by name, description, tags…"
+          placeholder={t("search")}
           value={filters.search}
           onChange={(e) => handleChange("search", e.target.value)}
           className="input pl-10 pr-4"
@@ -66,9 +70,9 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
           onChange={(e) => handleChange("orgType", e.target.value)}
           className="input w-auto text-sm py-2"
         >
-          <option value="">All Types</option>
-          <option value="SCHOOL">Schools / VET</option>
-          <option value="COMPANY">Companies / SMEs</option>
+          <option value="">{t("allTypes")}</option>
+          <option value="SCHOOL">{t("schoolsVet")}</option>
+          <option value="COMPANY">{t("companiesSmes")}</option>
         </select>
 
         <select
@@ -76,8 +80,8 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
           onChange={(e) => handleChange("sector", e.target.value)}
           className="input w-auto text-sm py-2"
         >
-          <option value="">All Sectors</option>
-          {SECTORS.map((s) => <option key={s} value={s}>{s}</option>)}
+          <option value="">{t("allSectors")}</option>
+          {SECTORS.map((s) => <option key={s} value={s}>{label.sector(s)}</option>)}
         </select>
 
         <select
@@ -85,8 +89,8 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
           onChange={(e) => handleChange("region", e.target.value)}
           className="input w-auto text-sm py-2"
         >
-          <option value="">All Regions</option>
-          {REGIONS.map((r) => <option key={r} value={r}>{r}</option>)}
+          <option value="">{t("allRegions")}</option>
+          {REGIONS.map((r) => <option key={r} value={r}>{label.region(r)}</option>)}
         </select>
 
         <button
@@ -99,7 +103,7 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
           )}
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Advanced
+          {t("advanced")}
         </button>
 
         {hasActiveFilters && (
@@ -108,13 +112,13 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
             className="flex items-center gap-1 text-sm text-slate-400 hover:text-slate-600 transition-colors"
           >
             <X className="h-4 w-4" />
-            Clear
+            {t("clear")}
           </button>
         )}
 
         {resultCount !== undefined && (
           <span className="ml-auto text-sm text-slate-400">
-            {resultCount} organisation{resultCount !== 1 ? "s" : ""} found
+            {t("found", { count: resultCount })}
           </span>
         )}
       </div>
@@ -124,16 +128,16 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
         <div className="border-t border-slate-100 pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
           {filters.orgType === "SCHOOL" || !filters.orgType ? (
             <div>
-              <label className="label text-xs">School Type</label>
+              <label className="label text-xs">{t("schoolType")}</label>
               <select
                 value={filters.schoolType}
                 onChange={(e) => handleChange("schoolType", e.target.value)}
                 disabled={filters.orgType === "COMPANY"}
                 className="input text-sm"
               >
-                <option value="">All School Types</option>
-                {Object.entries(SCHOOL_TYPE_LABELS).map(([v, l]) => (
-                  <option key={v} value={v}>{l}</option>
+                <option value="">{t("allSchoolTypes")}</option>
+                {Object.keys(SCHOOL_TYPE_LABELS).map((v) => (
+                  <option key={v} value={v}>{label.schoolType(v)}</option>
                 ))}
               </select>
             </div>
@@ -141,16 +145,16 @@ export function ProfileFilter({ onFilter, resultCount }: ProfileFilterProps) {
 
           {filters.orgType === "COMPANY" || !filters.orgType ? (
             <div>
-              <label className="label text-xs">Company Type</label>
+              <label className="label text-xs">{t("companyType")}</label>
               <select
                 value={filters.companyType}
                 onChange={(e) => handleChange("companyType", e.target.value)}
                 disabled={filters.orgType === "SCHOOL"}
                 className="input text-sm"
               >
-                <option value="">All Company Types</option>
-                {Object.entries(COMPANY_TYPE_LABELS).map(([v, l]) => (
-                  <option key={v} value={v}>{l}</option>
+                <option value="">{t("allCompanyTypes")}</option>
+                {Object.keys(COMPANY_TYPE_LABELS).map((v) => (
+                  <option key={v} value={v}>{label.companyType(v)}</option>
                 ))}
               </select>
             </div>

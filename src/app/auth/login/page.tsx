@@ -6,8 +6,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 function LoginForm() {
+  const t = useTranslations("auth.login");
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/dashboard";
@@ -31,9 +33,9 @@ function LoginForm() {
     setLoading(false);
 
     if (result?.error) {
-      toast.error("Invalid email or password. Please try again.");
+      toast.error(t("toastError"));
     } else {
-      toast.success("Welcome back!");
+      toast.success(t("toastOk"));
       router.push(callbackUrl);
       router.refresh();
     }
@@ -56,11 +58,11 @@ function LoginForm() {
         </div>
 
         <div className="card p-8 shadow-2xl">
-          <h1 className="text-2xl font-bold text-slate-900 mb-1">Sign in to your account</h1>
+          <h1 className="text-2xl font-bold text-slate-900 mb-1">{t("title")}</h1>
           <p className="text-sm text-slate-400 mb-8">
-            Don&apos;t have an account?{" "}
+            {t("noAccount")}{" "}
             <Link href="/auth/register" className="text-brand-600 font-medium hover:text-brand-700">
-              Register free
+              {t("registerFree")}
             </Link>
           </p>
 
@@ -69,14 +71,14 @@ function LoginForm() {
             <div className="flex items-center gap-2 rounded-lg bg-red-50 border border-red-200 p-3 mb-6 text-sm text-red-700">
               <AlertCircle className="h-4 w-4 flex-shrink-0" />
               {error === "OAuthAccountNotLinked"
-                ? "Email already associated with another sign-in method."
-                : "Sign-in failed. Please check your credentials."}
+                ? t("errorLinked")
+                : t("errorGeneric")}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="email" className="label">Email address</label>
+              <label htmlFor="email" className="label">{t("email")}</label>
               <input
                 id="email"
                 type="email"
@@ -91,9 +93,9 @@ function LoginForm() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label htmlFor="password" className="label mb-0">Password</label>
+                <label htmlFor="password" className="label mb-0">{t("password")}</label>
                 <Link href="/auth/forgot-password" className="text-xs text-brand-600 hover:text-brand-700">
-                  Forgot password?
+                  {t("forgot")}
                 </Link>
               </div>
               <div className="relative">
@@ -121,12 +123,12 @@ function LoginForm() {
               {loading ? (
                 <span className="flex items-center gap-2">
                   <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                  Signing in…
+                  {t("signingIn")}
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
                   <LogIn className="h-5 w-5" />
-                  Sign In
+                  {t("signIn")}
                 </span>
               )}
             </button>
@@ -134,17 +136,17 @@ function LoginForm() {
 
           <div className="mt-6 border-t border-slate-100 pt-5">
             <p className="text-xs text-slate-400 text-center">
-              Demo accounts: <code className="bg-slate-50 px-1 rounded">admin@techbridgeacademy.eu</code> /{" "}
+              {t("demo")} <code className="bg-slate-50 px-1 rounded">admin@techbridgeacademy.eu</code> /{" "}
               <code className="bg-slate-50 px-1 rounded">Admin@TBA2024</code>
             </p>
           </div>
         </div>
 
         <p className="text-center text-xs text-brand-400 mt-6">
-          By signing in, you agree to our{" "}
-          <Link href="/terms" className="text-brand-300 hover:text-white">Terms of Use</Link>{" "}
-          and{" "}
-          <Link href="/privacy" className="text-brand-300 hover:text-white">Privacy Policy</Link>.
+          {t.rich("terms", {
+            terms: (chunks) => <Link href="/terms" className="text-brand-300 hover:text-white">{chunks}</Link>,
+            privacy: (chunks) => <Link href="/privacy" className="text-brand-300 hover:text-white">{chunks}</Link>,
+          })}
         </p>
       </div>
     </div>

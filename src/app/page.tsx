@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { ValidationStatus } from "@prisma/client";
+import { getLocale, getTranslations } from "next-intl/server";
 
 async function getStats() {
   const [companies, schools, matches, events, initiatives] = await Promise.all([
@@ -40,6 +41,9 @@ async function getUpcomingEvents() {
 }
 
 export default async function HomePage() {
+  const t = await getTranslations("home");
+  const locale = await getLocale();
+  const dateLocale = locale === "en" ? "en-GB" : locale;
   const [stats, news, events] = await Promise.all([
     getStats(),
     getLatestNews(),
@@ -67,13 +71,11 @@ export default async function HomePage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight text-balance">
-              Connecting VET Schools{" "}
-              <span className="text-accent-400">&amp; Industry</span>{" "}
-              Across Europe
+              {t.rich("heroTitle", { accent: (chunks) => <span className="text-accent-400">{chunks}</span> })}
             </h1>
 
             <p className="mt-6 text-xl text-brand-200 leading-relaxed max-w-2xl">
-              Tech Bridge Academy is the digital hub where vocational schools, technical colleges, and manufacturing SMEs collaborate to reduce skills mismatch and build the workforce of tomorrow.
+              {t("heroText")}
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -82,27 +84,27 @@ export default async function HomePage() {
                 className="inline-flex items-center gap-2 rounded-lg bg-target-schools px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
               >
                 <GraduationCap className="h-5 w-5" />
-                Register as VET School
+                {t("registerSchool")}
               </Link>
               <Link
                 href="/auth/register?role=COMPANY"
                 className="inline-flex items-center gap-2 rounded-lg bg-target-smes px-6 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
               >
                 <Building2 className="h-5 w-5" />
-                Register as SME
+                {t("registerSme")}
               </Link>
               <Link href="/bridge/profiles" className="btn-secondary text-base px-6 py-3 bg-white/10 text-white ring-white/30 hover:bg-white/20">
-                Explore Directory
+                {t("exploreDirectory")}
               </Link>
             </div>
 
             {/* Quick stats strip */}
             <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { label: "Schools & VET", value: stats.schools },
-                { label: "Companies & SMEs", value: stats.companies },
-                { label: "Matches Made", value: stats.matches },
-                { label: "Good Practices", value: stats.initiatives },
+                { label: t("stats.schools"), value: stats.schools },
+                { label: t("stats.companies"), value: stats.companies },
+                { label: t("stats.matches"), value: stats.matches },
+                { label: t("stats.practices"), value: stats.initiatives },
               ].map((s) => (
                 <div key={s.label} className="rounded-xl bg-white/10 px-4 py-3 ring-1 ring-white/10 text-center">
                   <p className="text-2xl font-bold text-white">{s.value.toLocaleString()}</p>
@@ -121,20 +123,20 @@ export default async function HomePage() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1.5 text-sm font-medium text-brand-700 mb-6">
                 <Zap className="h-4 w-4" />
-                About the Platform
+                {t("about.badge")}
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 text-balance">
-                Bridging the Gap Between Education and Industry
+                {t("about.title")}
               </h2>
               <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-                Tech Bridge Academy is the operational platform of the <strong>TECH BRIDGE VET</strong> Erasmus+ project — designed to create structured, two-way collaboration between VET schools and SMEs in the mechanical engineering and manufacturing sector.
+                {t.rich("about.text", { strong: (chunks) => <strong>{chunks}</strong> })}
               </p>
               <div className="mt-8 space-y-4">
                 {[
-                  { icon: Building2, text: "Structured profiles for schools and companies with AI-powered matching" },
-                  { icon: GitMerge, text: "Curriculum co-design tools connecting school programmes with industry needs" },
-                  { icon: BookOpen, text: "Repository of best practices from across Europe" },
-                  { icon: Globe, text: "Multilingual platform connecting partners from 5+ EU countries" },
+                  { icon: Building2, text: t("about.f1") },
+                  { icon: GitMerge, text: t("about.f2") },
+                  { icon: BookOpen, text: t("about.f3") },
+                  { icon: Globe, text: t("about.f4") },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-start gap-3">
                     <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-accent-50">
@@ -145,7 +147,7 @@ export default async function HomePage() {
                 ))}
               </div>
               <Link href="/about" className="btn-primary mt-8 inline-flex">
-                Learn More About TECH BRIDGE VET
+                {t("about.learnMore")}
                 <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
@@ -155,10 +157,10 @@ export default async function HomePage() {
               <div className="rounded-2xl bg-gradient-to-br from-brand-50 to-accent-50 p-8 border border-brand-100">
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { label: "VET Schools", icon: GraduationCap, color: "blue", count: stats.schools },
-                    { label: "SMEs & Companies", icon: Building2, color: "amber", count: stats.companies },
-                    { label: "Active Matches", icon: GitMerge, color: "green", count: stats.matches },
-                    { label: "Events Hosted", icon: Calendar, color: "purple", count: stats.events },
+                    { label: t("about.cardSchools"), icon: GraduationCap, color: "blue", count: stats.schools },
+                    { label: t("about.cardCompanies"), icon: Building2, color: "amber", count: stats.companies },
+                    { label: t("about.cardMatches"), icon: GitMerge, color: "green", count: stats.matches },
+                    { label: t("about.cardEvents"), icon: Calendar, color: "purple", count: stats.events },
                   ].map(({ label, icon: Icon, color, count }) => (
                     <div key={label} className={`rounded-xl bg-white p-4 shadow-card border ${
                       color === "blue" ? "border-blue-100" :
@@ -181,8 +183,8 @@ export default async function HomePage() {
                       <Star className="h-5 w-5 text-amber-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">AI-Powered Matching</p>
-                      <p className="text-xs text-slate-400">Automatically connecting schools with the right companies</p>
+                      <p className="text-sm font-semibold text-slate-900">{t("about.aiTitle")}</p>
+                      <p className="text-xs text-slate-400">{t("about.aiText")}</p>
                     </div>
                   </div>
                 </div>
@@ -196,14 +198,14 @@ export default async function HomePage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="section-header">
-            <h2>Ecosystem Dashboard</h2>
-            <p>Live platform metrics across the Tech Bridge Academy network</p>
+            <h2>{t("kpi.title")}</h2>
+            <p>{t("kpi.subtitle")}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <KPICard title="Registered Schools & VET" value={stats.schools} icon={GraduationCap} iconColor="text-blue-600" iconBg="bg-blue-50" href="/bridge/profiles?orgType=SCHOOL" />
-            <KPICard title="Registered Companies & SMEs" value={stats.companies} icon={Building2} iconColor="text-amber-600" iconBg="bg-amber-50" href="/bridge/profiles?orgType=COMPANY" />
-            <KPICard title="Matches Generated" value={stats.matches} icon={GitMerge} iconColor="text-emerald-600" iconBg="bg-emerald-50" href="/bridge" />
-            <KPICard title="Good Practices Published" value={stats.initiatives} icon={BookOpen} iconColor="text-purple-600" iconBg="bg-purple-50" href="/bridge/repository" />
+            <KPICard title={t("kpi.schools")} value={stats.schools} icon={GraduationCap} iconColor="text-blue-600" iconBg="bg-blue-50" href="/bridge/profiles?orgType=SCHOOL" />
+            <KPICard title={t("kpi.companies")} value={stats.companies} icon={Building2} iconColor="text-amber-600" iconBg="bg-amber-50" href="/bridge/profiles?orgType=COMPANY" />
+            <KPICard title={t("kpi.matches")} value={stats.matches} icon={GitMerge} iconColor="text-emerald-600" iconBg="bg-emerald-50" href="/bridge" />
+            <KPICard title={t("kpi.practices")} value={stats.initiatives} icon={BookOpen} iconColor="text-purple-600" iconBg="bg-purple-50" href="/bridge/repository" />
           </div>
         </div>
       </section>
@@ -212,52 +214,52 @@ export default async function HomePage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="section-header">
-            <h2>Platform Services</h2>
-            <p>Three integrated areas covering the full school-enterprise collaboration lifecycle</p>
+            <h2>{t("services.title")}</h2>
+            <p>{t("services.subtitle")}</p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "The Bridge",
-                subtitle: "For All Members",
+                title: t("services.bridge.title"),
+                subtitle: t("services.bridge.subtitle"),
                 icon: GitMerge,
                 color: "brand",
                 features: [
-                  "AI-powered school-company matching",
-                  "Organisation directory & profiles",
-                  "Repository of co-operation practices",
-                  "Career guidance for students",
-                  "Curriculum co-design service",
+                  t("services.bridge.f1"),
+                  t("services.bridge.f2"),
+                  t("services.bridge.f3"),
+                  t("services.bridge.f4"),
+                  t("services.bridge.f5"),
                 ],
                 href: "/bridge",
-                badge: "Core Area",
+                badge: t("services.bridge.badge"),
               },
               {
-                title: "SME Services",
-                subtitle: "For Companies",
+                title: t("services.sme.title"),
+                subtitle: t("services.sme.subtitle"),
                 icon: Building2,
                 color: "amber",
                 features: [
-                  "SME networking & directory",
-                  "Learning Expert coaching resources",
+                  t("services.sme.f1"),
+                  t("services.sme.f2"),
                 ],
                 href: "/smes",
-                badge: "Members Only",
+                badge: t("services.membersOnly"),
               },
               {
-                title: "School Services",
-                subtitle: "For Schools & VET",
+                title: t("services.school.title"),
+                subtitle: t("services.school.subtitle"),
                 icon: GraduationCap,
                 color: "blue",
                 features: [
-                  "School networking & exchange",
-                  "Teacher & staff development",
-                  "Curriculum educational observatory",
-                  "Company visit & tour calendar",
-                  "Curricular Internships / WBL planning resources",
+                  t("services.school.f1"),
+                  t("services.school.f2"),
+                  t("services.school.f3"),
+                  t("services.school.f4"),
+                  t("services.school.f5"),
                 ],
                 href: "/schools",
-                badge: "Members Only",
+                badge: t("services.membersOnly"),
               },
             ].map(({ title, subtitle, icon: Icon, color, features, href, badge }) => (
               <div key={title} className={`card border-t-4 ${color === "brand" ? "border-t-brand-700" : color === "amber" ? "border-t-amber-500" : "border-t-blue-500"} p-6`}>
@@ -278,7 +280,7 @@ export default async function HomePage() {
                   ))}
                 </ul>
                 <Link href={href} className={`w-full text-center block rounded-lg py-2.5 text-sm font-semibold transition-colors ${color === "brand" ? "bg-brand-800 text-white hover:bg-brand-900" : color === "amber" ? "bg-amber-500 text-white hover:bg-amber-600" : "bg-blue-600 text-white hover:bg-blue-700"}`}>
-                  Explore {title} →
+                  {t("services.explore", { title })}
                 </Link>
               </div>
             ))}
@@ -292,10 +294,10 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-10">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900">Latest News</h2>
-                <p className="text-slate-500 mt-1">Updates from the TECH BRIDGE VET consortium</p>
+                <h2 className="text-2xl font-bold text-slate-900">{t("news.title")}</h2>
+                <p className="text-slate-500 mt-1">{t("news.subtitle")}</p>
               </div>
-              <Link href="/news" className="btn-secondary">All News →</Link>
+              <Link href="/news" className="btn-secondary">{t("news.all")}</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {news.map((post) => (
@@ -308,7 +310,7 @@ export default async function HomePage() {
                   <h3 className="font-semibold text-slate-900 leading-snug hover:text-brand-700 transition-colors">{post.title}</h3>
                   {post.excerpt && <p className="mt-2 text-sm text-slate-500 line-clamp-2">{post.excerpt}</p>}
                   <p className="mt-4 text-xs text-slate-400">
-                    {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : ""}
+                    {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString(dateLocale, { day: "numeric", month: "long", year: "numeric" }) : ""}
                   </p>
                 </Link>
               ))}
@@ -322,13 +324,13 @@ export default async function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/20 mb-6">
             <Shield className="h-4 w-4 text-accent-400" />
-            <span className="text-sm text-brand-200">GDPR Compliant · Erasmus+ Funded</span>
+            <span className="text-sm text-brand-200">{t("cta.badge")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white text-balance">
-            Join the Tech Bridge Academy Network
+            {t("cta.title")}
           </h2>
           <p className="mt-5 text-lg text-brand-200 leading-relaxed">
-            Create your free organisation profile and start connecting with schools or companies in your sector. Registration is free for all Erasmus+ partner organisations and their networks.
+            {t("cta.text")}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
@@ -336,14 +338,14 @@ export default async function HomePage() {
               className="inline-flex items-center gap-2 rounded-lg bg-target-schools px-8 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
             >
               <GraduationCap className="h-5 w-5" />
-              Register as VET School
+              {t("registerSchool")}
             </Link>
             <Link
               href="/auth/register?role=COMPANY"
               className="inline-flex items-center gap-2 rounded-lg bg-target-smes px-8 py-3 text-base font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
             >
               <Building2 className="h-5 w-5" />
-              Register as SME
+              {t("registerSme")}
             </Link>
           </div>
         </div>

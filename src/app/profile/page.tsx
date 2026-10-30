@@ -8,6 +8,8 @@ import { Footer } from "@/components/layout/Footer";
 import { SECTORS, REGIONS, SCHOOL_TYPE_LABELS, COMPANY_TYPE_LABELS } from "@/lib/utils";
 import { PlusCircle, Save, User, Building2, GraduationCap, MapPin, X } from "lucide-react";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
+import { useOptionLabels } from "@/i18n/labels";
 
 interface ProfileData {
   id?: string;
@@ -64,6 +66,8 @@ const defaultForm: ProfileData = {
 };
 
 export default function ProfilePage() {
+  const t = useTranslations("profilePage");
+  const label = useOptionLabels();
   const { data: session, status } = useSession();
   const router = useRouter();
   const [form, setForm] = useState<ProfileData>(defaultForm);
@@ -185,14 +189,14 @@ export default function ProfilePage() {
       });
       const data = await res.json();
       if (res.ok) {
-        toast.success(isNew ? "Profile created! Awaiting validation." : "Profile updated. Awaiting re-validation.");
+        toast.success(isNew ? t("toastCreated") : t("toastUpdated"));
         if (isNew) { setIsNew(false); setForm((f) => ({ ...f, id: data.data?.id })); }
         router.push("/dashboard");
       } else {
-        toast.error(data.error ?? "Save failed");
+        toast.error(data.error ?? t("toastFailed"));
       }
     } catch {
-      toast.error("Network error — please try again");
+      toast.error(t("toastNetwork"));
     } finally {
       setSaving(false);
     }
@@ -220,10 +224,10 @@ export default function ProfilePage() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-slate-900">
-                {isNew ? "Create Organisation Profile" : "Edit Organisation Profile"}
+                {isNew ? t("createTitle") : t("editTitle")}
               </h1>
               <p className="text-sm text-slate-500">
-                {isNew ? "Set up your profile to appear in the directory and receive match suggestions" : "Update your profile information"}
+                {isNew ? t("createSub") : t("editSub")}
               </p>
             </div>
           </div>
@@ -234,24 +238,24 @@ export default function ProfilePage() {
               form.validationStatus === "REJECTED" ? "bg-red-50 border-red-200 text-red-800" :
               "bg-amber-50 border-amber-200 text-amber-800"
             }`}>
-              <strong>Profile Status:</strong>{" "}
-              {form.validationStatus === "APPROVED" ? "✓ Validated and public" :
-               form.validationStatus === "REJECTED" ? "✗ Rejected — please review and resubmit" :
-               "⏳ Pending validation by the platform team"}
+              <strong>{t("statusLabel")}</strong>{" "}
+              {form.validationStatus === "APPROVED" ? t("statusApproved") :
+               form.validationStatus === "REJECTED" ? t("statusRejected") :
+               t("statusPending")}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Organisation Type */}
             <section className="card p-6">
-              <h2 className="font-semibold text-slate-900 mb-5">Organisation Type</h2>
+              <h2 className="font-semibold text-slate-900 mb-5">{t("orgTypeTitle")}</h2>
 
               <div>
-                <label className="label">Primary Type *</label>
+                <label className="label">{t("primaryType")}</label>
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   {[
-                    { value: "SCHOOL", icon: GraduationCap, label: "School / VET Institution" },
-                    { value: "COMPANY", icon: Building2, label: "Company / SME" },
+                    { value: "SCHOOL", icon: GraduationCap, label: t("school") },
+                    { value: "COMPANY", icon: Building2, label: t("company") },
                   ].map(({ value, icon: Icon, label }) => (
                     <button
                       key={value}
@@ -272,16 +276,16 @@ export default function ProfilePage() {
 
                 {form.orgType === "SCHOOL" && (
                   <div>
-                    <label className="label">School Type *</label>
+                    <label className="label">{t("schoolType")}</label>
                     <select
                       value={form.schoolType ?? ""}
                       onChange={(e) => setForm({ ...form, schoolType: e.target.value })}
                       className="input"
                       required
                     >
-                      <option value="">Select school type…</option>
-                      {Object.entries(SCHOOL_TYPE_LABELS).map(([v, l]) => (
-                        <option key={v} value={v}>{l}</option>
+                      <option value="">{t("selectSchoolType")}</option>
+                      {Object.keys(SCHOOL_TYPE_LABELS).map((v) => (
+                        <option key={v} value={v}>{label.schoolType(v)}</option>
                       ))}
                     </select>
                   </div>
@@ -289,16 +293,16 @@ export default function ProfilePage() {
 
                 {form.orgType === "COMPANY" && (
                   <div>
-                    <label className="label">Company Type *</label>
+                    <label className="label">{t("companyType")}</label>
                     <select
                       value={form.companyType ?? ""}
                       onChange={(e) => setForm({ ...form, companyType: e.target.value })}
                       className="input"
                       required
                     >
-                      <option value="">Select company type…</option>
-                      {Object.entries(COMPANY_TYPE_LABELS).map(([v, l]) => (
-                        <option key={v} value={v}>{l}</option>
+                      <option value="">{t("selectCompanyType")}</option>
+                      {Object.keys(COMPANY_TYPE_LABELS).map((v) => (
+                        <option key={v} value={v}>{label.companyType(v)}</option>
                       ))}
                     </select>
                   </div>
@@ -308,50 +312,50 @@ export default function ProfilePage() {
 
             {/* Basic Info */}
             <section className="card p-6 space-y-5">
-              <h2 className="font-semibold text-slate-900">Organisation Information</h2>
+              <h2 className="font-semibold text-slate-900">{t("infoTitle")}</h2>
 
               <div>
-                <label className="label">Organisation Name *</label>
-                <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input" placeholder="Official name of your organisation" required />
+                <label className="label">{t("name")}</label>
+                <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input" placeholder={t("namePh")} required />
               </div>
 
               <div>
-                <label className="label">Who We Are / Description *</label>
-                <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="input" rows={5} placeholder="Describe your organisation, its history, size, key activities, and what makes it distinctive in its field." required />
-                <p className="text-xs text-slate-400 mt-1">This is the public-facing description shown to all visitors.</p>
+                <label className="label">{t("description")}</label>
+                <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="input" rows={5} placeholder={t("descriptionPh")} required />
+                <p className="text-xs text-slate-400 mt-1">{t("descriptionHint")}</p>
               </div>
 
               <div>
-                <label className="label">Mission *</label>
-                <textarea value={form.mission} onChange={(e) => setForm({ ...form, mission: e.target.value })} className="input" rows={3} placeholder="Your organisation's mission statement and strategic goals." required />
+                <label className="label">{t("mission")}</label>
+                <textarea value={form.mission} onChange={(e) => setForm({ ...form, mission: e.target.value })} className="input" rows={3} placeholder={t("missionPh")} required />
               </div>
 
               <div>
-                <label className="label">School-Enterprise Synergy</label>
-                <textarea value={form.dialogueExperience} onChange={(e) => setForm({ ...form, dialogueExperience: e.target.value })} className="input" rows={3} placeholder="Describe any previous collaborations, partnerships, or dialogue you have had with your counterpart organisations." />
+                <label className="label">{t("synergy")}</label>
+                <textarea value={form.dialogueExperience} onChange={(e) => setForm({ ...form, dialogueExperience: e.target.value })} className="input" rows={3} placeholder={t("synergyPh")} />
               </div>
             </section>
 
             {/* Opportunities & Needs */}
             <section className="card p-6 space-y-5">
-              <h2 className="font-semibold text-slate-900">Opportunities &amp; Needs</h2>
-              <p className="text-sm text-slate-500">This section is used by our AI matching engine to identify collaboration opportunities. Be as specific as possible.</p>
+              <h2 className="font-semibold text-slate-900">{t("oppTitle")}</h2>
+              <p className="text-sm text-slate-500">{t("oppText")}</p>
 
               <div>
-                <label className="label">What We Offer (Opportunities) *</label>
-                <textarea value={form.opportunities} onChange={(e) => setForm({ ...form, opportunities: e.target.value })} className="input" rows={5} placeholder="Describe what you can offer to partner organisations: internship/WBL placements, equipment access, guest lecturing, co-design expertise, funding, etc." required />
+                <label className="label">{t("offer")}</label>
+                <textarea value={form.opportunities} onChange={(e) => setForm({ ...form, opportunities: e.target.value })} className="input" rows={5} placeholder={t("offerPh")} required />
               </div>
 
               <div>
-                <label className="label">What We Need (Demand) *</label>
-                <textarea value={form.needs} onChange={(e) => setForm({ ...form, needs: e.target.value })} className="input" rows={5} placeholder="Describe what you are looking for from partner organisations: specific skills, types of students/graduates, training formats, industry expertise, etc." required />
+                <label className="label">{t("need")}</label>
+                <textarea value={form.needs} onChange={(e) => setForm({ ...form, needs: e.target.value })} className="input" rows={5} placeholder={t("needPh")} required />
               </div>
             </section>
 
             {/* Sectors */}
             <section className="card p-6">
-              <h2 className="font-semibold text-slate-900 mb-2">Sectors *</h2>
-              <p className="text-sm text-slate-500 mb-4">Select all sectors relevant to your organisation.</p>
+              <h2 className="font-semibold text-slate-900 mb-2">{t("sectors")}</h2>
+              <p className="text-sm text-slate-500 mb-4">{t("sectorsText")}</p>
               <div className="flex flex-wrap gap-2">
                 {[...SECTORS, ...form.sectors.filter((s) => !(SECTORS as readonly string[]).includes(s))].map((sector) => (
                   <button
@@ -364,7 +368,7 @@ export default function ProfilePage() {
                         : "bg-white text-slate-600 border-slate-200 hover:border-blue-300"
                     }`}
                   >
-                    {sector}
+                    {label.sector(sector)}
                   </button>
                 ))}
               </div>
@@ -375,19 +379,19 @@ export default function ProfilePage() {
                   onChange={(e) => setCustomSector(e.target.value)}
                   onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addCustom("sectors", customSector, () => setCustomSector("")); } }}
                   className="input flex-1"
-                  placeholder="Not in the list? Type your sector and press Add"
+                  placeholder={t("sectorsCustomPh")}
                 />
                 <button type="button" className="btn-secondary px-4" onClick={() => addCustom("sectors", customSector, () => setCustomSector(""))}>Add</button>
               </div>
               {form.sectors.length === 0 && (
-                <p className="text-xs text-red-500 mt-2">Please select at least one sector.</p>
+                <p className="text-xs text-red-500 mt-2">{t("sectorsRequired")}</p>
               )}
             </section>
 
             {/* Regions */}
             <section className="card p-6">
-              <h2 className="font-semibold text-slate-900 mb-2">Regions *</h2>
-              <p className="text-sm text-slate-500 mb-4">Select all regions where your organisation operates or is interested in collaborating.</p>
+              <h2 className="font-semibold text-slate-900 mb-2">{t("regions")}</h2>
+              <p className="text-sm text-slate-500 mb-4">{t("regionsText")}</p>
               <div className="flex flex-wrap gap-2">
                 {[...REGIONS, ...form.regions.filter((r) => !(REGIONS as readonly string[]).includes(r))].map((region) => (
                   <button
@@ -400,7 +404,7 @@ export default function ProfilePage() {
                         : "bg-white text-slate-600 border-slate-200 hover:border-brand-300"
                     }`}
                   >
-                    {region}
+                    {label.region(region)}
                   </button>
                 ))}
               </div>
@@ -411,7 +415,7 @@ export default function ProfilePage() {
                   onChange={(e) => setCustomRegion(e.target.value)}
                   onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addCustom("regions", customRegion, () => setCustomRegion("")); } }}
                   className="input flex-1"
-                  placeholder="Not in the list? Type your region (e.g. Poland – Silesia) and press Add"
+                  placeholder={t("regionsCustomPh")}
                 />
                 <button type="button" className="btn-secondary px-4" onClick={() => addCustom("regions", customRegion, () => setCustomRegion(""))}>Add</button>
               </div>
@@ -419,8 +423,8 @@ export default function ProfilePage() {
 
             {/* Location */}
             <section className="card p-6">
-              <h2 className="font-semibold text-slate-900 mb-2">Location</h2>
-              <p className="text-sm text-slate-500 mb-4">Search for your organisation&apos;s city so it can appear on the public <a href="/bridge/map" className="text-brand-600 hover:underline">Stakeholder Map</a>. This is separate from the operating regions above.</p>
+              <h2 className="font-semibold text-slate-900 mb-2">{t("location")}</h2>
+              <p className="text-sm text-slate-500 mb-4">{t.rich("locationText", { map: (chunks) => <a href="/bridge/map" className="text-brand-600 hover:underline">{chunks}</a> })}</p>
 
               <div className="relative">
                 <div className="relative">
@@ -430,7 +434,7 @@ export default function ProfilePage() {
                     value={locationQuery}
                     onChange={(e) => { setLocationQuery(e.target.value); if (form.city) setForm((f) => ({ ...f, city: "", country: "", latitude: null, longitude: null })); }}
                     className="input pl-9 pr-9"
-                    placeholder="Start typing a city, e.g. Turin, Italy"
+                    placeholder={t("locationPh")}
                   />
                   {locationQuery && (
                     <button type="button" onClick={clearLocation} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
@@ -440,7 +444,7 @@ export default function ProfilePage() {
                 </div>
 
                 {locationSearching && (
-                  <p className="text-xs text-slate-400 mt-1.5">Searching…</p>
+                  <p className="text-xs text-slate-400 mt-1.5">{t("searching")}</p>
                 )}
 
                 {locationResults.length > 0 && (
@@ -461,48 +465,48 @@ export default function ProfilePage() {
               </div>
 
               {form.latitude != null && (
-                <p className="text-xs text-emerald-600 mt-2">✓ Location set — will appear on the Stakeholder Map once approved.</p>
+                <p className="text-xs text-emerald-600 mt-2">{t("locationSet")}</p>
               )}
             </section>
 
             {/* Tags & Contact */}
             <section className="card p-6 space-y-5">
-              <h2 className="font-semibold text-slate-900">Tags &amp; Contact</h2>
+              <h2 className="font-semibold text-slate-900">{t("tagsTitle")}</h2>
 
               <div>
-                <label className="label">Keywords / Tags</label>
+                <label className="label">{t("tags")}</label>
                 <input
                   type="text"
                   value={form.tags}
                   onChange={(e) => setForm({ ...form, tags: e.target.value })}
                   className="input"
-                  placeholder="e.g. CNC, apprenticeship, robotics, WBL (comma-separated)"
+                  placeholder={t("tagsPh")}
                 />
-                <p className="text-xs text-slate-400 mt-1">Separate with commas. Tags improve matching accuracy.</p>
+                <p className="text-xs text-slate-400 mt-1">{t("tagsHint")}</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="label">Contact Email</label>
+                  <label className="label">{t("email")}</label>
                   <input type="email" value={form.contactEmail} onChange={(e) => setForm({ ...form, contactEmail: e.target.value })} className="input" placeholder="contact@organisation.eu" />
                 </div>
                 <div>
-                  <label className="label">Telephone</label>
+                  <label className="label">{t("phone")}</label>
                   <input type="tel" value={form.telephone} onChange={(e) => setForm({ ...form, telephone: e.target.value })} className="input" placeholder="+39 xxx xxx xxxx" />
                 </div>
               </div>
 
               <div>
-                <label className="label">Website</label>
+                <label className="label">{t("website")}</label>
                 <input type="url" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} className="input" placeholder="https://www.organisation.eu" />
               </div>
 
               <div>
-                <label className="label">Profile Visibility</label>
+                <label className="label">{t("visibility")}</label>
                 <select value={form.visibilityStatus} onChange={(e) => setForm({ ...form, visibilityStatus: e.target.value })} className="input">
-                  <option value="PUBLIC">Public — visible to all visitors</option>
-                  <option value="MEMBERS_ONLY">Members Only — full profile visible to registered users</option>
-                  <option value="PRIVATE">Private — only visible to me and admins</option>
+                  <option value="PUBLIC">{t("visPublic")}</option>
+                  <option value="MEMBERS_ONLY">{t("visMembers")}</option>
+                  <option value="PRIVATE">{t("visPrivate")}</option>
                 </select>
               </div>
             </section>
@@ -512,17 +516,17 @@ export default function ProfilePage() {
                 {saving ? (
                   <span className="flex items-center gap-2">
                     <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                    Saving…
+                    {t("saving")}
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
                     <Save className="h-5 w-5" />
-                    {isNew ? "Create Profile" : "Save Changes"}
+                    {isNew ? t("createBtn") : t("saveBtn")}
                   </span>
                 )}
               </button>
               <p className="text-sm text-slate-400">
-                {isNew ? "Your profile will be reviewed by the platform team before publication." : "Changes will require re-validation."}
+                {isNew ? t("noteNew") : t("noteEdit")}
               </p>
             </div>
           </form>

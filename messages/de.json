@@ -69,5 +69,425 @@
     "cancel": "Abbrechen",
     "thanks": "Vielen Dank! Ihr Vorschlag wurde gesendet.",
     "error": "Der Vorschlag konnte nicht gesendet werden. Bitte erneut versuchen."
+  },
+  "home": {
+    "heroTitle": "Berufsbildende Schulen <accent>und Industrie</accent> in ganz Europa verbinden",
+    "heroText": "Tech Bridge Academy ist der digitale Knotenpunkt, an dem berufsbildende Schulen, technische Hochschulen und produzierende KMU zusammenarbeiten, um den Fachkräfte-Mismatch zu verringern und die Arbeitskräfte von morgen auszubilden.",
+    "registerSchool": "Als Berufsschule registrieren",
+    "registerSme": "Als KMU registrieren",
+    "exploreDirectory": "Verzeichnis erkunden",
+    "stats": {
+      "schools": "Schulen & Berufsbildung",
+      "companies": "Unternehmen & KMU",
+      "matches": "Zustande gekommene Matches",
+      "practices": "Gute Praktiken"
+    },
+    "about": {
+      "badge": "Über die Plattform",
+      "title": "Die Kluft zwischen Bildung und Industrie überbrücken",
+      "text": "Tech Bridge Academy ist die operative Plattform des Erasmus+-Projekts <strong>TECH BRIDGE VET</strong> — entwickelt, um eine strukturierte, wechselseitige Zusammenarbeit zwischen berufsbildenden Schulen und KMU im Maschinenbau und in der Fertigung zu schaffen.",
+      "f1": "Strukturierte Profile für Schulen und Unternehmen mit KI-gestütztem Matching",
+      "f2": "Tools für das gemeinsame Curriculum-Design, die Schulprogramme mit dem Bedarf der Industrie verbinden",
+      "f3": "Repositorium bewährter Praktiken aus ganz Europa",
+      "f4": "Mehrsprachige Plattform, die Partner aus über 5 EU-Ländern verbindet",
+      "learnMore": "Mehr über TECH BRIDGE VET erfahren",
+      "cardSchools": "Berufsschulen",
+      "cardCompanies": "KMU & Unternehmen",
+      "cardMatches": "Aktive Matches",
+      "cardEvents": "Veranstaltete Events",
+      "aiTitle": "KI-gestütztes Matching",
+      "aiText": "Verbindet Schulen automatisch mit den passenden Unternehmen"
+    },
+    "kpi": {
+      "title": "Ökosystem-Dashboard",
+      "subtitle": "Live-Kennzahlen der Plattform im gesamten Tech Bridge Academy-Netzwerk",
+      "schools": "Registrierte Schulen & Berufsbildung",
+      "companies": "Registrierte Unternehmen & KMU",
+      "matches": "Generierte Matches",
+      "practices": "Veröffentlichte gute Praktiken"
+    },
+    "services": {
+      "title": "Plattformdienste",
+      "subtitle": "Drei integrierte Bereiche, die den gesamten Zyklus der Zusammenarbeit von Schule und Wirtschaft abdecken",
+      "bridge": {
+        "title": "Die Brücke",
+        "subtitle": "Für alle Mitglieder",
+        "badge": "Kernbereich",
+        "f1": "KI-gestütztes Matching von Schulen und Unternehmen",
+        "f2": "Organisationsverzeichnis & Profile",
+        "f3": "Repositorium von Kooperationspraktiken",
+        "f4": "Berufsorientierung für Schülerinnen und Schüler",
+        "f5": "Service für das gemeinsame Curriculum-Design"
+      },
+      "sme": {
+        "title": "KMU-Angebote",
+        "subtitle": "Für Unternehmen",
+        "f1": "KMU-Networking & Verzeichnis",
+        "f2": "Coaching-Ressourcen für Learning Experts"
+      },
+      "membersOnly": "Nur für Mitglieder",
+      "school": {
+        "title": "Angebote für Schulen",
+        "subtitle": "Für Schulen & Berufsbildung",
+        "f1": "Schul-Networking & Austausch",
+        "f2": "Fortbildung von Lehrkräften und Personal",
+        "f3": "Curriculum-Observatorium",
+        "f4": "Kalender für Betriebsbesichtigungen",
+        "f5": "Ressourcen zur Planung von Curricular Internships / WBL"
+      },
+      "explore": "{title} entdecken →"
+    },
+    "news": {
+      "title": "Aktuelle Neuigkeiten",
+      "subtitle": "Neuigkeiten vom TECH BRIDGE VET-Konsortium",
+      "all": "Alle Neuigkeiten →"
+    },
+    "cta": {
+      "badge": "DSGVO-konform · Erasmus+-gefördert",
+      "title": "Werden Sie Teil des Tech Bridge Academy-Netzwerks",
+      "text": "Erstellen Sie kostenlos Ihr Organisationsprofil und knüpfen Sie Kontakte zu Schulen oder Unternehmen Ihrer Branche. Die Registrierung ist für alle Erasmus+-Partnerorganisationen und ihre Netzwerke kostenlos."
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "Über TECH BRIDGE VET",
+    "title": "Über Tech Bridge Academy",
+    "intro": "Tech Bridge Academy ist die digitale Plattform des Erasmus+-Projekts <strong>TECH BRIDGE VET</strong> — einer transnationalen Initiative, die berufsbildende Schulen, technische Hochschulen und produzierende KMU in ganz Europa verbindet, um den Fachkräfte-Mismatch im Maschinenbau zu verringern.",
+    "challengeTitle": "Die Herausforderung",
+    "challenge1": "Der Maschinenbau und die Fertigung in ganz Europa stehen vor einem wachsenden Fachkräfte-Mismatch: Unternehmen finden keine Absolventen mit den richtigen technischen und digitalen Kompetenzen, während berufsbildende Schulen Mühe haben, ihre Lehrpläne an den sich rasch wandelnden Bedarf der Industrie anzupassen.",
+    "challenge2": "Der herkömmliche Dialog zwischen Schulen und Unternehmen ist fragmentiert, informell und von persönlichen Beziehungen abhängig. Es gibt keinen strukturierten, skalierbaren Mechanismus, der kontinuierlich verbindet, was Unternehmen brauchen und was Schulen lehren.",
+    "challenge3": "TECH BRIDGE VET schließt diese Lücke durch den Aufbau einer dauerhaften digitalen Infrastruktur für eine strukturierte, wechselseitige Zusammenarbeit — mit KI-gestütztem Matching, Tools für das gemeinsame Curriculum-Design und einem gemeinsamen Repositorium bewährter Praktiken.",
+    "objectivesTitle": "Projektziele",
+    "obj1": "Den Fachkräfte-Mismatch im Maschinenbau und in der Fertigung verringern",
+    "obj2": "Eine nachhaltige digitale Infrastruktur für den strukturierten Dialog zwischen Schule und Wirtschaft schaffen",
+    "obj3": "Ein KI-gestütztes Matching-System für berufsbildende Schulen und KMU entwickeln und validieren",
+    "obj4": "Ein europäisches Repositorium guter Praktiken für Skill-Match-Initiativen erstellen",
+    "obj5": "Prozesse des gemeinsamen Curriculum-Designs zwischen Bildungseinrichtungen und Industrie unterstützen",
+    "obj6": "Daten zur Kompetenzvorausschau für die Curriculum-Planung der Berufsbildung erzeugen",
+    "obj7": "Lehrkräfte und Personalverantwortliche in wirksamer Zusammenarbeit von Schule und Wirtschaft schulen",
+    "kf": {
+      "countries": "Länder",
+      "countriesDesc": "Italien, Griechenland, Slowakei, Deutschland, Spanien",
+      "partners": "Konsortialpartner",
+      "partnersDesc": "Schulen, Hochschulen, Unternehmen, Agenturen",
+      "duration": "Projektlaufzeit",
+      "durationValue": "24 Monate",
+      "funding": "Förderprogramm",
+      "fundingDesc": "KA220-VET · Europäische Kommission"
+    },
+    "wpTitle": "Arbeitspakete des Projekts",
+    "wpSubtitle": "Das Projekt gliedert sich in fünf Arbeitspakete, die jeweils bestimmte Ergebnisse adressieren",
+    "wp": {
+      "WP1": {
+        "title": "Projektmanagement & Qualitätssicherung",
+        "desc": "Koordination aller Projektaktivitäten, Finanzmanagement, Qualitätsüberwachung und Risikominderung im gesamten Konsortium."
+      },
+      "WP2": {
+        "title": "Bedarfsanalyse & Ökosystem-Mapping",
+        "desc": "Eingehende Analyse des Fachkräfte-Mismatch im Maschinenbau in den Partnerländern sowie Erfassung bestehender Dialogmechanismen zwischen Schule und Wirtschaft."
+      },
+      "WP3": {
+        "title": "Entwicklung der digitalen Plattform",
+        "desc": "Konzeption und Entwicklung der Plattform Tech Bridge Academy — des operativen Kerns des Projekts, der alle digitalen Kooperationsdienste ermöglicht."
+      },
+      "WP4": {
+        "title": "Pilottests & Validierung",
+        "desc": "Strukturierte Erprobung der Plattformdienste mit realen Schulen und Unternehmen in allen Partnerländern, mit Evaluation und Weiterentwicklung."
+      },
+      "WP5": {
+        "title": "Verbreitung & Verwertung",
+        "desc": "Verbreitung der Projektergebnisse in europäischen Berufsbildungsnetzwerken, politische Empfehlungen und Nachhaltigkeitsplan für die Plattform über die Projektlaufzeit hinaus."
+      }
+    },
+    "youAreHere": "← Sie sind hier: Tech Bridge Academy",
+    "archTitle": "Plattformarchitektur",
+    "archSubtitle": "Tech Bridge Academy gliedert sich in drei integrierte Bereiche, die den gesamten Kooperationszyklus abdecken",
+    "area": {
+      "bridge": "Der Bereich Brücke",
+      "sme": "Bereich KMU-Angebote",
+      "schools": "Bereich Schulen"
+    },
+    "b1": "KI-gestütztes Matching von Schulen und Unternehmen",
+    "b2": "Organisationsprofile & Verzeichnis",
+    "b3": "Repositorium guter Praktiken",
+    "b4": "Inhalte zur Berufsorientierung",
+    "b5": "Service für das gemeinsame Curriculum-Design",
+    "b6": "Tools für die Bildungszusammenarbeit",
+    "s1": "B2B-Networking-Tools",
+    "s2": "Coaching für Learning Experts zur Betreuung von Lernenden",
+    "c1": "Lehrkräfte-Networking",
+    "c2": "Ressourcen zur Personalentwicklung",
+    "c3": "Curriculum-Observatorium",
+    "c4": "Kalender für Betriebsbesichtigungen",
+    "c5": "WBL-Planungstools",
+    "c6": "Internationale Benchmarks",
+    "disclaimer": "Das Projekt TECH BRIDGE VET wird von der Europäischen Union im Rahmen des Programms Erasmus+ (KA220-VET – Kooperationspartnerschaften in der Berufsbildung) gefördert. Die geäußerten Ansichten und Meinungen sind ausschließlich die des Konsortiums und spiegeln nicht unbedingt die der Europäischen Union oder der Europäischen Exekutivagentur für Bildung und Kultur (EACEA) wider. Weder die Europäische Union noch die EACEA können dafür verantwortlich gemacht werden."
+  },
+  "partnersPage": {
+    "p1": {
+      "description": "Ein führendes technisches Institut in Apulien mit umfassender Erfahrung in europäischen Berufsbildungsprojekten und in der Zusammenarbeit von Schule und Wirtschaft.",
+      "role": "Projektkoordination, Leitung von WP3 (digitale Plattform), Pilotierung in Süditalien"
+    },
+    "p2": {
+      "description": "Eines der größten Berufsbildungszentren der Lombardei, spezialisiert auf Maschinenbau und Metallverarbeitung.",
+      "role": "Bedarfsanalyse (WP2), Pilotierung in Norditalien (WP4), Beitrag zum Repositorium"
+    },
+    "p3": {
+      "description": "Forschungspartner mit Expertise in Kompetenzvorausschau, Kompetenzmapping und Qualitätssicherung in der Berufsbildung.",
+      "role": "Methodik der Kompetenzvorausschau, Leitung von WP2, Rahmen des Curriculum-Observatoriums"
+    },
+    "p4": {
+      "description": "Technische Sekundarschule mit engen Verbindungen zur Industrie und einem dualen Ausbildungszweig.",
+      "role": "Pilotierung in der Slowakei (WP4), zweisprachige Inhalte, Verbreitung in Mitteleuropa"
+    },
+    "p5": {
+      "description": "Die Handwerkskammer Bayerns, die Erfahrungen aus dem deutschen dualen Ausbildungssystem einbringt.",
+      "role": "Expertise im dualen System, Mentoring-Methodik mit Handwerksmeistern, Verbreitung (WP5)"
+    },
+    "p6": {
+      "description": "Bildungskonsortium, das die Berufsbildungsprogramme im Großraum Barcelona verantwortet.",
+      "role": "Katalanisches Berufsbildungsnetzwerk, Verbreitung auf Spanisch, Verwertung (WP5)"
+    },
+    "metaTitle": "Partner",
+    "title": "Projektpartner",
+    "intro": "Das TECH BRIDGE VET-Konsortium vereint Berufsbildungseinrichtungen, Forschungsorganisationen, Kammern und Bildungsagenturen aus 5 europäischen Ländern.",
+    "countries": {
+      "it": "🇮🇹 Italien",
+      "gr": "🇬🇷 Griechenland",
+      "sk": "🇸🇰 Slowakei",
+      "de": "🇩🇪 Deutschland",
+      "es": "🇪🇸 Spanien"
+    },
+    "types": {
+      "lead": "Federführender Begünstigter",
+      "associated": "Assoziierter Partner",
+      "partner": "Partner"
+    },
+    "projectRole": "Rolle im Projekt:",
+    "website": "Webseite",
+    "contact": "Kontakt",
+    "fundedTitle": "Gefördert von der Europäischen Union",
+    "fundedText": "Das Projekt TECH BRIDGE VET wird im Rahmen des Programms Erasmus+, Leitaktion 2 — Kooperationspartnerschaften in der Berufsbildung (KA220-VET) gefördert. Die Unterstützung der Europäischen Kommission für die Erstellung dieser Plattform stellt keine Billigung des Inhalts dar, der ausschließlich die Ansichten der Verfasser widerspiegelt."
+  },
+  "auth": {
+    "login": {
+      "title": "Bei Ihrem Konto anmelden",
+      "noAccount": "Noch kein Konto?",
+      "registerFree": "Kostenlos registrieren",
+      "errorLinked": "Die E-Mail-Adresse ist bereits mit einer anderen Anmeldemethode verknüpft.",
+      "errorGeneric": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten.",
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "forgot": "Passwort vergessen?",
+      "signingIn": "Anmeldung läuft…",
+      "signIn": "Anmelden",
+      "demo": "Demo-Konten:",
+      "terms": "Mit der Anmeldung stimmen Sie unseren <terms>Nutzungsbedingungen</terms> und der <privacy>Datenschutzerklärung</privacy> zu.",
+      "toastError": "Ungültige E-Mail-Adresse oder ungültiges Passwort. Bitte erneut versuchen.",
+      "toastOk": "Willkommen zurück!"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "already": "Bereits registriert?",
+      "signIn": "Anmelden",
+      "orgType": "Organisationstyp *",
+      "school": "Schule / Berufsbildungseinrichtung",
+      "company": "Unternehmen / KMU",
+      "name": "Vollständiger Name / Ansprechpartner *",
+      "namePh": "Ihr Name",
+      "email": "E-Mail-Adresse *",
+      "password": "Passwort *",
+      "passwordPh": "Mind. 8 Zeichen",
+      "tooShort": "Passwort zu kurz",
+      "weak": "Schwaches Passwort",
+      "strong": "Starkes Passwort",
+      "confirm": "Passwort bestätigen *",
+      "confirmPh": "Passwort wiederholen",
+      "consentTitle": "Ich stimme der Datenverarbeitung zu *",
+      "consentText": "Ich stimme der <privacy>Datenschutzerklärung</privacy> und der <gdpr>DSGVO-Erklärung</gdpr> zu. Meine Daten werden ausschließlich für Plattformzwecke im Rahmen des Erasmus+-Projekts TECH BRIDGE VET verarbeitet.",
+      "creating": "Konto wird erstellt…",
+      "create": "Konto erstellen",
+      "footer": "Die Registrierung ist kostenlos · Plattform gefördert von der Europäischen Union",
+      "errMismatch": "Die Passwörter stimmen nicht überein.",
+      "errLength": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+      "errType": "Bitte wählen Sie Ihren Organisationstyp aus.",
+      "errConsent": "Zur Registrierung müssen Sie unserer Datenschutzerklärung zustimmen.",
+      "errFailed": "Die Registrierung ist fehlgeschlagen. Bitte erneut versuchen.",
+      "toastOk": "Konto erstellt! Bitte melden Sie sich an.",
+      "errNetwork": "Es ist ein Netzwerkfehler aufgetreten. Bitte erneut versuchen."
+    }
+  },
+  "options": {
+    "sectors": {
+      "mechanical_engineering": "Maschinenbau",
+      "cnc_machining": "CNC-Bearbeitung",
+      "automation_robotics": "Automatisierung & Robotik",
+      "metalworking_welding": "Metallbearbeitung & Schweißen",
+      "precision_mechanics": "Feinmechanik",
+      "additive_manufacturing": "Additive Fertigung",
+      "electronics_electrical": "Elektronik & Elektrotechnik",
+      "smart_manufacturing_industry_4_0": "Smart Manufacturing / Industrie 4.0",
+      "automotive": "Automobilbau",
+      "aerospace": "Luft- und Raumfahrt",
+      "medical_devices": "Medizinprodukte",
+      "toolmaking": "Werkzeugbau",
+      "quality_control_metrology": "Qualitätskontrolle & Messtechnik",
+      "hydraulics_pneumatics": "Hydraulik & Pneumatik",
+      "mechatronics": "Mechatronik",
+      "3d_printing_prototyping": "3D-Druck & Prototyping",
+      "plc_scada_industrial_it": "SPS / SCADA / Industrielle IT",
+      "maintenance_repair": "Wartung & Reparatur",
+      "plastics_composites": "Kunststoffe & Verbundwerkstoffe",
+      "other": "Sonstiges"
+    },
+    "regions": {
+      "northern_italy": "Norditalien",
+      "central_italy": "Mittelitalien",
+      "southern_italy": "Süditalien",
+      "lombardy": "Lombardei",
+      "puglia": "Apulien",
+      "campania": "Kampanien",
+      "emilia_romagna": "Emilia-Romagna",
+      "veneto": "Venetien",
+      "tuscany": "Toskana",
+      "sicily": "Sizilien",
+      "sardinia": "Sardinien",
+      "piemonte": "Piemont",
+      "lazio": "Latium",
+      "calabria": "Kalabrien",
+      "basilicata": "Basilikata",
+      "greece_attica": "Griechenland – Attika",
+      "greece_central_macedonia": "Griechenland – Zentralmakedonien",
+      "slovakia_bratislava_region": "Slowakei – Region Bratislava",
+      "slovakia_bansk_bystrica": "Slowakei – Banská Bystrica",
+      "germany_bavaria": "Deutschland – Bayern",
+      "germany_baden_w_rttemberg": "Deutschland – Baden-Württemberg",
+      "spain_catalonia": "Spanien – Katalonien",
+      "spain_madrid": "Spanien – Madrid",
+      "cross_regional_national": "Überregional / national",
+      "other": "Sonstiges"
+    },
+    "schoolTypes": {
+      "SCIENTIFIC_TECHNICAL_SIXTH_FORM": "Wissenschaftlich-technisches Oberstufenkolleg",
+      "VOCATIONAL_COLLEGE": "Berufskolleg",
+      "VET_CENTRE": "Berufsbildungszentrum (VET)",
+      "HIGHER_TECHNICAL_INSTITUTE": "Höheres Technisches Institut (ITS)",
+      "OTHER": "Sonstiges"
+    },
+    "companyTypes": {
+      "MANUFACTURING_SME": "Produzierendes KMU",
+      "MICRO_ENTERPRISE": "Kleinstunternehmen / Handwerker",
+      "LARGE_ENTERPRISE": "Großunternehmen",
+      "CONTINUING_EDUCATION": "Weiterbildungsanbieter",
+      "OTHER": "Sonstiges"
+    }
+  },
+  "profilesUi": {
+    "directory": {
+      "title": "Organisationsverzeichnis",
+      "subtitle": "Finden Sie Schulen, Berufsbildungsanbieter und Fertigungsunternehmen für die Zusammenarbeit",
+      "all": "Alle Organisationen",
+      "schools": "Schulen & Berufsbildung",
+      "companies": "Unternehmen & KMU",
+      "loadFailed": "Profile konnten nicht geladen werden",
+      "noResults": "Keine Organisationen gefunden",
+      "noResultsHint": "Passen Sie Ihre Suchfilter an oder erweitern Sie Ihre Kriterien.",
+      "previous": "← Zurück",
+      "next": "Weiter →",
+      "pageOf": "Seite {page} von {total}"
+    },
+    "filter": {
+      "search": "Organisationen nach Name, Beschreibung, Tags suchen…",
+      "allTypes": "Alle Typen",
+      "schoolsVet": "Schulen / Berufsbildung",
+      "companiesSmes": "Unternehmen / KMU",
+      "allSectors": "Alle Branchen",
+      "allRegions": "Alle Regionen",
+      "advanced": "Erweitert",
+      "clear": "Zurücksetzen",
+      "found": "{count, plural, one {# Organisation gefunden} other {# Organisationen gefunden}}",
+      "schoolType": "Schultyp",
+      "allSchoolTypes": "Alle Schultypen",
+      "companyType": "Unternehmenstyp",
+      "allCompanyTypes": "Alle Unternehmenstypen"
+    },
+    "card": {
+      "viewProfile": "Vollständiges Profil ansehen"
+    },
+    "badges": {
+      "school": "Schule / Berufsbildung",
+      "company": "Unternehmen / KMU",
+      "pending": "Prüfung ausstehend",
+      "approved": "Genehmigt",
+      "rejected": "Abgelehnt",
+      "awaiting": "Wartet auf Prüfung",
+      "reportSent": "Bericht gesendet"
+    }
+  },
+  "profilePage": {
+    "createTitle": "Organisationsprofil erstellen",
+    "editTitle": "Organisationsprofil bearbeiten",
+    "createSub": "Richten Sie Ihr Profil ein, um im Verzeichnis zu erscheinen und Matching-Vorschläge zu erhalten",
+    "editSub": "Aktualisieren Sie Ihre Profilinformationen",
+    "statusLabel": "Profilstatus:",
+    "statusApproved": "✓ Validiert und öffentlich",
+    "statusRejected": "✗ Abgelehnt — bitte prüfen und erneut einreichen",
+    "statusPending": "⏳ Wartet auf Validierung durch das Plattform-Team",
+    "orgTypeTitle": "Organisationstyp",
+    "primaryType": "Haupttyp *",
+    "school": "Schule / Berufsbildungseinrichtung",
+    "company": "Unternehmen / KMU",
+    "schoolType": "Schultyp *",
+    "selectSchoolType": "Schultyp auswählen…",
+    "companyType": "Unternehmenstyp *",
+    "selectCompanyType": "Unternehmenstyp auswählen…",
+    "infoTitle": "Informationen zur Organisation",
+    "name": "Name der Organisation *",
+    "namePh": "Offizieller Name Ihrer Organisation",
+    "description": "Wer wir sind / Beschreibung *",
+    "descriptionPh": "Beschreiben Sie Ihre Organisation, ihre Geschichte, Größe, Hauptaktivitäten und was sie in ihrem Bereich auszeichnet.",
+    "descriptionHint": "Dies ist die öffentliche Beschreibung, die allen Besuchern angezeigt wird.",
+    "mission": "Mission *",
+    "missionPh": "Das Leitbild und die strategischen Ziele Ihrer Organisation.",
+    "synergy": "Synergie von Schule und Wirtschaft",
+    "synergyPh": "Beschreiben Sie bisherige Kooperationen, Partnerschaften oder den Dialog mit Partnerorganisationen.",
+    "oppTitle": "Angebote & Bedarf",
+    "oppText": "Dieser Bereich wird von unserem KI-Matching genutzt, um Kooperationsmöglichkeiten zu erkennen. Seien Sie so konkret wie möglich.",
+    "offer": "Was wir anbieten (Möglichkeiten) *",
+    "offerPh": "Beschreiben Sie, was Sie Partnerorganisationen anbieten können: Praktikums-/WBL-Plätze, Zugang zu Ausstattung, Gastvorträge, Co-Design-Expertise, Finanzierung usw.",
+    "need": "Was wir benötigen (Bedarf) *",
+    "needPh": "Beschreiben Sie, was Sie von Partnerorganisationen suchen: bestimmte Kompetenzen, Arten von Schülern/Absolventen, Ausbildungsformate, Branchenexpertise usw.",
+    "sectors": "Branchen *",
+    "sectorsText": "Wählen Sie alle für Ihre Organisation relevanten Branchen aus.",
+    "sectorsCustomPh": "Nicht in der Liste? Geben Sie Ihre Branche ein und klicken Sie auf Hinzufügen",
+    "add": "Hinzufügen",
+    "sectorsRequired": "Bitte wählen Sie mindestens eine Branche aus.",
+    "regions": "Regionen *",
+    "regionsText": "Wählen Sie alle Regionen aus, in denen Ihre Organisation tätig ist oder zusammenarbeiten möchte.",
+    "regionsCustomPh": "Nicht in der Liste? Geben Sie Ihre Region ein (z. B. Polen – Schlesien) und klicken Sie auf Hinzufügen",
+    "location": "Standort",
+    "locationText": "Suchen Sie den Standort Ihrer Organisation, damit sie auf der öffentlichen <map>Stakeholder-Karte</map> erscheint. Dies ist unabhängig von den oben genannten Tätigkeitsregionen.",
+    "locationPh": "Beginnen Sie mit der Eingabe einer Stadt, z. B. Turin, Italien",
+    "searching": "Suche läuft…",
+    "locationSet": "✓ Standort festgelegt — erscheint nach der Freigabe auf der Stakeholder-Karte.",
+    "tagsTitle": "Tags & Kontakt",
+    "tags": "Schlagwörter / Tags",
+    "tagsPh": "z. B. CNC, Ausbildung, Robotik, WBL (durch Kommas getrennt)",
+    "tagsHint": "Durch Kommas trennen. Tags verbessern die Genauigkeit des Matchings.",
+    "email": "Kontakt-E-Mail",
+    "phone": "Telefon",
+    "website": "Webseite",
+    "visibility": "Profilsichtbarkeit",
+    "visPublic": "Öffentlich — für alle Besucher sichtbar",
+    "visMembers": "Nur Mitglieder — vollständiges Profil für registrierte Nutzer sichtbar",
+    "visPrivate": "Privat — nur für mich und Administratoren sichtbar",
+    "saving": "Wird gespeichert…",
+    "createBtn": "Profil erstellen",
+    "saveBtn": "Änderungen speichern",
+    "noteNew": "Ihr Profil wird vor der Veröffentlichung vom Plattform-Team geprüft.",
+    "noteEdit": "Änderungen erfordern eine erneute Validierung.",
+    "toastCreated": "Profil erstellt! Wartet auf Validierung.",
+    "toastUpdated": "Profil aktualisiert. Wartet auf erneute Validierung.",
+    "toastFailed": "Speichern fehlgeschlagen",
+    "toastNetwork": "Netzwerkfehler — bitte erneut versuchen"
   }
 }

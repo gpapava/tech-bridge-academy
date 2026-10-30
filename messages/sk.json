@@ -69,5 +69,425 @@
     "cancel": "Zrušiť",
     "thanks": "Ďakujeme! Váš návrh bol odoslaný.",
     "error": "Návrh sa nepodarilo odoslať. Skúste to znova."
+  },
+  "home": {
+    "heroTitle": "Prepájame odborné školy <accent>a priemysel</accent> v celej Európe",
+    "heroText": "Tech Bridge Academy je digitálne centrum, v ktorom odborné školy, technické školy a výrobné MSP spolupracujú na zmenšení nesúladu zručností a budovaní pracovnej sily budúcnosti.",
+    "registerSchool": "Registrovať sa ako odborná škola",
+    "registerSme": "Registrovať sa ako MSP",
+    "exploreDirectory": "Prehliadať adresár",
+    "stats": {
+      "schools": "Školy a OVP",
+      "companies": "Firmy a MSP",
+      "matches": "Vytvorené zhody",
+      "practices": "Dobrá prax"
+    },
+    "about": {
+      "badge": "O platforme",
+      "title": "Preklenutie priepasti medzi vzdelávaním a priemyslom",
+      "text": "Tech Bridge Academy je prevádzková platforma projektu Erasmus+ <strong>TECH BRIDGE VET</strong> — navrhnutá na vytvorenie štruktúrovanej obojsmernej spolupráce medzi odbornými školami a MSP v strojárstve a výrobe.",
+      "f1": "Štruktúrované profily škôl a firiem s párovaním pomocou AI",
+      "f2": "Nástroje spoločného návrhu učebných osnov prepájajúce školské programy s potrebami priemyslu",
+      "f3": "Úložisko osvedčených postupov z celej Európy",
+      "f4": "Viacjazyčná platforma prepájajúca partnerov z viac ako 5 krajín EÚ",
+      "learnMore": "Zistite viac o TECH BRIDGE VET",
+      "cardSchools": "Odborné školy",
+      "cardCompanies": "MSP a firmy",
+      "cardMatches": "Aktívne zhody",
+      "cardEvents": "Usporiadané podujatia",
+      "aiTitle": "Párovanie pomocou AI",
+      "aiText": "Automaticky prepája školy so správnymi firmami"
+    },
+    "kpi": {
+      "title": "Nástenka ekosystému",
+      "subtitle": "Aktuálne metriky platformy v sieti Tech Bridge Academy",
+      "schools": "Registrované školy a OVP",
+      "companies": "Registrované firmy a MSP",
+      "matches": "Vygenerované zhody",
+      "practices": "Zverejnená dobrá prax"
+    },
+    "services": {
+      "title": "Služby platformy",
+      "subtitle": "Tri integrované oblasti pokrývajúce celý cyklus spolupráce školy a podniku",
+      "bridge": {
+        "title": "Most",
+        "subtitle": "Pre všetkých členov",
+        "badge": "Hlavná oblasť",
+        "f1": "Párovanie škôl a firiem pomocou AI",
+        "f2": "Adresár a profily organizácií",
+        "f3": "Úložisko praxe spolupráce",
+        "f4": "Kariérne poradenstvo pre študentov",
+        "f5": "Služba spoločného návrhu učebných osnov"
+      },
+      "sme": {
+        "title": "Služby pre MSP",
+        "subtitle": "Pre firmy",
+        "f1": "Networking a adresár MSP",
+        "f2": "Zdroje koučingu pre Learning Expertov"
+      },
+      "membersOnly": "Iba pre členov",
+      "school": {
+        "title": "Služby pre školy",
+        "subtitle": "Pre školy a OVP",
+        "f1": "Networking a výmena medzi školami",
+        "f2": "Rozvoj učiteľov a zamestnancov",
+        "f3": "Vzdelávacie observatórium učebných osnov",
+        "f4": "Kalendár firemných návštev a prehliadok",
+        "f5": "Zdroje na plánovanie kurikulárnych stáží / WBL"
+      },
+      "explore": "Preskúmať: {title} →"
+    },
+    "news": {
+      "title": "Najnovšie aktuality",
+      "subtitle": "Novinky od konzorcia TECH BRIDGE VET",
+      "all": "Všetky aktuality →"
+    },
+    "cta": {
+      "badge": "V súlade s GDPR · Financované z Erasmus+",
+      "title": "Pripojte sa k sieti Tech Bridge Academy",
+      "text": "Vytvorte si bezplatný profil organizácie a začnite nadväzovať kontakty so školami alebo firmami vo vašom odvetví. Registrácia je bezplatná pre všetky partnerské organizácie Erasmus+ a ich siete."
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "O projekte TECH BRIDGE VET",
+    "title": "O Tech Bridge Academy",
+    "intro": "Tech Bridge Academy je digitálna platforma projektu Erasmus+ <strong>TECH BRIDGE VET</strong> — nadnárodnej iniciatívy prepájajúcej odborné školy, technické školy a výrobné MSP v celej Európe s cieľom znížiť nesúlad zručností v strojárstve.",
+    "challengeTitle": "Výzva",
+    "challenge1": "Strojársky a výrobný sektor v celej Európe čelí rastúcemu nesúladu zručností: firmy nenachádzajú absolventov so správnymi technickými a digitálnymi kompetenciami, zatiaľ čo odborné školy len ťažko udržiavajú učebné osnovy v súlade s rýchlo sa meniacimi potrebami priemyslu.",
+    "challenge2": "Tradičný dialóg medzi školami a firmami je roztrieštený, neformálny a závisí od individuálnych vzťahov. Neexistuje štruktúrovaný, škálovateľný mechanizmus, ktorý by priebežne prepájal to, čo firmy potrebujú, s tým, čo školy učia.",
+    "challenge3": "TECH BRIDGE VET rieši tento nesúlad vytvorením trvalej digitálnej infraštruktúry pre štruktúrovanú obojsmernú spoluprácu — s párovaním podporovaným AI, nástrojmi na spoločný návrh učebných osnov a spoločným úložiskom osvedčených postupov.",
+    "objectivesTitle": "Ciele projektu",
+    "obj1": "Znížiť nesúlad zručností v strojárskom a výrobnom sektore",
+    "obj2": "Vytvoriť udržateľnú digitálnu infraštruktúru pre štruktúrovaný dialóg medzi školami a podnikmi",
+    "obj3": "Vyvinúť a overiť systém párovania podporovaný AI pre odborné školy a MSP",
+    "obj4": "Vytvoriť európske úložisko dobrej praxe v iniciatívach zosúlaďovania zručností",
+    "obj5": "Podporiť procesy spoločného návrhu učebných osnov medzi vzdelávacími inštitúciami a priemyslom",
+    "obj6": "Vytvárať prognostické údaje o zručnostiach ako podklad pre plánovanie osnov OVP",
+    "obj7": "Školiť učiteľov a personalistov firiem v efektívnej spolupráci škôl a podnikov",
+    "kf": {
+      "countries": "Krajiny",
+      "countriesDesc": "Taliansko, Grécko, Slovensko, Nemecko, Španielsko",
+      "partners": "Partneri konzorcia",
+      "partnersDesc": "Školy, univerzity, firmy, agentúry",
+      "duration": "Trvanie projektu",
+      "durationValue": "24 mesiacov",
+      "funding": "Program financovania",
+      "fundingDesc": "KA220-VET · Európska komisia"
+    },
+    "wpTitle": "Pracovné balíky projektu",
+    "wpSubtitle": "Projekt je rozdelený na päť pracovných balíkov, z ktorých každý sa zameriava na konkrétne výstupy",
+    "wp": {
+      "WP1": {
+        "title": "Riadenie projektu a zabezpečenie kvality",
+        "desc": "Koordinácia všetkých projektových aktivít, finančné riadenie, monitorovanie kvality a zmierňovanie rizík v rámci konzorcia."
+      },
+      "WP2": {
+        "title": "Analýza potrieb a mapovanie ekosystému",
+        "desc": "Dôkladná analýza nesúladu zručností v strojárstve v partnerských krajinách a mapovanie existujúcich mechanizmov dialógu medzi školami a podnikmi."
+      },
+      "WP3": {
+        "title": "Vývoj digitálnej platformy",
+        "desc": "Návrh a vývoj platformy Tech Bridge Academy — prevádzkového jadra projektu, ktoré umožňuje všetky digitálne služby spolupráce."
+      },
+      "WP4": {
+        "title": "Pilotné testovanie a validácia",
+        "desc": "Štruktúrované pilotné overovanie služieb platformy so skutočnými školami a firmami vo všetkých partnerských krajinách, s hodnotením a iteráciou."
+      },
+      "WP5": {
+        "title": "Šírenie a zhodnotenie",
+        "desc": "Šírenie výsledkov projektu v európskych sieťach OVP, odporúčania pre politiku a plán udržateľnosti platformy po skončení projektu."
+      }
+    },
+    "youAreHere": "← Ste tu: Tech Bridge Academy",
+    "archTitle": "Architektúra platformy",
+    "archSubtitle": "Tech Bridge Academy je štruktúrovaná do troch integrovaných oblastí pokrývajúcich celý cyklus spolupráce",
+    "area": {
+      "bridge": "Oblasť Most",
+      "sme": "Oblasť služieb pre MSP",
+      "schools": "Oblasť škôl"
+    },
+    "b1": "Párovanie škôl a firiem pomocou AI",
+    "b2": "Profily a adresár organizácií",
+    "b3": "Úložisko dobrej praxe",
+    "b4": "Obsah kariérneho poradenstva",
+    "b5": "Služba spoločného návrhu učebných osnov",
+    "b6": "Nástroje vzdelávacej spolupráce",
+    "s1": "Nástroje B2B networkingu",
+    "s2": "Koučing pre Learning Expertov pri prijímaní študentov",
+    "c1": "Networking učiteľov",
+    "c2": "Zdroje na rozvoj zamestnancov",
+    "c3": "Observatórium učebných osnov",
+    "c4": "Kalendár firemných návštev",
+    "c5": "Nástroje na plánovanie WBL",
+    "c6": "Medzinárodné porovnania",
+    "disclaimer": "Projekt TECH BRIDGE VET je financovaný Európskou úniou v rámci programu Erasmus+ (KA220-VET – Partnerstvá pre spoluprácu v odbornom vzdelávaní a príprave). Vyjadrené názory patria konzorciu a nemusia nevyhnutne odrážať názory Európskej únie alebo Európskej výkonnej agentúry pre vzdelávanie a kultúru (EACEA). Európska únia ani EACEA za ne nenesú zodpovednosť."
+  },
+  "partnersPage": {
+    "p1": {
+      "description": "Popredný technický inštitút v Apúlii so bohatými skúsenosťami s európskymi projektmi OVP a spoluprácou škôl a podnikov.",
+      "role": "Koordinácia projektu, vedenie WP3 (digitálna platforma), pilotné overovanie na juhu Talianska"
+    },
+    "p2": {
+      "description": "Jedno z najväčších centier OVP v Lombardsku, špecializované na strojárske a kovospracujúce vzdelávanie.",
+      "role": "Analýza potrieb (WP2), pilotné overovanie v severnom Taliansku (WP4), príspevok do úložiska"
+    },
+    "p3": {
+      "description": "Výskumný partner, ktorý prináša odborné znalosti v oblasti prognózovania zručností, mapovania kompetencií a zabezpečenia kvality OVP.",
+      "role": "Metodika prognózovania zručností, vedenie WP2, rámec observatória učebných osnov"
+    },
+    "p4": {
+      "description": "Technická stredná škola so silnými väzbami na priemysel a duálnym vzdelávaním.",
+      "role": "Pilotné overovanie na Slovensku (WP4), dvojjazyčný obsah, šírenie v strednej Európe"
+    },
+    "p5": {
+      "description": "Remeselná komora Bavorska, ktorá prináša skúsenosti z nemeckého systému duálneho učňovstva.",
+      "role": "Odbornosť v oblasti duálneho systému, metodika mentoringu majstrov remesla, šírenie (WP5)"
+    },
+    "p6": {
+      "description": "Vzdelávacie konzorcium spravujúce programy OVP v metropolitnej oblasti Barcelony.",
+      "role": "Katalánska sieť OVP, šírenie v španielčine, zhodnotenie (WP5)"
+    },
+    "metaTitle": "Partneri",
+    "title": "Partneri projektu",
+    "intro": "Konzorcium TECH BRIDGE VET združuje inštitúcie OVP, výskumné organizácie, komory a vzdelávacie agentúry z 5 európskych krajín.",
+    "countries": {
+      "it": "🇮🇹 Taliansko",
+      "gr": "🇬🇷 Grécko",
+      "sk": "🇸🇰 Slovensko",
+      "de": "🇩🇪 Nemecko",
+      "es": "🇪🇸 Španielsko"
+    },
+    "types": {
+      "lead": "Hlavný príjemca",
+      "associated": "Pridružený partner",
+      "partner": "Partner"
+    },
+    "projectRole": "Úloha v projekte:",
+    "website": "Webová stránka",
+    "contact": "Kontakt",
+    "fundedTitle": "Financované Európskou úniou",
+    "fundedText": "Projekt TECH BRIDGE VET je financovaný z programu Erasmus+, kľúčová akcia 2 — Partnerstvá pre spoluprácu v odbornom vzdelávaní a príprave (KA220-VET). Podpora Európskej komisie na vytvorenie tejto platformy neznamená schválenie obsahu, ktorý odráža len názory autorov."
+  },
+  "auth": {
+    "login": {
+      "title": "Prihláste sa do svojho účtu",
+      "noAccount": "Nemáte účet?",
+      "registerFree": "Registrovať sa zdarma",
+      "errorLinked": "E-mail je už priradený k inému spôsobu prihlásenia.",
+      "errorGeneric": "Prihlásenie zlyhalo. Skontrolujte svoje prihlasovacie údaje.",
+      "email": "E-mailová adresa",
+      "password": "Heslo",
+      "forgot": "Zabudli ste heslo?",
+      "signingIn": "Prihlasovanie…",
+      "signIn": "Prihlásiť sa",
+      "demo": "Demo účty:",
+      "terms": "Prihlásením súhlasíte s našimi <terms>Podmienkami používania</terms> a <privacy>Zásadami ochrany osobných údajov</privacy>.",
+      "toastError": "Neplatný e-mail alebo heslo. Skúste to znova.",
+      "toastOk": "Vitajte späť!"
+    },
+    "register": {
+      "title": "Vytvorte si účet",
+      "already": "Už ste registrovaný?",
+      "signIn": "Prihlásiť sa",
+      "orgType": "Typ organizácie *",
+      "school": "Škola / inštitúcia OVP",
+      "company": "Firma / MSP",
+      "name": "Celé meno / kontaktná osoba *",
+      "namePh": "Vaše meno",
+      "email": "E-mailová adresa *",
+      "password": "Heslo *",
+      "passwordPh": "Min. 8 znakov",
+      "tooShort": "Príliš krátke heslo",
+      "weak": "Slabé heslo",
+      "strong": "Silné heslo",
+      "confirm": "Potvrďte heslo *",
+      "confirmPh": "Zopakujte heslo",
+      "consentTitle": "Súhlasím so spracovaním údajov *",
+      "consentText": "Súhlasím so <privacy>Zásadami ochrany osobných údajov</privacy> a <gdpr>Vyhlásením GDPR</gdpr>. Moje údaje budú spracúvané výlučne na účely platformy v rámci projektu Erasmus+ TECH BRIDGE VET.",
+      "creating": "Vytváranie účtu…",
+      "create": "Vytvoriť účet",
+      "footer": "Registrácia je bezplatná · Platforma financovaná Európskou úniou",
+      "errMismatch": "Heslá sa nezhodujú.",
+      "errLength": "Heslo musí mať aspoň 8 znakov.",
+      "errType": "Vyberte typ svojej organizácie.",
+      "errConsent": "Na registráciu musíte súhlasiť s našimi zásadami ochrany osobných údajov.",
+      "errFailed": "Registrácia zlyhala. Skúste to znova.",
+      "toastOk": "Účet bol vytvorený! Prihláste sa.",
+      "errNetwork": "Vyskytla sa chyba siete. Skúste to znova."
+    }
+  },
+  "options": {
+    "sectors": {
+      "mechanical_engineering": "Strojárstvo",
+      "cnc_machining": "CNC obrábanie",
+      "automation_robotics": "Automatizácia a robotika",
+      "metalworking_welding": "Kovospracovanie a zváranie",
+      "precision_mechanics": "Presná mechanika",
+      "additive_manufacturing": "Aditívna výroba",
+      "electronics_electrical": "Elektronika a elektrotechnika",
+      "smart_manufacturing_industry_4_0": "Inteligentná výroba / Priemysel 4.0",
+      "automotive": "Automobilový priemysel",
+      "aerospace": "Letecký a kozmický priemysel",
+      "medical_devices": "Zdravotnícke pomôcky",
+      "toolmaking": "Nástrojárstvo",
+      "quality_control_metrology": "Kontrola kvality a metrológia",
+      "hydraulics_pneumatics": "Hydraulika a pneumatika",
+      "mechatronics": "Mechatronika",
+      "3d_printing_prototyping": "3D tlač a prototypovanie",
+      "plc_scada_industrial_it": "PLC / SCADA / priemyselné IT",
+      "maintenance_repair": "Údržba a opravy",
+      "plastics_composites": "Plasty a kompozity",
+      "other": "Iné"
+    },
+    "regions": {
+      "northern_italy": "Severné Taliansko",
+      "central_italy": "Stredné Taliansko",
+      "southern_italy": "Južné Taliansko",
+      "lombardy": "Lombardsko",
+      "puglia": "Apúlia",
+      "campania": "Kampánia",
+      "emilia_romagna": "Emilia-Romagna",
+      "veneto": "Benátsko",
+      "tuscany": "Toskánsko",
+      "sicily": "Sicília",
+      "sardinia": "Sardínia",
+      "piemonte": "Piemont",
+      "lazio": "Lazio",
+      "calabria": "Kalábria",
+      "basilicata": "Basilicata",
+      "greece_attica": "Grécko – Attika",
+      "greece_central_macedonia": "Grécko – Stredná Macedónsko",
+      "slovakia_bratislava_region": "Slovensko – Bratislavský kraj",
+      "slovakia_bansk_bystrica": "Slovensko – Banská Bystrica",
+      "germany_bavaria": "Nemecko – Bavorsko",
+      "germany_baden_w_rttemberg": "Nemecko – Bádensko-Württembersko",
+      "spain_catalonia": "Španielsko – Katalánsko",
+      "spain_madrid": "Španielsko – Madrid",
+      "cross_regional_national": "Medziregionálne / národné",
+      "other": "Iné"
+    },
+    "schoolTypes": {
+      "SCIENTIFIC_TECHNICAL_SIXTH_FORM": "Vedecká/technická stredná škola",
+      "VOCATIONAL_COLLEGE": "Odborná škola",
+      "VET_CENTRE": "Centrum odborného vzdelávania (OVP)",
+      "HIGHER_TECHNICAL_INSTITUTE": "Vyššia technická škola (ITS)",
+      "OTHER": "Iné"
+    },
+    "companyTypes": {
+      "MANUFACTURING_SME": "Výrobné MSP",
+      "MICRO_ENTERPRISE": "Mikropodnik / remeselník",
+      "LARGE_ENTERPRISE": "Veľký podnik",
+      "CONTINUING_EDUCATION": "Poskytovateľ ďalšieho vzdelávania",
+      "OTHER": "Iné"
+    }
+  },
+  "profilesUi": {
+    "directory": {
+      "title": "Adresár organizácií",
+      "subtitle": "Nájdite školy, poskytovateľov OVP a výrobné firmy na spoluprácu",
+      "all": "Všetky organizácie",
+      "schools": "Školy a OVP",
+      "companies": "Firmy a MSP",
+      "loadFailed": "Profily sa nepodarilo načítať",
+      "noResults": "Nenašli sa žiadne organizácie",
+      "noResultsHint": "Skúste upraviť filtre vyhľadávania alebo rozšíriť kritériá.",
+      "previous": "← Predchádzajúca",
+      "next": "Ďalšia →",
+      "pageOf": "Strana {page} z {total}"
+    },
+    "filter": {
+      "search": "Hľadať organizácie podľa názvu, popisu, štítkov…",
+      "allTypes": "Všetky typy",
+      "schoolsVet": "Školy / OVP",
+      "companiesSmes": "Firmy / MSP",
+      "allSectors": "Všetky odvetvia",
+      "allRegions": "Všetky regióny",
+      "advanced": "Rozšírené",
+      "clear": "Vymazať",
+      "found": "{count, plural, one {Nájdená # organizácia} few {Nájdené # organizácie} many {Nájdených # organizácií} other {Nájdených # organizácií}}",
+      "schoolType": "Typ školy",
+      "allSchoolTypes": "Všetky typy škôl",
+      "companyType": "Typ firmy",
+      "allCompanyTypes": "Všetky typy firiem"
+    },
+    "card": {
+      "viewProfile": "Zobraziť celý profil"
+    },
+    "badges": {
+      "school": "Škola / OVP",
+      "company": "Firma / MSP",
+      "pending": "Čaká na kontrolu",
+      "approved": "Schválené",
+      "rejected": "Zamietnuté",
+      "awaiting": "Čaká na kontrolu",
+      "reportSent": "Správa odoslaná"
+    }
+  },
+  "profilePage": {
+    "createTitle": "Vytvorenie profilu organizácie",
+    "editTitle": "Úprava profilu organizácie",
+    "createSub": "Nastavte si profil, aby ste sa zobrazovali v adresári a dostávali návrhy zhôd",
+    "editSub": "Aktualizujte údaje vo svojom profile",
+    "statusLabel": "Stav profilu:",
+    "statusApproved": "✓ Overený a verejný",
+    "statusRejected": "✗ Zamietnutý — skontrolujte a odošlite znova",
+    "statusPending": "⏳ Čaká na overenie tímom platformy",
+    "orgTypeTitle": "Typ organizácie",
+    "primaryType": "Hlavný typ *",
+    "school": "Škola / inštitúcia OVP",
+    "company": "Firma / MSP",
+    "schoolType": "Typ školy *",
+    "selectSchoolType": "Vyberte typ školy…",
+    "companyType": "Typ firmy *",
+    "selectCompanyType": "Vyberte typ firmy…",
+    "infoTitle": "Informácie o organizácii",
+    "name": "Názov organizácie *",
+    "namePh": "Oficiálny názov vašej organizácie",
+    "description": "Kto sme / Popis *",
+    "descriptionPh": "Opíšte svoju organizáciu, jej históriu, veľkosť, hlavné aktivity a čím sa v odbore odlišuje.",
+    "descriptionHint": "Toto je verejný popis zobrazený všetkým návštevníkom.",
+    "mission": "Poslanie *",
+    "missionPh": "Vyhlásenie o poslaní a strategické ciele vašej organizácie.",
+    "synergy": "Synergia školy a podniku",
+    "synergyPh": "Opíšte prípadné predchádzajúce spolupráce, partnerstvá alebo dialóg s partnerskými organizáciami.",
+    "oppTitle": "Príležitosti a potreby",
+    "oppText": "Táto sekcia sa používa v našom systéme párovania s AI na identifikáciu príležitostí na spoluprácu. Buďte čo najkonkrétnejší.",
+    "offer": "Čo ponúkame (príležitosti) *",
+    "offerPh": "Opíšte, čo môžete ponúknuť partnerským organizáciám: miesta na stáže/WBL, prístup k vybaveniu, hosťujúce prednášky, odborné znalosti v spoločnom návrhu, financovanie atď.",
+    "need": "Čo potrebujeme (dopyt) *",
+    "needPh": "Opíšte, čo hľadáte u partnerských organizácií: konkrétne zručnosti, typy študentov/absolventov, formáty vzdelávania, odborné znalosti z odvetvia atď.",
+    "sectors": "Odvetvia *",
+    "sectorsText": "Vyberte všetky odvetvia relevantné pre vašu organizáciu.",
+    "sectorsCustomPh": "Nie je v zozname? Napíšte svoje odvetvie a stlačte Pridať",
+    "add": "Pridať",
+    "sectorsRequired": "Vyberte aspoň jedno odvetvie.",
+    "regions": "Regióny *",
+    "regionsText": "Vyberte všetky regióny, v ktorých vaša organizácia pôsobí alebo má záujem spolupracovať.",
+    "regionsCustomPh": "Nie je v zozname? Napíšte svoj región (napr. Poľsko – Sliezsko) a stlačte Pridať",
+    "location": "Poloha",
+    "locationText": "Vyhľadajte mesto svojej organizácie, aby sa zobrazila na verejnej <map>mape zainteresovaných strán</map>. Je to nezávislé od regiónov pôsobenia vyššie.",
+    "locationPh": "Začnite písať mesto, napr. Bratislava, Slovensko",
+    "searching": "Vyhľadávanie…",
+    "locationSet": "✓ Poloha nastavená — po schválení sa zobrazí na mape zainteresovaných strán.",
+    "tagsTitle": "Štítky a kontakt",
+    "tags": "Kľúčové slová / štítky",
+    "tagsPh": "napr. CNC, učňovstvo, robotika, WBL (oddelené čiarkou)",
+    "tagsHint": "Oddeľte čiarkami. Štítky zlepšujú presnosť párovania.",
+    "email": "Kontaktný e-mail",
+    "phone": "Telefón",
+    "website": "Webová stránka",
+    "visibility": "Viditeľnosť profilu",
+    "visPublic": "Verejný — viditeľný pre všetkých návštevníkov",
+    "visMembers": "Iba pre členov — celý profil viditeľný pre registrovaných používateľov",
+    "visPrivate": "Súkromný — viditeľný len pre mňa a administrátorov",
+    "saving": "Ukladanie…",
+    "createBtn": "Vytvoriť profil",
+    "saveBtn": "Uložiť zmeny",
+    "noteNew": "Váš profil skontroluje tím platformy pred zverejnením.",
+    "noteEdit": "Zmeny budú vyžadovať opätovné overenie.",
+    "toastCreated": "Profil bol vytvorený! Čaká na overenie.",
+    "toastUpdated": "Profil bol aktualizovaný. Čaká na opätovné overenie.",
+    "toastFailed": "Uloženie zlyhalo",
+    "toastNetwork": "Chyba siete — skúste to znova"
   }
 }

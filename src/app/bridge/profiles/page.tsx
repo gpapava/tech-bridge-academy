@@ -8,6 +8,7 @@ import { ProfileFilter } from "@/components/profiles/ProfileFilter";
 import { InlineLoader } from "@/components/ui/LoadingSpinner";
 import { Building2, GraduationCap, Search } from "lucide-react";
 import toast from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 interface Profile {
   id: string;
@@ -26,6 +27,7 @@ interface Profile {
 }
 
 export default function ProfilesPage() {
+  const t = useTranslations("profilesUi.directory");
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
@@ -55,7 +57,7 @@ export default function ProfilesPage() {
       setTotal(data.total ?? 0);
       setTotalPages(data.totalPages ?? 1);
     } catch {
-      toast.error("Failed to load profiles");
+      toast.error(t("loadFailed"));
     } finally {
       setLoading(false);
     }
@@ -82,17 +84,17 @@ export default function ProfilesPage() {
                 <Search className="h-5 w-5 text-brand-600" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-900">Organisation Directory</h1>
-                <p className="text-slate-500 text-sm">Find schools, VET providers, and manufacturing companies to collaborate with</p>
+                <h1 className="text-2xl font-bold text-slate-900">{t("title")}</h1>
+                <p className="text-slate-500 text-sm">{t("subtitle")}</p>
               </div>
             </div>
 
             {/* Type quick filters */}
             <div className="flex flex-wrap gap-3 mt-6">
               {[
-                { label: "All Organisations", value: "", icon: null },
-                { label: "Schools & VET", value: "SCHOOL", icon: GraduationCap },
-                { label: "Companies & SMEs", value: "COMPANY", icon: Building2 },
+                { label: t("all"), value: "", icon: null },
+                { label: t("schools"), value: "SCHOOL", icon: GraduationCap },
+                { label: t("companies"), value: "COMPANY", icon: Building2 },
               ].map(({ label, value, icon: Icon }) => (
                 <button
                   key={value}
@@ -123,8 +125,8 @@ export default function ProfilesPage() {
           ) : profiles.length === 0 ? (
             <div className="text-center py-24">
               <Search className="h-12 w-12 text-slate-200 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-slate-700">No organisations found</h3>
-              <p className="text-slate-400 mt-2">Try adjusting your search filters or broadening your criteria.</p>
+              <h3 className="text-lg font-semibold text-slate-700">{t("noResults")}</h3>
+              <p className="text-slate-400 mt-2">{t("noResultsHint")}</p>
             </div>
           ) : (
             <>
@@ -142,17 +144,17 @@ export default function ProfilesPage() {
                     disabled={page === 1}
                     className="btn-secondary px-4 py-2 disabled:opacity-40"
                   >
-                    ← Previous
+                    {t("previous")}
                   </button>
                   <span className="text-sm text-slate-500 px-4">
-                    Page {page} of {totalPages}
+                    {t("pageOf", { page, total: totalPages })}
                   </span>
                   <button
                     onClick={() => setPage(Math.min(totalPages, page + 1))}
                     disabled={page === totalPages}
                     className="btn-secondary px-4 py-2 disabled:opacity-40"
                   >
-                    Next →
+                    {t("next")}
                   </button>
                 </div>
               )}
