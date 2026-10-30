@@ -4,6 +4,8 @@ import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { AppShell } from "@/components/layout/AppShell";
 import { Toaster } from "react-hot-toast";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -29,10 +31,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body className="min-h-screen bg-slate-50 font-sans">
+        <NextIntlClientProvider locale={locale} messages={messages}>
         <AuthProvider>
           <AppShell>{children}</AppShell>
           <Toaster
@@ -50,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }}
           />
         </AuthProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

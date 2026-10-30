@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "partners": "Partners",
+    "news": "News",
+    "events": "Events",
+    "schools": "Schools",
+    "smes": "SMEs",
+    "bridge": "Bridging the Two Worlds",
+    "ourServices": "Our Services",
+    "tagline": "Connecting education and industry.",
+    "euStrip": "Erasmus+ KA220-VET · TECH BRIDGE VET · Project No. 2024-1-IT01-KA220-VET-000255000",
+    "fundedByEU": "Funded by the European Union",
+    "admin": "Admin",
+    "dashboard": "Dashboard",
+    "myProfile": "My Profile",
+    "signOut": "Sign Out",
+    "login": "Log in",
+    "register": "Register Free",
+    "language": "Language"
+  },
+  "footer": {
+    "description": "A digital hub connecting VET schools and manufacturing SMEs to reduce skills mismatch in the mechanical engineering sector.",
+    "coFundedAlt": "Co-funded by the European Union",
+    "disclaimer": "Views and opinions expressed are those of the authors only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency.",
+    "sections": {
+      "platform": "Platform",
+      "bridge": "Bridge",
+      "members": "For Members",
+      "legal": "Legal"
+    },
+    "links": {
+      "about": "About Tech Bridge Academy",
+      "partners": "Partner Organisations",
+      "news": "News & Updates",
+      "events": "Events Calendar",
+      "directory": "Organisation Directory",
+      "repository": "Repository of Practices",
+      "careerGuidance": "Career Guidance",
+      "coDesign": "Co-Design Service",
+      "networking": "Networking",
+      "smes": "SME Services",
+      "schools": "School Services",
+      "dashboard": "My Dashboard",
+      "register": "Register",
+      "privacy": "Privacy Policy",
+      "gdpr": "GDPR Statement",
+      "terms": "Terms of Use",
+      "cookies": "Cookie Policy"
+    },
+    "rights": "All rights reserved.",
+    "consortium": "Erasmus+ TECH BRIDGE VET Consortium.",
+    "projectNo": "Project No. 2024-1-IT01-KA220-VET-000255000"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "partners": "Partner",
+    "news": "Neuigkeiten",
+    "events": "Veranstaltungen",
+    "schools": "Schulen",
+    "smes": "KMU",
+    "bridge": "Zwei Welten verbinden",
+    "ourServices": "Unsere Angebote",
+    "tagline": "Bildung und Industrie verbinden.",
+    "fundedByEU": "Gefördert von der Europäischen Union",
+    "admin": "Admin",
+    "dashboard": "Dashboard",
+    "myProfile": "Mein Profil",
+    "signOut": "Abmelden",
+    "login": "Anmelden",
+    "register": "Kostenlos registrieren",
+    "language": "Sprache"
+  },
+  "footer": {
+    "description": "Ein digitaler Knotenpunkt, der berufsbildende Schulen und produzierende KMU verbindet, um den Fachkräfte-Mismatch im Maschinenbau zu verringern.",
+    "coFundedAlt": "Kofinanziert von der Europäischen Union",
+    "disclaimer": "Die geäußerten Ansichten und Meinungen sind ausschließlich die der Autoren und spiegeln nicht unbedingt die der Europäischen Union oder der Europäischen Exekutivagentur für Bildung und Kultur wider.",
+    "sections": {
+      "platform": "Plattform",
+      "bridge": "Brücke",
+      "members": "Für Mitglieder",
+      "legal": "Rechtliches"
+    },
+    "links": {
+      "about": "Über Tech Bridge Academy",
+      "partners": "Partnerorganisationen",
+      "news": "Neuigkeiten & Updates",
+      "events": "Veranstaltungskalender",
+      "directory": "Organisationsverzeichnis",
+      "repository": "Praxis-Repositorium",
+      "careerGuidance": "Berufsorientierung",
+      "coDesign": "Co-Design-Service",
+      "networking": "Networking",
+      "smes": "Angebote für KMU",
+      "schools": "Angebote für Schulen",
+      "dashboard": "Mein Dashboard",
+      "register": "Registrieren",
+      "privacy": "Datenschutzerklärung",
+      "gdpr": "DSGVO-Erklärung",
+      "terms": "Nutzungsbedingungen",
+      "cookies": "Cookie-Richtlinie"
+    },
+    "rights": "Alle Rechte vorbehalten.",
+    "consortium": "Erasmus+ TECH BRIDGE VET Konsortium.",
+    "projectNo": "Projekt-Nr. 2024-1-IT01-KA220-VET-000255000"
+  }
+}

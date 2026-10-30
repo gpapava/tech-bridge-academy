@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Domov",
+    "about": "O nás",
+    "partners": "Partneri",
+    "news": "Aktuality",
+    "events": "Podujatia",
+    "schools": "Školy",
+    "smes": "MSP",
+    "bridge": "Spájame dva svety",
+    "ourServices": "Naše služby",
+    "tagline": "Prepájame vzdelávanie a priemysel.",
+    "fundedByEU": "Financované Európskou úniou",
+    "admin": "Admin",
+    "dashboard": "Nástenka",
+    "myProfile": "Môj profil",
+    "signOut": "Odhlásiť sa",
+    "login": "Prihlásiť sa",
+    "register": "Registrácia zdarma",
+    "language": "Jazyk"
+  },
+  "footer": {
+    "description": "Digitálne centrum prepájajúce odborné školy a výrobné MSP s cieľom znížiť nesúlad zručností v strojárstve.",
+    "coFundedAlt": "Spolufinancované Európskou úniou",
+    "disclaimer": "Vyjadrené názory a postoje patria len autorom a nemusia nevyhnutne odrážať názory Európskej únie alebo Európskej výkonnej agentúry pre vzdelávanie a kultúru.",
+    "sections": {
+      "platform": "Platforma",
+      "bridge": "Most",
+      "members": "Pre členov",
+      "legal": "Právne informácie"
+    },
+    "links": {
+      "about": "O Tech Bridge Academy",
+      "partners": "Partnerské organizácie",
+      "news": "Aktuality a novinky",
+      "events": "Kalendár podujatí",
+      "directory": "Adresár organizácií",
+      "repository": "Úložisko praxe",
+      "careerGuidance": "Kariérne poradenstvo",
+      "coDesign": "Služba spoločného návrhu",
+      "networking": "Networking",
+      "smes": "Služby pre MSP",
+      "schools": "Služby pre školy",
+      "dashboard": "Moja nástenka",
+      "register": "Registrácia",
+      "privacy": "Zásady ochrany osobných údajov",
+      "gdpr": "Vyhlásenie GDPR",
+      "terms": "Podmienky používania",
+      "cookies": "Zásady používania cookies"
+    },
+    "rights": "Všetky práva vyhradené.",
+    "consortium": "Konzorcium Erasmus+ TECH BRIDGE VET.",
+    "projectNo": "Projekt č. 2024-1-IT01-KA220-VET-000255000"
+  }
+}

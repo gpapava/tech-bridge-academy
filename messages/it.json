@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "partners": "Partner",
+    "news": "Notizie",
+    "events": "Eventi",
+    "schools": "Scuole",
+    "smes": "PMI",
+    "bridge": "Unire i due mondi",
+    "ourServices": "I nostri servizi",
+    "tagline": "Collegare istruzione e industria.",
+    "fundedByEU": "Finanziato dall'Unione europea",
+    "admin": "Admin",
+    "dashboard": "Dashboard",
+    "myProfile": "Il mio profilo",
+    "signOut": "Esci",
+    "login": "Accedi",
+    "register": "Registrati gratis",
+    "language": "Lingua"
+  },
+  "footer": {
+    "description": "Un hub digitale che collega scuole di IFP e PMI manifatturiere per ridurre il disallineamento di competenze nel settore dell'ingegneria meccanica.",
+    "coFundedAlt": "Cofinanziato dall'Unione europea",
+    "disclaimer": "Le opinioni espresse appartengono esclusivamente agli autori e non riflettono necessariamente quelle dell'Unione europea o dell'Agenzia esecutiva europea per l'istruzione e la cultura.",
+    "sections": {
+      "platform": "Piattaforma",
+      "bridge": "Il Ponte",
+      "members": "Per i membri",
+      "legal": "Note legali"
+    },
+    "links": {
+      "about": "Informazioni su Tech Bridge Academy",
+      "partners": "Organizzazioni partner",
+      "news": "Notizie e aggiornamenti",
+      "events": "Calendario eventi",
+      "directory": "Elenco delle organizzazioni",
+      "repository": "Repository delle pratiche",
+      "careerGuidance": "Orientamento professionale",
+      "coDesign": "Servizio di co-progettazione",
+      "networking": "Networking",
+      "smes": "Servizi per le PMI",
+      "schools": "Servizi per le scuole",
+      "dashboard": "La mia dashboard",
+      "register": "Registrati",
+      "privacy": "Informativa sulla privacy",
+      "gdpr": "Informativa GDPR",
+      "terms": "Condizioni d'uso",
+      "cookies": "Cookie policy"
+    },
+    "rights": "Tutti i diritti riservati.",
+    "consortium": "Consorzio Erasmus+ TECH BRIDGE VET.",
+    "projectNo": "Progetto n. 2024-1-IT01-KA220-VET-000255000"
+  }
+}

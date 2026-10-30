@@ -1,36 +1,39 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Globe, ExternalLink } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const footerLinks = {
-  Platform: [
-    { label: "About Tech Bridge Academy", href: "/about" },
-    { label: "Partner Organisations", href: "/partners" },
-    { label: "News & Updates", href: "/news" },
-    { label: "Events Calendar", href: "/events" },
+  platform: [
+    { key: "about", href: "/about" },
+    { key: "partners", href: "/partners" },
+    { key: "news", href: "/news" },
+    { key: "events", href: "/events" },
   ],
-  Bridge: [
-    { label: "Organisation Directory", href: "/bridge/profiles" },
-    { label: "Repository of Practices", href: "/bridge/repository" },
-    { label: "Career Guidance", href: "/bridge/career-guidance" },
-    { label: "Co-Design Service", href: "/bridge/co-design" },
-    { label: "Networking", href: "/bridge/networking" },
+  bridge: [
+    { key: "directory", href: "/bridge/profiles" },
+    { key: "repository", href: "/bridge/repository" },
+    { key: "careerGuidance", href: "/bridge/career-guidance" },
+    { key: "coDesign", href: "/bridge/co-design" },
+    { key: "networking", href: "/bridge/networking" },
   ],
-  "For Members": [
-    { label: "SME Services", href: "/smes" },
-    { label: "School Services", href: "/schools" },
-    { label: "My Dashboard", href: "/dashboard" },
-    { label: "Register", href: "/auth/register" },
+  members: [
+    { key: "smes", href: "/smes" },
+    { key: "schools", href: "/schools" },
+    { key: "dashboard", href: "/dashboard" },
+    { key: "register", href: "/auth/register" },
   ],
-  Legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "GDPR Statement", href: "/gdpr" },
-    { label: "Terms of Use", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookies" },
+  legal: [
+    { key: "privacy", href: "/privacy" },
+    { key: "gdpr", href: "/gdpr" },
+    { key: "terms", href: "/terms" },
+    { key: "cookies", href: "/cookies" },
   ],
-};
+} as const;
 
 export function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="bg-brand-950 text-brand-200">
       {/* EU Funding Banner */}
@@ -39,16 +42,13 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <Image
               src="/images/co_funded.png"
-              alt="Co-funded by the European Union"
+              alt={t("coFundedAlt")}
               width={280}
               height={60}
               className="object-contain"
             />
             <div className="sm:ml-auto text-center sm:text-right">
-              <p className="text-xs text-brand-400">
-                Views and opinions expressed are those of the authors only and do not necessarily reflect
-                those of the European Union or the European Education and Culture Executive Agency.
-              </p>
+              <p className="text-xs text-brand-400">{t("disclaimer")}</p>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ export function Footer() {
               <span className="font-bold text-white">Tech Bridge Academy</span>
             </div>
             <p className="text-sm text-brand-400 leading-relaxed">
-              A digital hub connecting VET schools and manufacturing SMEs to reduce skills mismatch in the mechanical engineering sector.
+              {t("description")}
             </p>
             <div className="mt-5 flex items-center gap-3">
               <a href="mailto:info@techbridgeacademy.eu" className="text-brand-400 hover:text-white transition-colors">
@@ -85,12 +85,12 @@ export function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-300 mb-4">{section}</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-300 mb-4">{t(`sections.${section}`)}</h3>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-sm text-brand-400 hover:text-white transition-colors">
-                      {link.label}
+                      {t(`links.${link.key}`)}
                     </Link>
                   </li>
                 ))}
@@ -102,10 +102,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-10 border-t border-brand-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-brand-500">
-            © {new Date().getFullYear()} Tech Bridge Academy. All rights reserved. Erasmus+ TECH BRIDGE VET Consortium.
+            © {new Date().getFullYear()} Tech Bridge Academy. {t("rights")} {t("consortium")}
           </p>
           <div className="flex items-center gap-4">
-            <span className="text-xs text-brand-500">Project No. 2024-1-IT01-KA220-VET-000255000</span>
+            <span className="text-xs text-brand-500">{t("projectNo")}</span>
             <a
               href="https://erasmus-plus.ec.europa.eu"
               target="_blank"

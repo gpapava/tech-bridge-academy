@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "partners": "Socios",
+    "news": "Noticias",
+    "events": "Eventos",
+    "schools": "Centros educativos",
+    "smes": "Pymes",
+    "bridge": "Uniendo los dos mundos",
+    "ourServices": "Nuestros servicios",
+    "tagline": "Conectando educación e industria.",
+    "fundedByEU": "Financiado por la Unión Europea",
+    "admin": "Admin",
+    "dashboard": "Panel",
+    "myProfile": "Mi perfil",
+    "signOut": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "register": "Regístrate gratis",
+    "language": "Idioma"
+  },
+  "footer": {
+    "description": "Un centro digital que conecta centros de FP y pymes industriales para reducir el desajuste de competencias en el sector de la ingeniería mecánica.",
+    "coFundedAlt": "Cofinanciado por la Unión Europea",
+    "disclaimer": "Las opiniones y puntos de vista expresados son exclusivamente los de los autores y no reflejan necesariamente los de la Unión Europea ni los de la Agencia Ejecutiva Europea de Educación y Cultura.",
+    "sections": {
+      "platform": "Plataforma",
+      "bridge": "El Puente",
+      "members": "Para miembros",
+      "legal": "Legal"
+    },
+    "links": {
+      "about": "Acerca de Tech Bridge Academy",
+      "partners": "Organizaciones socias",
+      "news": "Noticias y novedades",
+      "events": "Calendario de eventos",
+      "directory": "Directorio de organizaciones",
+      "repository": "Repositorio de prácticas",
+      "careerGuidance": "Orientación profesional",
+      "coDesign": "Servicio de codiseño",
+      "networking": "Networking",
+      "smes": "Servicios para pymes",
+      "schools": "Servicios para centros",
+      "dashboard": "Mi panel",
+      "register": "Registrarse",
+      "privacy": "Política de privacidad",
+      "gdpr": "Declaración RGPD",
+      "terms": "Condiciones de uso",
+      "cookies": "Política de cookies"
+    },
+    "rights": "Todos los derechos reservados.",
+    "consortium": "Consorcio Erasmus+ TECH BRIDGE VET.",
+    "projectNo": "Proyecto n.º 2024-1-IT01-KA220-VET-000255000"
+  }
+}
