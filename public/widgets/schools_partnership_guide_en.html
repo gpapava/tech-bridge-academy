@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Building educational partnerships with companies — A guide for schools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#185FA5; --brand-strong:#124a80; --brand-tint:#E8F0F8;
+  --cyan:#00A0E0; --cyan-soft:#D7EFFA; --deep:#104050;
+  --paper:#FFFFFF; --surface:#F6F8FB; --surface-2:#EEF3F8;
+  --ink:#16212B; --ink-soft:#51606E; --line:#DCE4EC; --line-strong:#C3D0DC;
+  --q:#3E7A5E; --q-tint:#E9F2ED;
+  --plat:#B26B1C; --plat-tint:#FBEFDD;
+  --euro:#185FA5; --euro-tint:#E8F0F8;
+  --radius:12px; --maxw:840px;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="dark"]{
+  --brand:#5CA8E8; --brand-strong:#8AC2F0; --brand-tint:#12293f; --cyan:#2BB6EE; --cyan-soft:#0d3b52;
+  --paper:#0E1620; --surface:#131E2A; --surface-2:#182636;
+  --ink:#E7EEF5; --ink-soft:#9DB0C0; --line:#26374a; --line-strong:#31465c;
+  --q:#7FBF9E; --q-tint:#152a20; --plat:#E0A45A; --plat-tint:#2e2113; --euro:#5CA8E8; --euro-tint:#12293f;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --brand:#5CA8E8; --brand-strong:#8AC2F0; --brand-tint:#12293f; --cyan:#2BB6EE; --cyan-soft:#0d3b52;
+  --paper:#0E1620; --surface:#131E2A; --surface-2:#182636;
+  --ink:#E7EEF5; --ink-soft:#9DB0C0; --line:#26374a; --line-strong:#31465c;
+  --q:#7FBF9E; --q-tint:#152a20; --plat:#E0A45A; --plat-tint:#2e2113; --euro:#5CA8E8; --euro-tint:#12293f;
+}}
+*,*::before,*::after{box-sizing:inherit;}
+html{scroll-behavior:smooth; scroll-padding-top:120px;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{transition:none!important;}}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:"Inter",system-ui,sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+.top{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--paper) 90%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:calc(env(safe-area-inset-top,0px) + 11px) 20px 11px;}
+.top-in{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; gap:12px;}
+.crumb{font-size:12.5px; color:var(--ink-soft); display:flex; gap:7px; align-items:center; flex-wrap:wrap; min-width:0;}
+.crumb b{color:var(--brand); font-weight:600;} .crumb .sep{color:var(--line-strong);} .crumb .here{color:var(--ink); font-weight:600;}
+.toggle{margin-left:auto; flex-shrink:0; border:1px solid var(--line-strong); background:var(--surface); color:var(--ink); border-radius:999px; padding:6px 12px; font-size:12.5px; font-weight:600; cursor:pointer; display:flex; gap:6px; align-items:center;}
+.chapnav{position:sticky; top:52px; z-index:40; background:var(--paper); border-bottom:1px solid var(--line); padding:0 12px; overflow-x:auto;}
+.chapnav-in{max-width:var(--maxw); margin:0 auto; display:flex; gap:2px; min-width:max-content;}
+.chapnav button{font-family:inherit; font-size:13px; font-weight:600; color:var(--ink-soft); background:none; border:none; border-bottom:2px solid transparent; padding:12px 10px; cursor:pointer; white-space:nowrap;}
+.chapnav button.on{color:var(--brand); border-bottom-color:var(--brand);}
+main{max-width:var(--maxw); margin:0 auto; padding:28px 20px 120px;}
+.chapter{display:none;} .chapter.show{display:block; animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;} to{opacity:1;}}
+.ch-num{font-family:"Fraunces",serif; font-size:14px; color:var(--brand); font-weight:600;}
+h1.ch-title{font-family:"Fraunces",serif; font-weight:500; font-size:clamp(26px,5vw,36px); line-height:1.12; margin:6px 0 0; letter-spacing:-.01em;}
+.intro{font-size:17.5px; color:var(--ink-soft); margin:16px 0 6px; max-width:66ch; border-left:3px solid var(--brand); padding:2px 0 2px 16px;}
+h2.blk{font-family:"Inter"; font-weight:700; font-size:20px; margin:34px 0 6px; letter-spacing:-.01em;}
+h3.sub{font-weight:600; font-size:17px; margin:24px 0 6px;}
+.lead{color:var(--ink-soft); margin:0 0 14px; max-width:70ch;}
+p{max-width:70ch;}
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; margin:18px 0;}
+.rolecard{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px; cursor:pointer; font:inherit; color:inherit; transition:border-color .15s, transform .1s;}
+.rolecard:hover{border-color:var(--brand); transform:translateY(-2px);}
+.rolecard .rc-ico{width:34px; height:34px; border-radius:9px; background:var(--brand-tint); color:var(--brand); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:"Fraunces"; margin-bottom:10px;}
+.rolecard .rc-t{font-weight:600; font-size:15px; display:block; margin-bottom:3px;} .rolecard .rc-d{font-size:13px; color:var(--ink-soft);}
+dialog.role{border:none; border-radius:16px; padding:0; max-width:560px; width:calc(100% - 32px); background:var(--paper); color:var(--ink); box-shadow:0 20px 60px rgba(0,0,0,.3);}
+dialog.role::backdrop{background:rgba(8,16,24,.55);}
+.role .r-head{padding:20px 22px; border-bottom:1px solid var(--line); display:flex; gap:12px; align-items:center;}
+.role .r-head .rc-ico{margin:0; width:34px; height:34px; border-radius:9px; background:var(--brand-tint); color:var(--brand); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:"Fraunces"; flex-shrink:0;}
+.role .r-head b{font-family:"Fraunces"; font-weight:600; font-size:18px;}
+.role .r-body{padding:20px 22px; font-size:15.5px; max-height:70vh; overflow:auto;} .role .r-body p{margin:0 0 12px;}
+.role .r-body ul{margin:0 0 12px; padding-left:20px;} .role .r-body li{margin:5px 0;}
+.role .r-close{position:absolute; top:14px; right:16px; background:var(--surface); border:1px solid var(--line); border-radius:8px; width:32px; height:32px; cursor:pointer; color:var(--ink); font-size:16px;}
+.callout{border-radius:var(--radius); padding:18px 20px; margin:22px 0; max-width:74ch;}
+.callout .tag{font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin:0 0 11px; display:inline-flex; gap:8px; align-items:center;}
+.callout .tag::before{content:""; width:15px; height:15px; border-radius:4px;}
+.c-q{background:var(--q-tint); border:1px solid color-mix(in srgb,var(--q) 30%,transparent);}
+.c-q .tag{color:var(--q);} .c-q .tag::before{background:var(--q);}
+.c-q ul{list-style:none; margin:0; padding:0;}
+.c-q li{padding:8px 0 8px 24px; position:relative; font-size:15.5px; border-top:1px dashed color-mix(in srgb,var(--q) 30%,transparent);}
+.c-q li:first-child{border-top:none;} .c-q li::before{content:"?"; position:absolute; left:2px; color:var(--q); font-weight:700; font-family:"Fraunces";}
+.c-plat{background:var(--plat-tint); border:1px solid color-mix(in srgb,var(--plat) 32%,transparent);}
+.c-plat .tag{color:var(--plat);} .c-plat .tag::before{background:var(--plat);} .c-plat p{margin:0 0 8px; font-size:15.5px;}
+.c-plat ul{margin:6px 0 0; padding-left:20px; font-size:15px;} .c-plat li{margin:4px 0;}
+.verify{display:none; margin-left:8px; font-size:10.5px; font-weight:700; letter-spacing:.05em; color:#fff; background:#C0392B; border-radius:5px; padding:2px 7px; vertical-align:middle;}
+.c-euro{background:var(--euro-tint); border:1px solid color-mix(in srgb,var(--euro) 30%,transparent);}
+.c-euro .tag{color:var(--euro);} .c-euro .tag::before{background:var(--euro);} .c-euro p{margin:0; font-size:15.5px;} .c-euro a{color:var(--brand-strong);}
+.qa{border:1px solid var(--line); border-radius:var(--radius); margin:8px 0; overflow:hidden; background:var(--surface);}
+.qa summary{list-style:none; cursor:pointer; padding:14px 16px; display:flex; gap:11px; align-items:flex-start; font-weight:600; font-size:15px;}
+.qa summary::-webkit-details-marker{display:none;}
+.qa summary .qn{font-family:"Fraunces"; color:var(--brand); font-weight:600; flex-shrink:0;}
+.qa summary .chev{margin-left:auto; color:var(--ink-soft); transition:transform .2s;}
+.qa[open] summary .chev{transform:rotate(90deg);}
+.qa .ans{padding:0 16px 15px 39px; font-size:14.5px; color:var(--ink-soft);}
+.qgroup{margin:16px 0; border-left:3px solid var(--q); padding-left:14px;}
+.qgroup .qg-t{font-size:13px; font-weight:700; color:var(--q); text-transform:uppercase; letter-spacing:.04em; margin-bottom:8px;}
+.steps{margin:18px 0; counter-reset:st;}
+.step{counter-increment:st; display:grid; grid-template-columns:44px 1fr; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
+.step:first-child{border-top:none;}
+.step .sn{width:34px; height:34px; border-radius:50%; background:var(--brand); color:#fff; font-family:"Fraunces"; font-weight:600; display:flex; align-items:center; justify-content:center;}
+.step .sn::before{content:counter(st);}
+.step .st-b b{display:block; font-size:15.5px; margin-bottom:3px;} .step .st-b span{color:var(--ink-soft); font-size:14.5px;}
+.tblwrap{overflow-x:auto; margin:18px 0; border:1px solid var(--line); border-radius:var(--radius);}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:14.5px;}
+th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+th{background:var(--surface-2); color:var(--ink); font-weight:600;} tr:last-child td{border-bottom:none;}
+.acc{border:1px solid var(--line); border-radius:var(--radius); margin:10px 0; overflow:hidden; background:var(--surface);}
+.acc summary{list-style:none; cursor:pointer; padding:15px 18px; font-weight:600; font-size:16px; display:flex; align-items:center; gap:10px;}
+.acc summary::-webkit-details-marker{display:none;}
+.acc summary .chev{margin-left:auto; color:var(--ink-soft); transition:transform .2s;} .acc[open] summary .chev{transform:rotate(90deg);}
+.acc .body{padding:0 18px 18px;} .acc .body h3.sub{margin-top:18px;} .acc .body .callout{max-width:100%;} .acc .body .blk{font-size:18px;} .acc .body p{margin:0 0 12px;}
+.pill-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; margin:16px 0; padding:0; list-style:none;}
+.pill-list li{background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:11px 14px; font-size:14.5px;}
+.example{background:var(--surface); border:1px dashed var(--line-strong); border-radius:var(--radius); padding:14px 16px; margin:14px 0; font-size:14.5px;}
+.example .ex-t{font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:7px;}
+.example a{color:var(--brand-strong); word-break:break-word;}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+  <div class="crumb"><b>Tech Bridge Academy</b><span class="sep">›</span><b>School Area</b><span class="sep">›</span><span class="here">Staff Development</span></div>
+  <button class="toggle" onclick="toggleTheme()"><span id="tglIcon">🌙</span><span id="tglTxt">Dark</span></button>
+</div></div>
+<div class="chapnav"><div class="chapnav-in" id="chapnav"></div></div>
+<main id="main"></main>
+<dialog class="role" id="roleDlg">
+  <button class="r-close" onclick="document.getElementById('roleDlg').close()">✕</button>
+  <div class="r-head"><div class="rc-ico" id="rIco"></div><b id="rTitle"></b></div>
+  <div class="r-body" id="rBody"></div>
+</dialog>
+<script>
+const CH={};
+const ROLES={};
+</script>
+<script>
+CH[1]={title:"Why WBL matters for schools",short:"01 · Objectives",html:`
+<p class="intro">Work-Based Learning (WBL) experiences are far more than an opportunity to carry out training activities in a company. When designed, monitored and valued systematically, they become a strategic lever for the development of the school.</p>
+<p>Traditionally, WBL is seen mainly as a tool to foster student learning. This is certainly its primary aim, but not the only one. Every experience of collaboration with the world of work also produces new knowledge for the school: it makes it possible to understand how professional contexts are evolving, observe new production processes, identify emerging competences, experiment with innovative teaching methods and strengthen relationships with the local area.</p>
+<div class="callout c-euro"><p class="tag">European frame</p><p>This view is fully consistent with the evolution of European policies. The recent CEDEFOP report <em>Beyond Skills Development</em> stresses that WBL should not be interpreted only as a process of acquiring technical skills, but as a pathway for developing expertise, judgement (practical wisdom), autonomy and continuous learning — not only of people but also of organisations. <a href="https://www.cedefop.europa.eu/en/publications/3099" target="_blank" rel="noopener">cedefop.europa.eu ↗</a></p></div>
+<p>In this perspective, WBL is therefore a tool for organisational learning for the school. The experiences carried out do not end with the traineeship, the Project Work or the Challenge, but generate information and evidence that can guide the continuous improvement of the educational offer, the innovation of teaching and the consolidation of educational partnerships.</p>
+<p class="lead">For a school, investing in WBL therefore means pursuing at least five strategic objectives. Tap each to read the full text.</p>
+<div class="cardgrid">
+<button class="rolecard" onclick="openRole('o1')"><div class="rc-ico">1</div><span class="rc-t">Improve the quality of learning</span><span class="rc-d">Authentic learning in real work situations</span></button>
+<button class="rolecard" onclick="openRole('o2')"><div class="rc-ico">2</div><span class="rc-t">Strengthen collaboration with the local area</span><span class="rc-d">Stable relationships across the territory</span></button>
+<button class="rolecard" onclick="openRole('o3')"><div class="rc-ico">3</div><span class="rc-t">Innovate teaching</span><span class="rc-d">Contextualised, authentic activities</span></button>
+<button class="rolecard" onclick="openRole('o4')"><div class="rc-ico">4</div><span class="rc-t">Update the curriculum</span><span class="rc-d">Evidence on how occupations change</span></button>
+<button class="rolecard" onclick="openRole('o5')"><div class="rc-ico">5</div><span class="rc-t">Continuous improvement &amp; organisational learning</span><span class="rc-d">Knowledge for the whole school</span></button>
+</div>
+<h2 class="blk">A long-term perspective</h2>
+<p>WBL experiences are therefore not an end in themselves, but the starting point for building ever more mature educational partnerships between schools, companies and the local area. Over time, collaboration can evolve: from simply being willing to host students towards more advanced forms of joint design of training pathways, up to the participation of companies in the school's advisory board with industry representatives and the creation of genuine regional ecosystems for innovation and vocational training, in line with the European model of <em>Centres of Vocational Excellence</em> (CoVE).</p>`};
+
+CH[2]={title:"Governance, roles and competences",short:"02 · Governance",html:`
+<p class="intro">Carrying out WBL experiences and building educational partnerships with companies is not an activity that can be entrusted to a single professional role, but an organisational process involving the whole school community and its external partners.</p>
+<p>The quality of the experiences depends on the school's ability to build clear governance, in which responsibilities, competences and information flows are distributed among the different people involved and oriented towards shared goals.</p>
+<p>This approach is consistent with the most recent European guidance, which interprets WBL not only as a tool to foster student learning, but also as a mechanism for organisational learning able to support the continuous improvement of training institutions.</p>
+
+<p class="lead">This chapter has two parts — open the one you need.</p>
+<details class="acc"><summary>Roles and responsibilities<span class="chev">›</span></summary><div class="body">
+<p class="lead">Let us now look at the specific but complementary responsibilities each actor takes on. Tap a role to see the full description.</p>
+<div class="cardgrid">
+<button class="rolecard" onclick="openRole('students')"><div class="rc-ico">S</div><span class="rc-t">Students</span><span class="rc-d">The protagonists of the experience</span></button>
+<button class="rolecard" onclick="openRole('school')"><div class="rc-ico">Sc</div><span class="rc-t">The school</span><span class="rc-d">Educational &amp; organisational responsibility</span></button>
+<button class="rolecard" onclick="openRole('leader')"><div class="rc-ico">L</div><span class="rc-t">The school leader</span><span class="rc-d">Strategic direction of partnerships</span></button>
+<button class="rolecard" onclick="openRole('board')"><div class="rc-ico">A</div><span class="rc-t">Advisory board with industry representatives</span><span class="rc-d">Main space for school–industry dialogue</span></button>
+<button class="rolecard" onclick="openRole('coord')"><div class="rc-ico">C</div><span class="rc-t">The WBL coordinator</span><span class="rc-d">Operational steering of collaborations</span></button>
+<button class="rolecard" onclick="openRole('teachers')"><div class="rc-ico">T</div><span class="rc-t">Teachers &amp; class councils</span><span class="rc-d">Turning experience into learning</span></button>
+<button class="rolecard" onclick="openRole('tutor')"><div class="rc-ico">Tu</div><span class="rc-t">The school tutor</span><span class="rc-d">Accompanies the student throughout</span></button>
+</div>
+<p class="lead">Some guiding questions help assess whether the school has adopted an adequate internal organisation to develop WBL experiences and build educational partnerships with companies:</p>
+<div class="callout c-q"><p class="tag">Guiding questions — organisation</p><ul>
+<li>Is there a shared vision of the strategy's goals?</li>
+<li>Are roles and responsibilities defined and clear to all those involved?</li>
+<li>Has a recognised coordinating role been put in place?</li>
+<li>Is the contribution of the school's collegial bodies valued?</li>
+<li>Has it been planned how to use experiences to guide future decisions?</li>
+</ul></div>
+</div></details>
+<details class="acc"><summary>Developing the competences of the school community<span class="chev">›</span></summary><div class="body">
+<p>Defining roles, responsibilities and organisational arrangements is a necessary condition for delivering effective WBL pathways, but it is not sufficient.</p>
+<p>The quality of the experiences also depends on the professional competences of the people involved. To build solid educational partnerships and design authentic experiences, the school needs to invest in the continuous development of teachers, tutors and coordinators.</p>
+<p>The WBL approach and joint training design with companies require an evolution of the teaching profession. The teacher is no longer only a subject expert, but becomes a professional able to continuously connect school learning with real work contexts, design pathways together with companies and accompany students in transferring learning from one context to another. Progressively, the teacher takes on the role of facilitator, mediator and coach of learning processes.</p>
+<p class="lead">This evolution calls for competences that do not always find space in teachers' initial training, but that are today essential to sustain quality WBL pathways. Tap each to read more.</p>
+<div class="cardgrid">
+<button class="rolecard" onclick="openRole('c1')"><div class="rc-ico">◇</div><span class="rc-t">Understand how companies work</span><span class="rc-d">Processes, roles, technologies, quality, safety</span></button>
+<button class="rolecard" onclick="openRole('c2')"><div class="rc-ico">◇</div><span class="rc-t">Know how occupations are evolving</span><span class="rc-d">Technology, digitalisation, sustainability</span></button>
+<button class="rolecard" onclick="openRole('c3')"><div class="rc-ico">◇</div><span class="rc-t">Build collaboration networks</span><span class="rc-d">Students, families, companies, local actors</span></button>
+<button class="rolecard" onclick="openRole('c4')"><div class="rc-ico">◇</div><span class="rc-t">Foster the transfer of learning</span><span class="rc-d">Between school and company</span></button>
+<button class="rolecard" onclick="openRole('c5')"><div class="rc-ico">◇</div><span class="rc-t">Cultivate a culture of continuous learning</span><span class="rc-d">Lifelong professional development</span></button>
+<button class="rolecard" onclick="openRole('c6')"><div class="rc-ico">◇</div><span class="rc-t">Reflect on one's own professional practice</span><span class="rc-d">Document, compare, gather feedback</span></button>
+</div>
+<p class="lead">Some guiding questions can orient the assessment of the competences present in the school community:</p>
+<div class="callout c-q"><p class="tag">Guiding questions — competences</p><ul>
+<li>Do teachers know enough about how companies work and how occupations are evolving?</li>
+<li>Are there opportunities for updating within real work settings?</li>
+<li>Is collaboration with companies considered an integral part of professional development?</li>
+<li>Are experiences used to reflect on and improve teaching design?</li>
+</ul></div>
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>On the Tech Bridge platform a <b>Teacher Self-Assessment on Work-Based Learning Competences</b> is available, enabling teachers to reflect on their own level of professional development, identify strengths and areas for improvement, and plan their own growth pathway. The tool has no evaluative purpose: it is intended to support individual professional reflection and foster a culture of continuous improvement, consistent with the principles of WBL and with the approach promoted by the Tech Bridge platform.</p></div></div></details>`};
+
+CH[3]={title:"Building a network of partner companies",short:"03 · Network",html:`
+<p class="intro">Finding a company willing to host students is only the first step. The goal is not to build a simple list of host companies, but to develop over time a network of educational partners able to contribute stably to student learning, to the innovation of the educational offer and to the development of the local area.</p>
+<p>The search for companies should therefore be seen as a continuous and strategic process, oriented not only to meeting immediate organisational needs, but also to consolidating lasting relationships based on mutual trust, on sharing educational goals and on continuous improvement.</p>
+<p>In this perspective, every new collaboration is an investment that increases the school's relational capital and feeds that process of organisational learning described in the previous chapter.</p>
+<p><b>How can the network of companies to collaborate with be built?</b></p>
+
+<p class="lead">This chapter has four parts — open the one you need.</p>
+<details class="acc"><summary>Start from the professional profile<span class="chev">›</span></summary><div class="body">
+<p>The search for companies should not start from the list of firms in the local area, but from an analysis of the professional profile and the learning objectives the school intends to pursue.</p>
+<p>Every education and training pathway prepares students to carry out specific professional activities, which require competences, knowledge and abilities to be developed through authentic work experiences.</p>
+<p class="lead">For this reason, before identifying partner companies, it is important that the school has clarified:</p>
+<ul class="pill-list"><li>which competences it intends to develop;</li><li>how to describe them clearly and consistently;</li><li>which professional activities really allow students to exercise them;</li><li>which work processes allow students to observe and experience those competences.</li></ul>
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>The Tech Bridge platform supports this preliminary work by providing methodological guides, toolkits and practical tools dedicated to competence-based design. In particular, the platform makes it possible to explore:</p><ul><li>the language of competences and the main approaches to describing them;</li><li>the use of the main European reference frameworks (EQF, Europass, ESCO, European Key Competences and other relevant frameworks);</li><li>ways to translate occupational profiles into observable and assessable learning outcomes;</li><li>the link between competences, professional activities and work processes.</li></ul></div>
+<p>Once the expected competences have been clarified, the next step is to identify the work processes in which those competences are actually exercised. The search for companies should therefore be guided by some questions:</p>
+<div class="callout c-q"><p class="tag">Guiding questions</p><ul>
+<li>In which activities and work processes are these target competences actually exercised?</li>
+<li>Which types of company offer meaningful settings for observing those processes?</li>
+</ul></div>
+<p>This perspective makes it possible to move beyond a search based solely on the company's economic sector, which is a fairly common mistake to avoid. In most cases, the competences developed by students are applied in very different production settings. For example, a maintenance technician may work in a metalworking, food, chemical, healthcare or logistics company; likewise, IT, administrative or design competences are required in organisations across the most diverse economic sectors. For this reason it is often more effective to start from company functions and the competences required, rather than from the label of the production sector.</p>
+</div></details>
+<details class="acc"><summary>Identify the companies<span class="chev">›</span></summary><div class="body">
+<p>Once the competences and company functions to look for have been defined, the school can begin mapping the companies in the local area.</p>
+<p>The goal is not to identify as many companies as possible, but to build progressively a diversified network of partners able to offer different and complementary learning experiences. A broad and qualified network allows the school to respond better to the needs of its different study pathways, to distribute students across different settings and to develop ever more mature collaborations over time.</p>
+<p class="lead">The sources for identifying companies can be many:</p>
+<ul class="pill-list"><li>Chambers of commerce</li><li>Trade associations</li><li>Professional bodies</li><li>Technology clusters</li><li>Local authorities</li><li>Regional networks</li><li>Alumni networks</li><li>Families</li><li>Companies already partnering</li><li>Sector events, fairs and exhibitions</li></ul>
+<p>Alongside these channels, tools can also be used to identify companies that are particularly attentive to young people and training processes. For example:</p>
+<div class="example"><div class="ex-t">Example from Italy</div><p>The <b>Delta Index Observatory</b>, which analyses how attractive companies are to the new generations, considering aspects such as their ability to attract, select, train and value young collaborators. Although not designed specifically for WBL, it can be a useful reference for identifying companies that show a particular sensitivity towards training and talent development, and which may therefore be privileged partners for quality learning experiences.</p><p>The site that the Italian-German Chamber of Commerce (AHK Italien) and Unioncamere dedicate to companies distinguished by their commitment to WBL: <a href="https://www.dualconcept.it/it/progetti/cooperazione-bilaterale-italo-tedesca/premio-di-eccellenza-duale/community-eccellenze-duali" target="_blank" rel="noopener">dualconcept.it ↗</a></p></div>
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>To facilitate this process, the Tech Bridge platform provides a registration system for schools and companies. During registration, each party builds its own profile by completing a structured descriptive sheet.</p><p>For companies, information is collected on: sector of activity; production and organisational processes; professional roles present; technologies used; competences that can be developed; modes of collaboration offered; willingness to host students; previous collaboration experiences with schools or training bodies.</p><p>Training institutions instead describe: study pathways; professional profiles; competences and learning outcomes pursued; types of experience sought; preferred modes of collaboration.</p><p>This information feeds the matching system of the Tech Bridge platform, which supports schools and companies in identifying potentially coherent partners, facilitating the building of effective and lasting collaborations.</p><p>Thanks to the matching system, the school can identify companies potentially coherent with its own training objectives and start a dialogue from information already shared about the organisation's characteristics, the competences that can be developed and the modes of collaboration offered.</p><p>The school can also decide to expand its network of partners by independently identifying new companies in the local area — for example to meet specific training needs, develop new study pathways, explore emerging sectors or reach companies not yet present on the platform.</p></div>
+<p>The guidance in the following section mainly refers to this second situation, in which it is the school that promotes the first contact and starts a relationship with a company that has not yet collaborated with the school or that is not present on the Tech Bridge platform.</p>
+<p>Naturally, many of the principles described are also useful when the first contact happens through the Tech Bridge platform. Although the platform facilitates the encounter between parties already inclined to collaborate, building an educational partnership still requires mutual listening, trust, clarity of goals and a progressive understanding of each other's needs and potential. Technology can facilitate the encounter; the quality of the collaboration depends instead on people's ability to build a relationship.</p>
+</div></details>
+<details class="acc"><summary>The first contact<span class="chev">›</span></summary><div class="body">
+<p>Many collaborations between schools and companies do not break down for lack of interest, but because the first contact is set up as a simple operational request ("Can we send you a student?") rather than as the beginning of a possible collaboration.</p>
+<p>Entering into a relationship with a company means first of all recognising it as a counterpart with whom to share an educational responsibility. The first goal is therefore not to immediately obtain a willingness to host students, but to create the conditions to get to know each other, mutually understand needs and expectations and imagine possible forms of collaboration.</p>
+<p>A relationship built this way is more likely to evolve over time, moving from occasional collaboration to a genuine educational partnership.</p>
+<h3 class="sub">Prepare before making contact</h3>
+<p>The quality of the first meeting largely depends on the work done before even picking up the phone or sending an email. Preparing means gathering information about the company, understanding its characteristics and identifying the elements that can foster a credible dialogue.</p>
+<p class="lead">Before making contact it is advisable to know at least:</p>
+<ul class="pill-list"><li>the sector of activity</li><li>the main products or services</li><li>the technologies used</li><li>how the company is organised</li><li>the professional roles present</li><li>any collaborations already developed with schools or other bodies</li><li>possible areas of common interest</li></ul>
+<h3 class="sub">Identify the right counterpart</h3>
+<p>This preliminary work makes it possible to personalise the contact and shows attention towards the counterpart — but you need to identify the right counterpart! One of the most frequent mistakes is approaching the wrong person.</p>
+<p>In small companies the contact is often the owner or a partner; in larger companies the first contact should generally be made with the human-resources managers or other delegated figures.</p>
+<p>When you do not know the correct contact person, it is better to ask politely for information rather than send generic communications: remember that talking to the right person considerably increases the chances that the collaboration can develop.</p>
+<div class="callout c-q"><p class="tag">Guiding questions — before contacting a company</p><ul><li>Do I really know this company?</li><li>Do I know the contact person?</li><li>Am I clear about the goal of the phone call?</li><li>Do I have all the information to present the school briefly?</li><li>Can I explain what I am looking for and why I chose this particular company?</li><li>Do I know which competences and work processes could be meaningful for my students?</li><li>Can I explain what value the company can gain from collaborating with the school?</li></ul></div>
+<h3 class="sub">The phone call</h3>
+<p>The phone call serves to introduce yourself, briefly explain the reason for the contact and check the company's interest in getting to know each other better. During the conversation it is important to use simple language, respect the other person's time and leave room for their questions. Avoid talking straight away about paperwork, agreements, the number of students or bureaucratic matters: the relationship comes first, and the goal is very simple — to arrange an exploratory meeting!</p>
+<h3 class="sub">The first meeting</h3>
+<p>The next step is to organise the meeting. This moment is often decisive for the future of the collaboration.</p>
+<p>The first meeting serves above all to build a relationship of trust, understand how the company works and check whether the conditions exist to develop an educational collaboration. It should be a moment of mutual listening and getting to know each other, a valuable chance to understand the company better — how it is organised, its work processes, the professional roles it employs, the changes it is going through and the needs and expectations it might have regarding collaboration with the education system. At the same time, it allows the company to understand the school's educational mission, the characteristics of the training pathways and the different possible modes of collaboration. The ultimate goal is not to leave the meeting with a signed agreement, but with the mutual willingness to deepen the collaboration.</p>
+<div class="callout c-q"><p class="tag">Questions to guide the dialogue</p><ul><li>What are the company's main products or services?</li><li>What are the most significant activities and processes?</li><li>How is the work organised?</li><li>Which professional roles are present?</li><li>Which technologies are used?</li><li>Which changes are affecting the sector?</li><li>Which competences are hardest to find today?</li><li>Is the company facing particular organisational or technological challenges?</li></ul></div>
+<p>Some companies wish to contribute to the training of young people and strengthen their ties with the local area; others are interested in getting to know potential future collaborators; others still see collaboration with the school as an opportunity to engage with new ideas, innovation and competences. Understanding these motivations makes it possible to build a more balanced relationship, in which both parties recognise the value of the collaboration.</p>
+<div class="callout c-q"><p class="tag">Examples of further questions to explore these aspects</p><ul><li>Have you already collaborated with schools or training bodies?</li><li>Which aspects of those experiences did you appreciate most?</li><li>Which difficulties, if any, did you encounter?</li><li>In which activities do you think a student could be meaningfully involved?</li><li>Are there particularly favourable times of year, or moments when it would be hard to host students?</li><li>Which forms of collaboration with the school would be most interesting for your organisation?</li></ul></div>
+<p>These questions are not a rigid template to follow, but a prompt to encourage an open conversation oriented towards mutual understanding.</p>
+<h3 class="sub">Presenting the school</h3>
+<p>After devoting time to listening to the company, you can present the school and the collaboration opportunities. The presentation should be concise, avoiding going straight into administrative or organisational details.</p>
+<p class="lead">It is instead important to help the company understand:</p>
+<ul class="pill-list"><li>which study pathways are present;</li><li>which professional profiles are trained;</li><li>which competences students are developing;</li><li>which educational objectives are pursued through WBL.</li></ul>
+</div></details>
+<details class="acc"><summary>From relationship to collaboration<span class="chev">›</span></summary><div class="body">
+<p>Once mutual willingness to collaborate has been confirmed, the next step is to identify the mode of collaboration best suited to the school's objectives, the company's characteristics, the competences to be developed and the resources both organisations can make available.</p>
+<p>Collaboration between school and company can take very different forms, characterised by different levels of involvement and specific educational aims. In many cases it is advisable to start with simple modes, allowing the partners to get to know each other and build mutual trust, and then evolve progressively towards more structured forms of collaboration.</p>
+<p class="lead">The main modes of collaboration include:</p>
+<ul class="pill-list"><li>Talks by professionals at school</li><li>Company visits</li><li>Joint design of learning scenarios</li><li>Lessons delivered by company professionals</li><li>Observational placements (job shadowing)</li><li>Project Work</li><li>Company challenges</li><li>Curricular traineeships</li><li>Apprenticeship</li><li>Participation in regional training ecosystems and collaboration networks</li></ul>
+<p>Each of these modes responds to different objectives, requires different levels of company involvement and brings into play specific organisational and teaching competences. For this reason there is no single solution valid for every situation: the choice should always be guided by the training objectives, the maturity level of the partnership and the characteristics of the context.</p>
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p><b>Learn more on the Tech Bridge platform.</b> The Tech Bridge platform devotes a specific section to the different modes of Work-Based Learning. For each mode it provides:</p><ul><li>a description of its educational aims and main features;</li><li>guidance on when it is appropriate to use it;</li><li>criteria for choosing the most suitable option according to the training objectives, the company's characteristics and the existing level of collaboration;</li><li>examples of good practice;</li><li>methodological guides;</li><li>operational sheets, templates and tools for designing, running and evaluating experiences.</li></ul><p>The aim is to accompany schools and companies not only in choosing the most appropriate mode of collaboration, but also in putting it into practice.</p></div></div></details>`};
+
+CH[4]={title:"Matching students and companies",short:"04 · Matching",html:`
+<p class="intro">Once the mode of collaboration has been decided and more than one partner company is available, the school builds a match that takes into account the characteristics of each student, the learning opportunities each company offers and the educational goals of the pathway.</p>
+<h2 class="blk">Eleven questions to guide the match</h2>
+<p class="lead">These prompts support coherent, transparent and well-reasoned student–company matches. Tap each to expand.</p>
+<details class="qa"><summary><span class="qn">1</span>Have we handled responsibilities for minors?<span class="chev">›</span></summary><div class="ans">If students are under 18, everything must be set out formally and in writing. Remember that some companies may be reluctant to host minors precisely for this reason.</div></details>
+<details class="qa"><summary><span class="qn">2</span>What is the company's ultimate goal?<span class="chev">›</span></summary><div class="ans">Many companies prefer to host final-year students because they see them as potential future employees. This is a real advantage for our students — use it in their favour.</div></details>
+<details class="qa"><summary><span class="qn">3</span>Same company every year, or rotate?<span class="chev">›</span></summary><div class="ans">There is no fixed answer. Ask what this student's learning goal needs most, and what the company prefers. The choice should come from that balance.</div></details>
+<details class="qa"><summary><span class="qn">4</span>Does the student have the basic knowledge needed?<span class="chev">›</span></summary><div class="ans">The experience only works if the student can already do something. If needed, agree with the company to bring forward some topics or lab exercises compared with the usual school programme: better to prepare them first than to throw them in at the deep end.</div></details>
+<details class="qa"><summary><span class="qn">5</span>Will the student use tools, machinery or software consistent with the pathway?<span class="chev">›</span></summary><div class="ans">It is not enough for the company to own advanced machinery: it is important that the student can observe, understand and, where possible, use it safely. The closer the experience is to what is studied at school, the greater the learning value.</div></details>
+<details class="qa"><summary><span class="qn">6</span>Is the complexity level right for the student's preparation?<span class="chev">›</span></summary><div class="ans">Too simple and the experience becomes passive presence; too complex and it breeds frustration and insecurity. Aim for an appropriate challenge — demanding enough to foster learning, accessible enough to allow success.</div></details>
+<details class="qa"><summary><span class="qn">7</span>Will it consolidate existing competences or develop new ones?<span class="chev">›</span></summary><div class="ans">Every experience should do both. Ask which competences already gained at school can be exercised in a real context, and which new professional, organisational or relational competences can be developed.</div></details>
+<details class="qa"><summary><span class="qn">8</span>Can the company offer a challenging but not overwhelming context?<span class="chev">›</span></summary><div class="ans">Not every company suits every student. Some contexts demand high autonomy and speed; others offer more gradual support. Assess whether the environment is a sustainable challenge for that specific student.</div></details>
+<details class="qa"><summary><span class="qn">9</span>Do the student's interests align with the company's activities?<span class="chev">›</span></summary><div class="ans">It is not essential that the student has already chosen their professional future, but a minimum match between interests and activities significantly increases motivation, engagement and learning quality. Where possible, listen to the student's preferences and factor them in.</div></details>
+<details class="qa"><summary><span class="qn">10</span>Are the logistics workable (location, public transport, hours)?<span class="chev">›</span></summary><div class="ans">Even the best experience can fail if it is hard to reach. Excessive travel times or uncertain connections undermine attendance, punctuality and wellbeing. Logistical sustainability is a genuine quality criterion for the match.</div></details>
+<details class="qa"><summary><span class="qn">11</span>Does the student need reinforced support — a particularly motivated company tutor?<span class="chev">›</span></summary><div class="ans">The quality of the experience often depends more on the person accompanying the student than on the company itself. For some students, a tutor open to dialogue and able to explain the meaning of activities really makes the difference.</div></details>
+<p class="lead" style="margin-top:22px">The stronger the school's relationship with local companies becomes, the easier this task gets.</p>`};
+
+CH[5]={title:"Evaluating and growing partnerships",short:"05 · Evaluate",html:`
+<p class="intro">Every Work-Based Learning experience is a valuable learning opportunity not only for students, but also for the school and the companies involved.</p>
+
+<p class="lead">This chapter has five parts — open the one you need.</p>
+<details class="acc"><summary>Why evaluate the collaboration?<span class="chev">›</span></summary><div class="body">
+<p>Evaluating a collaboration does not mean giving the company a grade or judging its quality in absolute terms. It means reflecting on the effectiveness of the relationship built, understanding which aspects helped achieve the educational objectives and identifying possible areas for improvement.</p>
+<p class="lead">In this perspective, evaluation takes on a formative and strategic function:</p>
+<ul class="pill-list"><li>on the one hand, it makes it possible to progressively improve the quality of the experiences offered to students;</li><li>on the other, it allows the school to consolidate an increasingly reliable, diverse network of partners engaged in educational design.</li></ul>
+<p>European guidance on WBL stresses that the continuous improvement of partnerships is one of the fundamental elements for building genuinely effective training systems. Every experience should therefore feed a process of shared reflection between school and company, turning the collaboration into an opportunity for mutual learning.</p>
+<p>At the end of each experience, the school can ask itself some guiding questions:</p>
+<div class="callout c-q"><p class="tag">Guiding questions</p><ul>
+<li>Did this collaboration contribute to achieving the training objectives?</li>
+<li>Did the company play an educational role, as well as an organisational one?</li>
+<li>Which aspects worked best?</li>
+<li>Which elements could be improved?</li>
+<li>Are there conditions to expand the collaboration in the following years?</li>
+</ul></div>
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>The Tech Bridge platform offers self-assessment templates useful for this purpose.</p></div>
+</div></details>
+<details class="acc"><summary>From evaluation to partnership growth<span class="chev">›</span></summary><div class="body">
+<p>Collaborations between school and company are not all the same, nor do they stay unchanged over time.</p>
+<p>An educational partnership evolves progressively through shared experiences. A company that initially hosts students on a company visit may, over the years, become a stable partner of the school, taking part in Project Work, Challenges, the advisory board with industry representatives or other training initiatives.</p>
+<p>Likewise, some collaborations may reveal organisational difficulties, communication problems or limited coherence with the educational objectives. In these cases evaluation should not have a punitive function, but be the starting point for a discussion with the company and, where possible, for improving the collaboration.</p>
+<p>The goal is therefore not to "pass" or "fail" companies, but to understand which level of partnership has been reached and which actions can foster its evolution. Moreover, a single negative experience should not be enough to form a definitive judgement on the company. It is always advisable to analyse the causes of any difficulties and to discuss them with the partner before taking decisions that could compromise a potentially significant collaboration.</p>
+</div></details>
+<details class="acc"><summary>Evaluation criteria<span class="chev">›</span></summary><div class="body">
+<p class="lead">Evaluation should be based on several criteria, grouped in five areas:</p>
+<div class="crit">
+<h4>Willingness to collaborate</h4><ul><li>openness to dialogue with the school;</li><li>participation in design meetings;</li><li>timeliness in communications;</li><li>willingness to identify shared solutions.</li></ul>
+<h4>Quality of the learning experience</h4><ul><li>coherence of the activities carried out with the objectives of the pathway;</li><li>opportunities offered to students to observe and experience meaningful processes;</li><li>quality of the support provided by the company tutor;</li><li>feedback given to students during the pathway.</li></ul>
+<h4>Organisational reliability</h4><ul><li>respect for shared agreements;</li><li>respect for the calendar;</li><li>continuity of tutoring;</li><li>attention to safety matters.</li></ul>
+<h4>Contribution to the partnership</h4><ul><li>willingness to host students from different study pathways;</li><li>participation in other school initiatives;</li><li>proposing new ideas or collaboration opportunities;</li><li>interest in developing medium-to-long-term relationships.</li></ul>
+<h4>Overall assessment</h4><ul><li>student satisfaction;</li><li>assessment by school tutors;</li><li>overall judgement on the collaboration;</li><li>mutual willingness to continue the relationship.</li></ul>
+</div>
+</div></details>
+<details class="acc"><summary>Building a dynamic partnership archive<span class="chev">›</span></summary><div class="body">
+<p>To value the experiences carried out, it is useful for the school to systematically collect information on the collaborations developed over time.</p>
+<p>An up-to-date archive makes it possible to preserve the school's organisational memory, preventing the knowledge acquired from remaining the exclusive asset of individual teachers or coordinators.</p>
+<p class="lead">The information collected may concern:</p>
+<ul class="pill-list"><li>company characteristics</li><li>experiences carried out</li><li>strengths observed</li><li>aspects to improve</li><li>modes of collaboration tested</li><li>assessments by students, school tutors and company tutors</li><li>partnership development prospects</li></ul>
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>The Tech Bridge platform supports this process by making it possible to document collaborations and progressively update the profile of partner companies, creating a shared knowledge base available to the school.</p></div>
+</div></details>
+<details class="acc"><summary>A possible classification of partnerships<span class="chev">›</span></summary><div class="body">
+<p>To help manage the network of partner companies, the school can adopt an internal classification describing the level of development of the collaboration.</p>
+<p>This classification is not a ranking of merit, nor should it be communicated to companies. It is an internal working tool, useful for guiding future collaboration strategies.</p>
+<p>For each partner company, ask yourself:</p>
+<div class="callout c-q"><p class="tag">Guiding questions — for each partner company</p><ul>
+<li>Which strengths emerged during the collaboration?</li>
+<li>Which aspects could be improved?</li>
+<li>Are there opportunities to expand the collaboration?</li>
+<li>What could be the next step in building the partnership?</li>
+</ul></div>
+<div class="tblwrap"><table><thead><tr><th>Level</th><th>Characteristics of the collaboration</th></tr></thead><tbody>
+<tr><td><b>Strategic partners</b></td><td>They collaborate stably with the school, take part in the design of the experiences, share the educational objectives and contribute actively to the development of the training pathways.</td></tr>
+<tr><td><b>Consolidated partners</b></td><td>They offer quality learning experiences, respect agreements and guarantee reliable collaboration, albeit with involvement limited to some activities.</td></tr>
+<tr><td><b>Development partners</b></td><td>They have started positive but still occasional collaborations, or present some aspects that require discussion and consolidation before expanding the relationship.</td></tr>
+</tbody></table></div></div></details>`};
+
+CH[6]={title:"Becoming a learning school",short:"06 · Learning school",html:`
+<h2 class="blk">Beyond the skills mismatch</h2>
+<p class="intro">In recent years, the debate on the relationship between school and the world of work has focused above all on the skills mismatch — the gap between the competences young people hold and those companies require.</p>
+<p>This perspective has helped highlight the need to constantly update training pathways and strengthen dialogue between education systems and the production system. However, as CEDEFOP's <em>Beyond Skills Development</em> stresses, limiting WBL to meeting skills needs alone risks greatly reducing its potential.</p>
+<p>The technological, economic and social transformations that characterise today's world in fact require something more than updating technical-professional skills. They require the ability to build shared learning contexts, in which schools, companies, students, teachers, company tutors and other local actors collaborate stably in designing authentic and meaningful training experiences.</p>
+<div class="callout c-euro"><p class="tag">European frame</p><p>In this perspective, WBL is not only a teaching method or a way of organising training pathways, but becomes a tool through which school and company build new knowledge together. The aim is not simply to prepare more employable young people, but to contribute to forming people able to understand the complexity of work, society and citizenship, developing professional, personal and social competences in a lifelong-learning perspective.</p></div>
+<h2 class="blk">From student learning to school learning</h2>
+<p>Every WBL experience produces a large amount of knowledge for the school: new competences required by the labour market, transformations of occupations, technological innovations, emerging organisational models, tools, professional languages, working methods and new forms of collaboration.</p>
+<p>This information should not remain the asset of individual tutors or of the teachers directly involved, but be gathered, shared and valued within the school organisation.</p>
+<p>Only in this way is it possible to turn WBL into a mechanism for organisational learning, through which the school does not merely train students but continuously learns from its own experience.</p>
+<p class="lead">At the end of each school year the school could ask itself these questions:</p>
+<div class="callout c-q"><p class="tag">Guiding questions — end of school year</p><ul>
+<li>What have we learned, as an organisation, from the experiences carried out?</li>
+<li>Which transformations of the world of work have we observed?</li>
+<li>Which new competences are emerging?</li>
+<li>Which modes of collaboration proved most effective?</li>
+<li>Which partnerships do we want to consolidate or develop further?</li>
+</ul></div>
+<h2 class="blk">From experiences to curricula: valuing what we have learned</h2>
+<p>The added value of WBL emerges when the knowledge produced during the experiences is used to progressively improve the educational offer.</p>
+<p>Every company visit, traineeship, Project Work, Challenge or other collaboration experience is in fact a source of valuable information that can guide the school's decisions.</p>
+<p>In this perspective, WBL helps build training institutions able to learn from their own experience, engage in dialogue with the local area, adapt to change and design training pathways increasingly consistent with the needs of people, companies and society.</p>
+<p class="lead">The evidence collected makes it possible, for example, to reflect on several aspects. Open each to read more.</p>
+<details class="acc"><summary>The calendar and organisation of activities<span class="chev">›</span></summary><div class="body"><p>Work-Based Learning experiences can suggest a different distribution of learning time, valuing moments traditionally underused, such as afternoon activities, summer periods or weeks dedicated to interdisciplinary projects.</p><p>They can also help the school understand how far the organisation of the calendar fosters or hinders the integration between school learning and work experience.</p></div></details>
+<details class="acc"><summary>Teaching design<span class="chev">›</span></summary><div class="body"><p>The experiences carried out make it possible to reflect on the coherence between subject design and the activities carried out in work settings. The school can ask itself, for example:</p><ul><li>which subjects really contributed to designing the experiences?</li><li>how far did competence-based design influence teaching planning?</li><li>which subject content should be anticipated, postponed or reorganised?</li><li>which new interdisciplinary connections emerged during the pathways?</li></ul></div></details>
+<details class="acc"><summary>Teaching methods<span class="chev">›</span></summary><div class="body"><p>Engagement with the world of work offers many prompts to innovate teaching. Experiences can suggest introducing Project Work, Challenges, authentic tasks, interdisciplinary activities, labs shared with companies and new, more competence-oriented assessment methods. This requires a teaching design able to build continuous connections between the different learning environments.</p><p>The teacher progressively takes on the role of facilitator of this process, designing preparation, observation, documentation, discussion and debriefing activities that help students recognise relationships, transfer competences and give meaning to the experiences they have lived.</p><p>Digital technologies, the documentation of learning, notes, portfolios, videos, logbooks and collaborative tools are useful resources that can be effectively integrated into teaching, making the links between what happens in the different learning contexts more visible.</p></div></details>
+<details class="acc"><summary>The educational offer<span class="chev">›</span></summary><div class="body"><p>Over time, the information collected can guide a progressive review of curricula. The school can identify emerging competences to value, introduce new content, reinforce some learning or develop specific local adaptations of the curriculum consistent with the characteristics of the local area and the evolution of occupations.</p></div></details>
+<details class="acc"><summary>The school's organisation<span class="chev">›</span></summary><div class="body"><p>Internal organisation can also evolve thanks to WBL experiences. The evidence collected can suggest revising roles and responsibilities, setting up dedicated working groups, strengthening departments, the advisory board with industry representatives or other organisational structures able to stably sustain collaboration with the local area.</p><p>In this way, Work-Based Learning contributes not only to the growth of students, but also to the development of the school's organisational capacity.</p></div></details>
+<h2 class="blk">From documentation to learning analytics</h2>
+<p>For all this to happen, experiences must be documented systematically.</p>
+
+
+<div class="callout c-plat"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>The information gathered through the design of experiences, the observations of school and company tutors, student feedback, assessment sheets, monitoring tools and activity documentation is a valuable information asset. The goal is not to collect data for purely administrative purposes, but to turn this information into knowledge useful for guiding the school’s decisions.</p><p>The Tech Bridge platform is also created with this objective in mind. Progressively, the analysis of the data collected will make it possible to understand, for example:</p><ul><li>which modes of WBL produce the most significant learning;</li><li>which competences are most developed in the different contexts;</li><li>which characteristics the most effective partnerships share;</li><li>which economic sectors are evolving most rapidly;</li><li>which training needs emerge most frequently;</li><li>which organisational aspects of the school require further improvement.</li></ul></div>
+<p>In this perspective, documentation is not the end point of the experience, but the starting point of a continuous process of reflection, evaluation and innovation.</p>`};
+
+CH[7]={title:"Promoting and valuing WBL experiences",short:"07 · Promote",html:`
+<p class="intro">Every WBL experience is an asset that deserves to be shared.</p>
+<p>Telling the story of collaborations between schools and companies does not only mean giving visibility to the activities carried out, but helping to spread a culture of educational partnership, valuing the commitment of students, teachers and companies and fostering the emergence of new collaborations in the local area.</p>
+<h2 class="blk">Channels to document and share</h2>
+<p class="lead">The experiences carried out can be documented and disseminated through many tools and communication channels, for example:</p>
+<ul class="pill-list"><li>School website and social channels</li><li>Partner companies' website and social channels</li><li>Newsletters</li><li>Public events, open days and career guidance fairs</li><li>Meetings with families, students and companies</li><li>Testimonies from students, school tutors and company tutors</li><li>Local media and trade magazines</li><li>Regional networks, trade associations and chambers of commerce</li></ul>
+<p>Effective communication helps strengthen the social recognition of WBL, promote the educational value of school–company partnerships and progressively involve new parties interested in taking part in the network.</p>
+<p>Every shared experience can become a learning opportunity for other schools and companies too. Documenting and disseminating good practice therefore contributes to the growth of the whole educational community, fostering the circulation of ideas, tools and collaboration models that can be adapted and reused in different contexts.</p>`};
+
+// Objectives (ch1) — full integral texts
+ROLES.o1=['1','Improve the quality of learning','<p>The first objective of WBL is to improve the effectiveness of training by offering students opportunities for authentic learning, in which to apply knowledge, skills and competences in real work situations.</p><p>Work experience in a company allows students to give meaning to subject content, integrate theory and practice, tackle authentic problems and progressively develop technical-professional and transversal competences. It also fosters greater awareness of their own aptitudes, strengthens motivation to study and supports the construction of their personal and professional project by developing career guidance competences.</p>'];
+ROLES.o2=['2','Strengthen collaboration with the local area','<p>WBL is a privileged tool for building stable relationships between school, companies, public bodies, third-sector organisations and other local actors.</p><p>Collaboration makes it possible to share competences, resources, educational responsibilities and common goals. Companies thus stop being mere host sites and become active partners in the design and delivery of training pathways.</p>'];
+ROLES.o3=['3','Innovate teaching','<p>Continuous engagement with the world of work is an important stimulus for renewing educational practice.</p><p>Observing company processes allows teachers to design more contextualised activities, build more meaningful learning scenarios and integrate authentic problems from professional settings into the curriculum.</p><p>Teaching innovation therefore does not come from introducing new techniques in the abstract, but arises from ongoing engagement between school and the world of work.</p>'];
+ROLES.o4=['4','Update the curriculum','<p>Every WBL experience is a valuable opportunity to observe the changes affecting the production system.</p><p>The evidence gathered during traineeships, Project Work and other collaboration experiences makes it possible to understand how occupations evolve, which competences emerge, which technologies are introduced and how organisational processes change.</p><p>Company-tutor observations, the documentation produced by students, debriefing moments and systematic engagement with companies are therefore a source of strategic information for reviewing the educational offer. This body of knowledge allows the school to progressively update curricula, revise learning objectives, anticipate new content, strengthen interdisciplinarity and keep training consistent with the evolution of professional contexts.</p>'];
+ROLES.o5=['5','Promote continuous improvement and organisational learning','<p>The fifth objective is the most mature outcome of WBL. Every experience carried out generates knowledge that belongs not only to students but becomes an asset of the whole school organisation.</p><p>Company-tutor observations, student feedback, activity documentation, assessment results, reflections from debriefing and engagement with companies form a valuable information base to guide the school\'s decisions.</p><p>WBL thus becomes a tool for organisational learning. Experiences do not end with the traineeship or Project Work, but feed a permanent process of reflection, evaluation and innovation. The knowledge collected can guide the revision of curricula, the updating of teaching methods, the design of new interdisciplinary pathways, the organisation of labs, teacher training, the qualification of partnerships and, more generally, the development of the school\'s ability to learn from its own experience.</p>'];
+// Roles (ch2)
+ROLES.students=['S','Students','<p>Students are the protagonists of WBL experiences. Their role is not only to take part in the planned activities, but to adopt an active and responsible attitude during all phases of the experience. They are called upon to contribute to their own training project, honour the commitments of the learning agreement, collaborate with school and company tutors, document the activities carried out and reflect critically on the learning acquired.</p><p>Work experience thus becomes an opportunity to develop autonomy, a sense of responsibility, the ability to collaborate, awareness of their own competences and of their personal and professional project.</p><p>The student is therefore not the passive recipient of the training intervention, but the main builder of their own learning.</p>'];
+ROLES.school=['Sc','The school','<p>Educational and organisational responsibility for WBL pathways remains with the school.</p><p>The school integrates WBL into its educational offer, defines its aims, organisational arrangements and assessment criteria, identifies the resources needed and promotes collaboration with companies, bodies and organisations in the local area.</p><p>Alongside these design and organisational responsibilities, the school is called upon to gather, interpret and value the knowledge generated by collaborations with the world of work, turning it into opportunities to improve its own educational offer.</p>'];
+ROLES.leader=['L','The school leader','<p>The school leader ensures the strategic direction of partnerships with companies and local bodies.</p><p>Besides ensuring compliance with current regulations, the signing of agreements with companies and the fulfilment of workplace health-and-safety obligations, the leader promotes a culture of collaboration with the local area and supports the development of stable educational partnerships.</p><p>The leader also has the task of creating the organisational conditions for WBL to become an integral part of the school\'s educational project, fostering the involvement of teachers, collaboration among the collegial bodies and the valuing of the experiences carried out.</p>'];
+ROLES.board=['A','Advisory board with industry representatives','<p>An advisory board with industry representatives is the main space for dialogue between the school and the world of work.</p><p>The presence of representatives of companies, professions and institutions makes it possible to maintain constant dialogue with the local area and to foster alignment between the evolution of professional contexts and the educational offer.</p><p>Its main tasks include:</p><ul><li>contributing to the design of WBL pathways;</li><li>fostering the interdisciplinary coordination of activities;</li><li>putting forward proposals to update curricula;</li><li>analysing the results of the experiences carried out;</li><li>identifying new opportunities for collaboration with the local area;</li><li>helping to define priorities for developing the educational offer.</li></ul><p>Such a board is therefore not merely a formal consultative body, but can become one of the main engines of the school\'s educational innovation, helping to turn Work-Based Learning experiences into growth opportunities for the whole organisation.</p>'];
+ROLES.coord=['C','The WBL coordinator','<p>On delegation from the school leader, the WBL coordinator operationally coordinates the whole system of collaboration between school and the world of work.</p><p>The coordinator ensures continuity in relationships with companies, supports the design of pathways, coordinates organisational activities and fosters dialogue among all those involved.</p><p>Main responsibilities include:</p><ul><li>coordinating the search for and selection of partner companies;</li><li>promoting the building of new collaborations;</li><li>supporting the joint design of experiences;</li><li>coordinating school tutors and the teachers involved;</li><li>monitoring the running of activities;</li><li>gathering documentation, feedback and results;</li><li>fostering the spread of good practice within the school.</li></ul><div class="callout c-plat" style="margin-top:10px"><p class="tag">On the platform <span class="verify">TO VERIFY</span></p><p>The Tech Bridge platform is one of the tools supporting this function, making it possible to manage company profiles, facilitate the matching between the demand and supply of learning experiences, document pathways, collect feedback and provide information useful for monitoring and continuous improvement.</p></div>'];
+ROLES.teachers=['T','Teachers &amp; class councils','<p>Teachers and class councils (the teaching team of each class) play an essential role in turning WBL experiences into genuine learning opportunities.</p><p>It is their task to integrate activities into the curriculum, prepare students for the experience, connect what is observed in work settings to subject content and accompany the reworking of the experience through reflection, discussion and assessment.</p><p>The class council also ensures the educational coherence of the whole pathway, fostering the contribution of the different subjects and valuing students\' learning in an interdisciplinary way.</p><p>Work-Based Learning experiences are also an important opportunity for teachers\' own professional updating. Engagement with companies makes it possible to learn how occupations, technologies and organisational processes are evolving, transferring this knowledge into teaching design and contributing to the continuous updating of curricula.</p>'];
+ROLES.tutor=['Tu','The school tutor','<p>The school tutor accompanies the student during all phases of the Work-Based Learning pathway.</p><p>The school tutor collaborates with the company tutor in defining the training objectives, supports the student during the experience, monitors the progress of activities and fosters reflection on the learning acquired.</p><p>Through periodic meetings, observation tools, the logbook and debriefing activities, the tutor helps the student turn the work experience into an opportunity for personal and professional growth.</p>'];
+// Competences (ch2) — the 6 cards, full integral texts
+ROLES.c1=['◇','Understand how companies work','<p>To collaborate effectively with the production world it is not enough to know the subject taught. It is necessary to understand how organisations really work: production processes, professional roles, work organisation, technologies, quality systems, safety and company dynamics.</p><p>This knowledge allows teachers to design authentic activities, understand the professional meaning of the competences developed by students and talk with companies using a shared language.</p>'];
+ROLES.c2=['◇','Know how occupations are evolving','<p>Occupations change rapidly under the effect of technological innovation, digitalisation, sustainability and organisational change.</p><p>For this reason it is important that teachers have opportunities to get to know production contexts directly, through company visits, periods of updating within companies, participation in regional networks and engagement with professionals and experts.</p><p>The aim is not to turn teachers into company technicians, but to enable them to understand how occupations are evolving and translate those changes into the design of training pathways.</p>'];
+ROLES.c3=['◇','Build collaboration networks','<p>In WBL the teacher helps build an educational network involving students, families, companies, company tutors, trade associations, chambers of commerce, employment services, local authorities and other local actors.</p><p>Being able to create and maintain these relationships is a fundamental professional competence, because it makes it possible to develop stable partnerships and to value the resources available in the community.</p>'];
+ROLES.c4=['◇','Foster the transfer of learning between school and company','<p>One of the teacher\'s main tasks in WBL is to help students build continuous connections between what they learn in the different learning contexts.</p><p>The experiences carried out at school and those lived in the company do not automatically produce learning: for this to happen, students must be accompanied in reflecting, interpreting the experience and transferring knowledge and competences from one context to another.</p><p>The teacher therefore takes on the role of facilitator of learning, designing activities, moments of discussion, observation tools and debriefing opportunities that help students integrate theory and practice, make implicit knowledge explicit and give professional meaning to the experiences they have lived.</p>'];
+ROLES.c5=['◇','Cultivate a culture of continuous learning','<p>The evolution of occupations makes permanent updating necessary.</p><p>Beyond subject-specific deepening, teachers\' professional development should include cross-cutting themes such as digitalisation, sustainability, organisational innovation, equal opportunities and the ability to adapt to change.</p><p>The teacher too, like their students, is called upon to learn throughout their professional life.</p>'];
+ROLES.c6=['◇','Reflect on one\'s own professional practice','<p>One of the most important competences is the ability to critically analyse one\'s own work.</p><p>This means documenting experiences, engaging with colleagues, gathering feedback from students and companies, evaluating the effectiveness of the activities carried out and using the evidence collected to progressively improve teaching design.</p><p>It is this reflective capacity that allows WBL to become a tool for organisational learning for the whole school.</p>'];
+
+function renderNav(){document.getElementById('chapnav').innerHTML=Object.entries(CH).map(([n,c])=>`<button data-ch="${n}" onclick="showChap(${n})">${c.short}</button>`).join('');}
+function showChap(n){const c=CH[n];document.getElementById('main').innerHTML=`<section class="chapter show"><span class="ch-num">Chapter ${String(n).padStart(2,'0')}</span><h1 class="ch-title">${c.title}</h1>${c.html}</section>`;document.querySelectorAll('.chapnav button').forEach(b=>b.classList.toggle('on',b.dataset.ch==String(n)));window.scrollTo(0,0);}
+function openRole(k){const [ico,title,body]=ROLES[k];document.getElementById('rIco').textContent=ico;document.getElementById('rTitle').innerHTML=title;document.getElementById('rBody').innerHTML=body;document.getElementById('roleDlg').showModal();}
+function toggleTheme(){const r=document.documentElement;const dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',dark?'light':'dark');document.getElementById('tglIcon').textContent=dark?'🌙':'☀️';document.getElementById('tglTxt').textContent=dark?'Dark':'Light';}
+renderNav();showChap(1);
+</script>
+</body>
+</html>

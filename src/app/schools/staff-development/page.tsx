@@ -7,6 +7,7 @@ import { BookOpen, Calendar, Users } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { StaffResourceList } from "@/components/schools/StaffResourceList";
 import Link from "next/link";
+import { eduWidgets } from "@/data/edu-widgets";
 
 export const metadata = { title: "Staff Development" };
 
@@ -87,6 +88,24 @@ export default async function StaffDevelopmentPage() {
                     ))}
                   </div>
                 )}
+              </div>
+
+              <div className="card p-5 mb-5">
+                <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-brand-600" />
+                  Interactive Guides
+                </h3>
+                <ul className="space-y-2">
+                  {eduWidgets
+                    .filter((w) => ["schools-partnership-guide", "language-of-competences", "teacher-self-assessment-wbl"].includes(w.slug))
+                    .map((w) => (
+                      <li key={w.slug}>
+                        <Link href={`/bridge/educational-collaboration/${w.slug}`} className="text-sm text-brand-600 hover:text-brand-800">
+                          {w.title}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
               </div>
 
               <div className="card p-5 bg-blue-50 border-blue-100">
