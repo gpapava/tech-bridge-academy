@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tensioner system for an industrial unwinder — Tech Bridge Academy</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--surface-0:#f5f4f0;--surface-1:#f0efe9;--surface-2:#fff;--text-primary:#1a1a18;--text-secondary:#5f5e5a;--text-muted:#888780;--border:#e0dfd8;--border-strong:#c8c7c0;--radius:8px;--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{font-family:var(--font-sans);background:var(--surface-0);color:var(--text-primary)}
+.page{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#185FA5;text-decoration:none;margin-bottom:1.25rem;cursor:pointer}
+.back-link:hover{opacity:.8}
+.hero{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.25rem}
+.hero-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#185FA5;margin-bottom:.5rem}
+.hero-title{font-size:18px;font-weight:500;color:var(--text-primary);margin-bottom:.65rem;line-height:1.3}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px}
+.meta-pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 10px;border-radius:99px;background:var(--surface-1);color:var(--text-secondary);border:0.5px solid var(--border)}
+.meta-pill svg{flex-shrink:0}
+.sec-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
+.sec-btn{font-size:12px;padding:5px 12px;border-radius:99px;border:0.5px solid var(--border);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.sec-btn.on{background:#185FA5;color:#fff;border-color:#185FA5}
+.section{display:none}.section.on{display:block}
+.intro-box{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:1rem;padding:.75rem 1rem;background:var(--surface-1);border-radius:var(--radius);border-left:2px solid var(--border-strong)}
+.field-grid{display:grid;gap:8px;margin-bottom:1rem}
+.field{display:grid;grid-template-columns:160px 1fr;gap:0;background:var(--surface-2);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.field-label{padding:.6rem .85rem;font-size:12px;font-weight:500;color:#0C447C;background:#E6F1FB;border-right:0.5px solid var(--border)}
+.field-val{padding:.6rem .85rem;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.act-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.act-item{display:flex;align-items:flex-start;gap:10px;padding:.6rem .85rem;background:var(--surface-2);border:0.5px solid var(--border);border-radius:var(--radius)}
+.act-num{width:22px;height:22px;border-radius:50%;background:#E6F1FB;color:#0C447C;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.act-text{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.comp-col{border-radius:12px;overflow:hidden;border:0.5px solid}
+.comp-col.tech{border-color:#B5D4F4}.comp-col.trans{border-color:#9FE1CB}
+.comp-head{padding:.7rem 1rem;display:flex;align-items:center;gap:8px}
+.comp-col.tech .comp-head{background:#185FA5}.comp-col.trans .comp-head{background:#0F6E56}
+.comp-head svg{color:#fff}.comp-head span{font-size:13px;font-weight:500;color:#fff}
+.comp-body{background:var(--surface-2);padding:.5rem .75rem}
+.comp-item{display:flex;gap:8px;padding:.4rem .25rem;border-bottom:0.5px solid var(--border);align-items:flex-start}
+.comp-item:last-child{border-bottom:none}
+.comp-n{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
+.comp-col.tech .comp-n{background:#E6F1FB;color:#0C447C}
+.comp-col.trans .comp-n{background:#E1F5EE;color:#085041}
+.comp-text{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.rub-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:1rem}
+.rub-table th{padding:.5rem .75rem;background:#E6F1FB;color:#0C447C;font-weight:500;text-align:left;border:0.5px solid var(--border)}
+.rub-table td{padding:.5rem .75rem;border:0.5px solid var(--border);color:var(--text-secondary);line-height:1.4;vertical-align:top}
+.rub-table tr:nth-child(even) td{background:var(--surface-1)}
+.rub-table .lvl{font-size:10px;font-weight:500;color:var(--text-muted);display:block;margin-bottom:2px}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="back-link" onclick="history.back()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18"/></svg> Back to Project Work</a>
+<div class="hero">
+  <div class="hero-tag">Project Work · Example from Italy</div>
+  <div class="hero-title">Tensioner system for an industrial unwinder</div>
+  <div class="meta-row">
+    <span class="meta-pill"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg> Mechanical and automation</span>
+    <span class="meta-pill"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg> 40–50 hours</span>
+    <span class="meta-pill"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg> EQF adaptable</span>
+    <span class="meta-pill"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg> Mechanical engineering · ITS / Technical institute</span>
+  </div>
+</div>
+<nav class="sec-nav"><button class="sec-btn  on" onclick="show('idea',this)">Project idea</button>
+  <button class="sec-btn" onclick="show('learn',this)">Learning outcomes</button>
+  <button class="sec-btn" onclick="show('activities',this)">Activities</button>
+  <button class="sec-btn" onclick="show('aval',this)">Assessment</button></nav>
+<div id="idea" class="section  on"><div class="intro-box">A company that designs and manufactures automatic machines for industrial lines wants to develop or improve the tensioner system of an unwinder. The unwinder accompanies the unwinding of large reels of wound material, maintaining the correct tension of the belt or strip during variation in the reel diameter.</div>
+<div class="field-grid">
+<div class="field"><div class="field-label">Commission</div><div class="field-val">Students are asked to analyse the functioning of the tensioner group, identify critical issues related to assembly, maintenance and reliability, and propose an improved technical solution. The Project Work reproduces the work of a small technical office: problem analysis, requirements definition, concept development, CAD modelling, technical documentation, and final presentation to the client.</div></div>
+<div class="field"><div class="field-label">Thematic areas</div><div class="field-val">Mechanical design · Technical drawing and CAD · Mechanical technologies · Industrial automation · Maintenance · Quality and safety</div></div>
+<div class="field"><div class="field-label">Duration</div><div class="field-val">Approximately 40–50 hours, adjustable based on the level of the programme and laboratory availability</div></div>
+<div class="field"><div class="field-label">Period</div><div class="field-val">Second semester / second part of the training programme, preferably after acquiring basic competences in technical drawing, CAD and mechanical technology</div></div>
+<div class="field"><div class="field-label">Locations</div><div class="field-val">Classroom · CAD laboratory · Mechanical laboratory · Optional company visit or meeting · Online sessions with the company tutor</div></div>
+<div class="field"><div class="field-label">Resources</div><div class="field-val">Human: subject teacher, technical-practical teacher or lab instructor, company tutor, optional company technicians. Instrumental: PC, CAD software, measuring instruments, technical catalogues, company documentation, optional sample components</div></div>
+</div></div>
+<div id="learn" class="section"><div class="intro-box">At the end of the pathway, students will be able to analyse a technical commission; interpret mechanical documentation and functional diagrams; identify design constraints; propose solutions consistent with the client's need; use CAD tools to represent components and assemblies; prepare drawings, bills of materials, and technical reports; collaborate in a group; document the work process; present and argue design choices to an external interlocutor.</div>
+<div class="comp-grid">
+<div class="comp-col tech"><div class="comp-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg><span>Technical and professional</span></div><div class="comp-body">
+<div class="comp-item"><div class="comp-n tech">1</div><div class="comp-text">Analyse a technical commission and translate it into design requirements</div></div>
+<div class="comp-item"><div class="comp-n tech">2</div><div class="comp-text">Understand the functioning of an unwinder and the role of the tensioner group</div></div>
+<div class="comp-item"><div class="comp-n tech">3</div><div class="comp-text">Interpret mechanical documentation and functional schemas</div></div>
+<div class="comp-item"><div class="comp-n tech">4</div><div class="comp-text">Identify design constraints (kinematics, friction, tensioning, maintenance)</div></div>
+<div class="comp-item"><div class="comp-n tech">5</div><div class="comp-text">Propose and compare alternative solutions, select and justify the chosen one</div></div>
+<div class="comp-item"><div class="comp-n tech">6</div><div class="comp-text">Produce CAD models, technical drawings, bill of materials, and technical report</div></div>
+</div></div>
+<div class="comp-col trans"><div class="comp-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg><span>Transversal</span></div><div class="comp-body">
+<div class="comp-item"><div class="comp-n trans">1</div><div class="comp-text">Collaborate in a group and distribute roles effectively</div></div>
+<div class="comp-item"><div class="comp-n trans">2</div><div class="comp-text">Plan and manage work within agreed timelines</div></div>
+<div class="comp-item"><div class="comp-n trans">3</div><div class="comp-text">Document the work process progressively</div></div>
+<div class="comp-item"><div class="comp-n trans">4</div><div class="comp-text">Present and argue design choices to an external client</div></div>
+<div class="comp-item"><div class="comp-n trans">5</div><div class="comp-text">Respond pertinently to questions and critical observations</div></div>
+<div class="comp-item"><div class="comp-n trans">6</div><div class="comp-text">Reflect critically on the process followed and propose improvements</div></div>
+</div></div></div></div>
+<div id="activities" class="section"><div class="intro-box">The project develops in seven macro-phases, from the company presentation of the commission to the final evaluation. Duration is indicative and can be adjusted to the programme level.</div>
+<div class="act-list">
+<div class="act-item"><div class="act-num">1</div><div class="act-text">Presentation of the commission by the company and initial context analysis</div></div>
+<div class="act-item"><div class="act-num">2</div><div class="act-text">Study of the unwinder's functioning and the tensioner group</div></div>
+<div class="act-item"><div class="act-num">3</div><div class="act-text">Identification of technical requirements and design constraints</div></div>
+<div class="act-item"><div class="act-num">4</div><div class="act-text">Development of two or more solution hypotheses and motivated selection</div></div>
+<div class="act-item"><div class="act-num">5</div><div class="act-text">CAD modelling of the assembly and principal components</div></div>
+<div class="act-item"><div class="act-num">6</div><div class="act-text">Production of technical drawings, bill of materials, and brief technical report</div></div>
+<div class="act-item"><div class="act-num">7</div><div class="act-text">Mid-point review with school and company tutors</div></div>
+<div class="act-item"><div class="act-num">8</div><div class="act-text">Preparation of the final presentation</div></div>
+<div class="act-item"><div class="act-num">9</div><div class="act-text">Final presentation to the client and feedback collection</div></div>
+</div></div>
+<div id="aval" class="section"><div class="intro-box">Joint school-company assessment based on the following criteria. Four proficiency levels: not achieved — basic — intermediate — advanced. The rubric can be adapted to the EQF level of the programme.</div>
+<div style="overflow-x:auto"><table class="rub-table">
+<thead><tr><th style="width:18%">Criterion</th><th style="width:20%">Not achieved</th><th style="width:20%">Basic</th><th style="width:20%">Intermediate</th><th style="width:22%">Advanced</th></tr></thead>
+<tbody>
+<tr><td><strong>Coherence with the commission</strong></td><td>Solution does not respond to main requirements or shows fragmented understanding</td><td>Solution responds only in part; functional or documentation limits present</td><td>Solution is coherent with most requirements and shows good understanding</td><td>Solution fully responds to the commission; functional, motivated, attentive to technical and maintenance constraints</td></tr>
+<tr><td><strong>Technical quality</strong></td><td>Proposal is barely feasible or does not consider the overall group functioning</td><td>Proposal is partially feasible but requires significant corrections</td><td>Proposal is technically plausible, fairly complete and consistent with required functioning</td><td>Proposal is solid, simple, feasible; shows attention to assembly, safety, and maintenance</td></tr>
+<tr><td><strong>Technical documentation</strong></td><td>Deliverables incomplete, poorly readable or inconsistent</td><td>Essential deliverables but with inaccuracies; report poorly developed</td><td>Clear and consistent deliverables; adequate and comprehensible report</td><td>Complete, orderly, consistent documentation; usable to understand and discuss the project</td></tr>
+<tr><td><strong>Application of competences</strong></td><td>Technical knowledge barely applied or incorrectly</td><td>Competences applied in an essential way; frequent guidance needed</td><td>Competences applied correctly in most activities</td><td>Competences applied with autonomy, precision, and ability to connect different aspects</td></tr>
+<tr><td><strong>Organisation and collaboration</strong></td><td>Group works in a disorganised way; roles and timelines not respected</td><td>Group collaborates discontinuously; organisation requires strong teacher support</td><td>Group is organised, respects main deadlines, collaborates effectively</td><td>Group works autonomously, distributes roles, documents the process, fully respects deadlines</td></tr>
+<tr><td><strong>Presentation and argumentation</strong></td><td>Presentation unclear and does not motivate choices</td><td>Presentation describes the work but with limited argumentation</td><td>Clear presentation; explains main design choices</td><td>Effective, technical and convincing presentation; group responds pertinently to client questions</td></tr>
+</tbody></table></div></div>
+</div>
+<script>
+function show(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('on'));document.getElementById(id).classList.add('on');btn.classList.add('on');}
+</script>
+</body>
+</html>

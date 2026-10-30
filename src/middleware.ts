@@ -47,6 +47,7 @@ export default withAuth(
           "/bridge",
           "/bridge/career-guidance",
           "/bridge/map",
+          "/widgets",
         ];
 
         if (publicPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))) {

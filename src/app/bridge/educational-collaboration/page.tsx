@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { GraduationCap, Download, ExternalLink, FileText, Video } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import Link from "next/link";
+import { eduWidgets } from "@/data/edu-widgets";
 
 export const metadata = { title: "Educational Collaboration" };
 export const revalidate = 3600;
@@ -52,6 +53,26 @@ export default async function EducationalCollaborationPage() {
               </button>
             ))}
           </div>
+
+          {/* Interactive guides */}
+          <section className="mb-14">
+            <h2 className="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3">Interactive Guides</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+              {eduWidgets.map((w) => (
+                <Link key={w.slug} href={`/bridge/educational-collaboration/${w.slug}`} className="card p-5 hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 flex-shrink-0">
+                      <GraduationCap className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <Badge variant="slate">{w.resourceType}</Badge>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2 leading-snug">{w.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-3 line-clamp-3">{w.description}</p>
+                  <p className="text-xs text-slate-400">⏱ Estimated effort: {w.effort}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           {resources.length === 0 ? (
             <div className="text-center py-24 text-slate-400">

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curricular Internship — Tech Bridge Academy</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--surface-0:#f5f4f0;--surface-1:#f0efe9;--surface-2:#fff;--text-primary:#1a1a18;--text-secondary:#5f5e5a;--text-muted:#888780;--border:#e0dfd8;--border-strong:#c8c7c0;--radius:8px;--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{font-family:var(--font-sans);background:var(--surface-0);color:var(--text-primary)}
+.page{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.site-header{display:flex;align-items:center;gap:12px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--border)}
+.site-logo{font-size:15px;font-weight:500;color:#185FA5}
+.site-logo span{color:var(--text-muted);font-weight:400}
+.breadcrumb{font-size:12px;color:var(--text-muted);margin-left:auto}
+.sec-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
+.sec-btn{font-size:12px;padding:5px 12px;border-radius:99px;border:0.5px solid var(--border);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.sec-btn.on{background:#185FA5;color:#fff;border-color:#185FA5}
+.section{display:none}.section.on{display:block}
+.intro-box{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:1rem;padding:.75rem 1rem;background:var(--surface-1);border-radius:var(--radius);border-left:2px solid var(--border-strong)}
+.intro-box.blue{border-left-color:#185FA5}
+.intro-box.green{border-left-color:#0F6E56}
+.intro-box.red{border-left-color:#E24B4A}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:1rem}
+.feat-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.feat-icon{margin-bottom:.5rem;color:#185FA5}
+.feat-icon svg{width:20px;height:20px}
+.feat-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:.25rem}
+.feat-body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.split-60{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1rem}
+.split-head{display:grid;grid-template-columns:60fr 40fr}
+.split-th{padding:.6rem 1rem;font-size:13px;font-weight:500;text-align:center;color:#fff}
+.split-th.a{background:#185FA5}.split-th.b{background:#888780}
+.split-body{display:grid;grid-template-columns:60fr 40fr}
+.split-cell{padding:.85rem 1rem;font-size:12px;color:var(--text-secondary);line-height:1.6;border-top:0.5px solid var(--border)}
+.split-cell.a{border-right:0.5px solid var(--border)}
+.split-cell strong{display:block;font-weight:500;color:var(--text-primary);margin-bottom:.25rem;font-size:12px}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.comp-col{border-radius:12px;overflow:hidden;border:0.5px solid}
+.comp-col.tech{border-color:#B5D4F4}.comp-col.trans{border-color:#9FE1CB}
+.comp-head{padding:.75rem 1rem;display:flex;align-items:center;gap:8px}
+.comp-col.tech .comp-head{background:#185FA5}.comp-col.trans .comp-head{background:#0F6E56}
+.comp-head svg{color:#fff}.comp-head span{font-size:13px;font-weight:500;color:#fff}
+.comp-body{background:var(--surface-2);padding:.5rem .75rem}
+.comp-item{display:flex;gap:8px;padding:.45rem .25rem;border-bottom:0.5px solid var(--border);align-items:flex-start}
+.comp-item:last-child{border-bottom:none}
+.comp-n{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
+.comp-col.tech .comp-n{background:#E6F1FB;color:#0C447C}
+.comp-col.trans .comp-n{background:#E1F5EE;color:#085041}
+.comp-text{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.stepper-nav{display:flex;gap:0;margin-bottom:.85rem;border-radius:var(--radius);overflow:hidden;border:0.5px solid var(--border)}
+.step-tab{flex:1;padding:7px 4px;font-size:11px;font-weight:500;text-align:center;cursor:pointer;border:none;background:var(--surface-1);color:var(--text-secondary);transition:all .15s;border-right:0.5px solid var(--border)}
+.step-tab:last-child{border-right:none}
+.step-tab.on{background:#185FA5;color:#fff}
+.step-panel{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem}
+.step-q{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.65rem}
+.step-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.step-col-label{font-size:11px;font-weight:500;margin-bottom:.4rem;display:flex;align-items:center;gap:5px}
+.step-col-label.school{color:#0C447C}
+.step-col-label.biz{color:#085041}
+.step-col-label.stu{color:#633806}
+.step-col-label.joint{color:#534AB7}
+.step-body-sm{font-size:12px;color:var(--text-secondary);line-height:1.6}
+.step-item{display:flex;gap:7px;font-size:12px;color:var(--text-secondary);line-height:1.5;padding:.3rem 0}
+.step-item svg{flex-shrink:0;margin-top:2px;color:#185FA5}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem}
+.role-col{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.role-head{display:flex;align-items:center;gap:7px;margin-bottom:.65rem}
+.role-icon svg{width:18px;height:18px}
+.role-icon.school svg{color:#185FA5}
+.role-icon.biz svg{color:#0F6E56}
+.role-icon.stu svg{color:#854F0B}
+.role-name{font-size:12px;font-weight:500;color:var(--text-primary)}
+.role-list{font-size:11px;color:var(--text-secondary);line-height:1.7}
+.role-list li{list-style:none;padding-left:12px;position:relative}
+.role-list li::before{content:"·";position:absolute;left:2px;color:var(--text-muted)}
+.dn-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.dn-col{border-radius:12px;overflow:hidden;border:0.5px solid}
+.dn-col.do{border-color:#9FE1CB}.dn-col.dont{border-color:#F7C1C1}
+.dn-head{padding:.7rem 1rem;display:flex;align-items:center;gap:8px}
+.dn-col.do .dn-head{background:#0F6E56}.dn-col.dont .dn-head{background:#A32D2D}
+.dn-head svg{color:#fff}.dn-head span{font-size:13px;font-weight:500;color:#fff}
+.dn-body{background:var(--surface-2);padding:.5rem .75rem}
+.dn-item{display:flex;gap:8px;padding:.45rem .25rem;border-bottom:0.5px solid var(--border);align-items:flex-start;font-size:12px;color:var(--text-secondary);line-height:1.5}
+.dn-item:last-child{border-bottom:none}
+.dn-item svg{flex-shrink:0;margin-top:2px}
+.dn-col.do .dn-item svg{color:#0F6E56}
+.dn-col.dont .dn-item svg{color:#A32D2D}
+.ratio-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.ratio-bar{flex:1;min-width:200px}
+.ratio-track{height:28px;border-radius:var(--radius);overflow:hidden;display:flex;margin:.4rem 0}
+.ratio-seg-a{background:#185FA5;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff}
+.ratio-seg-b{background:#D3D1C7;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#444441}
+.ratio-legend{display:flex;gap:12px;flex-wrap:wrap}
+.ratio-leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary)}
+.ratio-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.ratio-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:280px}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="site-header">
+  <div class="site-logo">Tech Bridge <span>Academy</span></div>
+  <div class="breadcrumb">Bridge Area · Educational Collaboration · Section 2</div>
+</div>
+
+<nav class="sec-nav">
+  <button class="sec-btn on" onclick="show('what',this)">What it is</button>
+  <button class="sec-btn" onclick="show('comp',this)">Competences</button>
+  <button class="sec-btn" onclick="show('how',this)">How it works</button>
+  <button class="sec-btn" onclick="show('roles',this)">Roles</button>
+  <button class="sec-btn" onclick="show('quality',this)">What makes a good internship</button>
+</nav>
+
+<!-- WHAT IT IS -->
+<div id="what" class="section on">
+  <div class="intro-box">A curricular internship is a formative experience that a student carries out at a host company during their period of study, with the aim of facilitating future professional choices through direct knowledge of the world of work and the connection between theory and professional practice. The intern is supervised by a company tutor who acts as facilitator, coach, and assessor. Duration is variable and is generally determined by the study programme and applicable national or regional regulations.</div>
+
+  <div class="ratio-card">
+    <div class="ratio-bar">
+      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.3rem">Recommended task distribution</div>
+      <div class="ratio-track">
+        <div class="ratio-seg-a" style="width:60%">60%</div>
+        <div class="ratio-seg-b" style="width:40%">40%</div>
+      </div>
+      <div class="ratio-legend">
+        <div class="ratio-leg"><div class="ratio-dot" style="background:#185FA5"></div>Professional development</div>
+        <div class="ratio-leg"><div class="ratio-dot" style="background:#D3D1C7"></div>Operational routine</div>
+      </div>
+    </div>
+    <div class="ratio-desc">As a general guideline, approximately 60% of internship responsibilities should be devoted to professional development; 40% to paraprofessional tasks or daily operational routine.</div>
+  </div>
+
+  <div class="card-grid">
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg></div>
+      <div class="feat-title">Mutual agreement</div>
+      <div class="feat-body">The intern undertakes work that contributes to the host organisation's objectives; the company offers the opportunity to acquire new competences and explore potential career paths.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 11l2 2l4 -4"/></svg></div>
+      <div class="feat-title">Supervised learning</div>
+      <div class="feat-body">Tasks assigned to the intern must be consistent with their competences and learning objectives, and aligned with the organisation's needs. A company tutor accompanies the entire experience.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="9.01" y2="12"/><line x1="13" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="9.01" y2="16"/><line x1="13" y1="16" x2="15" y2="16"/></svg></div>
+      <div class="feat-title">Structured learning plan</div>
+      <div class="feat-body">School and company co-design a formal learning plan with SMART objectives — Specific, Measurable, Relevant, Time-bound — before the intern arrives.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h14l-4 -4"/><path d="M17 14h-14l4 4"/></svg></div>
+      <div class="feat-title">Dual learning function</div>
+      <div class="feat-body">The tools used serve two purposes: helping the student transform experience into learning, and generating systematic documentation that school and company can use to improve future placements.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg></div>
+      <div class="feat-title">Variable duration</div>
+      <div class="feat-body">Duration is generally determined by the study programme and applicable national or regional regulations. The specific regulatory framework varies by country.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg></div>
+      <div class="feat-title">Organisational learning</div>
+      <div class="feat-body">Each internship contributes not only to the student's learning but also to the organisational learning of the partners involved, feeding a continuous process of improvement of educational partnerships.</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETENCES -->
+<div id="comp" class="section">
+  <div class="intro-box">The internship allows students to apply and integrate the knowledge and competences acquired at school in real workplace situations. It develops both technical and professional competences specific to the sector, and transversal competences that are increasingly essential in all professional contexts.</div>
+  <div class="comp-grid">
+    <div class="comp-col tech">
+      <div class="comp-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg>
+        <span>Technical and professional</span>
+      </div>
+      <div class="comp-body">
+        <div class="comp-item"><div class="comp-n">1</div><div class="comp-text">Apply technical knowledge in real production or service contexts</div></div>
+        <div class="comp-item"><div class="comp-n">2</div><div class="comp-text">Understand and navigate organisational structures and professional roles</div></div>
+        <div class="comp-item"><div class="comp-n">3</div><div class="comp-text">Use sector-specific tools, machines, software, and procedures</div></div>
+        <div class="comp-item"><div class="comp-n">4</div><div class="comp-text">Comply with safety standards, quality protocols, and operational procedures</div></div>
+        <div class="comp-item"><div class="comp-n">5</div><div class="comp-text">Develop and improve sector-specific competences</div></div>
+        <div class="comp-item"><div class="comp-n">6</div><div class="comp-text">Connect theory and professional practice</div></div>
+        <div class="comp-item"><div class="comp-n">7</div><div class="comp-text">Build professional networks and understand sector dynamics</div></div>
+      </div>
+    </div>
+    <div class="comp-col trans">
+      <div class="comp-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h14l-4 -4"/><path d="M17 14h-14l4 4"/></svg>
+        <span>Transversal</span>
+      </div>
+      <div class="comp-body">
+        <div class="comp-item"><div class="comp-n">1</div><div class="comp-text">Demonstrate a strong work ethic, professionalism, and adherence to organisational guidelines</div></div>
+        <div class="comp-item"><div class="comp-n">2</div><div class="comp-text">Take responsibility for personal and professional growth</div></div>
+        <div class="comp-item"><div class="comp-n">3</div><div class="comp-text">Maintain open and timely communication with supervisors</div></div>
+        <div class="comp-item"><div class="comp-n">4</div><div class="comp-text">Manage time effectively and respect project deadlines</div></div>
+        <div class="comp-item"><div class="comp-n">5</div><div class="comp-text">Adapt to changes and face unexpected situations</div></div>
+        <div class="comp-item"><div class="comp-n">6</div><div class="comp-text">Maintain confidentiality of sensitive information</div></div>
+        <div class="comp-item"><div class="comp-n">7</div><div class="comp-text">Reflect on learning experiences and identify lessons for future professional development</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" class="section">
+  <div class="intro-box">Like all work-based learning devices, the curricular internship is structured in five phases. Each phase involves different combinations of school, company, and intern — with specific tools to document and improve the experience.</div>
+  <div class="stepper-nav">
+    <button class="step-tab on" onclick="setStep(0,this)">1 Ideation</button>
+    <button class="step-tab" onclick="setStep(1,this)">2 Planning</button>
+    <button class="step-tab" onclick="setStep(2,this)">3 Delivery</button>
+    <button class="step-tab" onclick="setStep(3,this)">4 Monitoring</button>
+    <button class="step-tab" onclick="setStep(4,this)">5 Assessment</button>
+  </div>
+  <div id="step-panel" class="step-panel"></div>
+</div>
+
+<!-- ROLES -->
+<div id="roles" class="section">
+  <div class="intro-box">Three parties are involved in the curricular internship, each with a specific and complementary role. The quality of the experience depends on all three playing their part actively and in coordination.</div>
+  <div class="role-grid">
+    <div class="role-col">
+      <div class="role-head">
+        <div class="role-icon school"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg></div>
+        <div class="role-name">School / VET centre</div>
+      </div>
+      <ul class="role-list">
+        <li>Identify the school tutor</li>
+        <li>Carry out matching between students and companies</li>
+        <li>Present the company and the training project to the intern</li>
+        <li>Co-design the individual training plan with the company</li>
+        <li>Maintain regular contact with the company and the intern throughout</li>
+        <li>Organise an assessment meeting with the intern at the end</li>
+        <li>Compile the school-company self-assessment report</li>
+        <li>Organise a joint assessment session with the company</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-head">
+        <div class="role-icon biz"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg></div>
+        <div class="role-name">Company</div>
+      </div>
+      <ul class="role-list">
+        <li>Identify the company tutor (and optionally a mentor)</li>
+        <li>Define placement conditions: period, hours, any benefits</li>
+        <li>Plan monitoring and assessment meetings</li>
+        <li>Allocate material and immaterial resources for the intern</li>
+        <li>Inform colleagues of the intern's arrival</li>
+        <li>Carry out onboarding activities on day one</li>
+        <li>Accompany the intern through assigned tasks and ensure safety compliance</li>
+        <li>Create an inclusive and welcoming work environment</li>
+        <li>Organise a debrief session at the end and issue a formal completion certificate</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-head">
+        <div class="role-icon stu"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 11l2 2l4 -4"/></svg></div>
+        <div class="role-name">Intern (student)</div>
+      </div>
+      <ul class="role-list">
+        <li>Engage actively in assigned tasks and projects</li>
+        <li>Take responsibility for personal and professional growth</li>
+        <li>Demonstrate professionalism and adherence to organisational guidelines</li>
+        <li>Maintain open communication with the supervisor</li>
+        <li>Respect project deadlines and manage time effectively</li>
+        <li>Maintain confidentiality of sensitive information</li>
+        <li>Compile the learning log daily, enriching it with documentation of learning</li>
+        <li>Participate in monitoring and assessment meetings</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT MAKES A GOOD INTERNSHIP -->
+<div id="quality" class="section">
+  <div class="intro-box">The internship experience can be genuinely formative — or it can fail to produce real learning. The difference lies entirely in how it is designed and managed. These conditions, drawn from evidence on effective internship programmes, distinguish a quality placement from one that wastes the student's time.</div>
+
+  <div class="dn-wrap">
+    <div class="dn-col do">
+      <div class="dn-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>
+        <span>A good internship…</span>
+      </div>
+      <div class="dn-body">
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Assigns significant projects and tasks that contribute to the organisation's objectives and provide a genuine learning experience</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Provides support, feedback, and growth opportunities from experienced professionals</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Allows the intern to develop and improve competences specific to their sector of interest</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Encourages the intern to build professional networks within the organisation and the sector</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Gives the intern the opportunity to understand and experience the organisation's values, work culture, and professional ethics</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Plans regular feedback and assessment sessions to monitor progress, identify areas for improvement, and recognise achievements</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Encourages the intern to reflect on their learning experiences and identify lessons to apply to their future professional development</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>Treats interns fairly and respectfully, with equal access to learning opportunities, resources, and a safe working environment</div>
+      </div>
+    </div>
+    <div class="dn-col dont">
+      <div class="dn-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <span>A poor internship…</span>
+      </div>
+      <div class="dn-body">
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Assigns the intern exclusively menial tasks or errands unrelated to their learning objectives, or limits them to passive observation</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Fails to provide the necessary support or give regular feedback</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Excludes interns from professional development opportunities available to other staff</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Burdens the intern with an excessive workload that hinders their capacity to learn and participate actively</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Subjects the intern to discrimination, harassment, or unfair treatment</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Confines the intern to a single department or role without giving them the opportunity to discover different aspects of the organisation</div>
+        <div class="dn-item"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Creates false promises of employment or unrealistic expectations regarding the intern's role and responsibilities</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro-box green">The internship does not automatically produce learning. Activities carried out at the company become genuinely formative when school and company accompany the student in observation, reflection, and the continuous connection between what is experienced in work contexts and what is learned at school.</div>
+</div>
+
+</div>
+<script>
+const chk='<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>';
+const sch='<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg>';
+const biz='<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg>';
+const stu='<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 11l2 2l4 -4"/></svg>';
+
+function col(label,cls,items){
+  return`<div><div class="step-col-label ${cls}">${label}</div>${items.map(i=>`<div class="step-item">${chk}<span>${i}</span></div>`).join('')}</div>`;
+}
+function colBiz(items){return col(`${biz} Company`,'biz',items);}
+function colSch(items){return col(`${sch} School`,'school',items);}
+function colStu(items){return col(`${stu} Intern`,'stu',items);}
+function colJoint(items){return col('Both together','joint',items);}
+
+const STEPS=[
+  {label:"Ideation",q:"Why? What need? What objectives? What resources?",content:`
+    <div class="step-q">Ideation — Why? What need? What objectives? What resources?</div>
+    <div class="step-body-sm" style="margin-bottom:.75rem">School and company must jointly establish the learning objectives and the tasks to be assigned to the intern. Objectives should be SMART: Specific, Measurable, Relevant, Time-bound.</div>
+    <div class="step-cols">
+      ${colBiz(['Identify tasks, projects, initiatives, or specific areas where interns can contribute effectively and gain practical experience','Ask: what projects are under way? Are there aspects that could be delegated? Who could act as tutor? Can the placement take place with full safety compliance?'])}
+      ${colSch(['Analyse the company\'s internship proposals and assess feasibility in terms of timing, student competences, and learning objectives','Ask: is the internship consistent with the study programme? Does it allow development of the expected competences? Is the WBL device the most appropriate? Do students have the prerequisite competences?'])}
+    </div>
+    <div style="margin-top:.75rem">${colJoint(['Establish the learning outcomes to be achieved, expressed in terms of technical and transversal competences — using national and European reference frameworks (ESCO, national qualifications) as starting points'])}</div>`},
+  {label:"Planning",q:"Who? What? When? How much?",content:`
+    <div class="step-q">Planning — Who? What? When? How much?</div>
+    <div class="step-cols">
+      ${colBiz(['Identify the company tutor (and optionally a mentor)','Define placement conditions: period, hours, any benefits (canteen, reimbursements)','Plan monitoring and assessment meetings','Allocate material resources (workstation, PC, software)','Inform colleagues of the intern\'s arrival'])}
+      ${colSch(['Identify the school tutor','Carry out matching between students and companies','Present the company and the training project to the intern'])}
+    </div>
+    <div style="margin-top:.75rem">${colJoint(['Sign the internship agreement','Co-design and sign the individual training plan (which the student must also view and sign)'])}</div>
+    <div class="intro-box" style="margin-top:.75rem;border-left-color:#534AB7">A well-designed planning phase: ensures alignment between school and company objectives; identifies relevant tasks for the intern; addresses potential challenges; establishes clear expectations for all stakeholders; and builds a positive company image that attracts future talent.</div>`},
+  {label:"Delivery",q:"How? Onboarding and daily work",content:`
+    <div class="step-q">Delivery — How? Onboarding and daily work</div>
+    <div class="step-cols">
+      ${colBiz(['Carry out onboarding: welcome meeting, presentation of tutor and team, guided company visit','Illustrate assigned tasks, learning objectives, and operating conditions','Offer guidance on material and immaterial resources available to the intern','Accompany the intern through assigned tasks, ensuring support, growth, and safety compliance','Create an inclusive and welcoming work environment','Compile the training programme sheet daily'])}
+      ${colStu(['Engage actively in assigned tasks, seeking opportunities to learn and develop new competences','Take responsibility for personal and professional growth; seek feedback from supervisors and team members','Demonstrate strong work ethic and adherence to organisational guidelines','Maintain open communication with the supervisor','Respect project deadlines and manage time effectively','Maintain confidentiality of sensitive information','Compile the learning log daily, enriching it with documentation (photos, videos, notes, diagrams)'])}
+    </div>`},
+  {label:"Monitoring",q:"How is it going? Regular check-ins",content:`
+    <div class="step-q">Monitoring — How is it going? Regular check-ins</div>
+    <div class="step-cols">
+      ${colBiz(['Verify that the placement is progressing according to planned conditions and timelines','Ensure individual supervision through regular meetings (bi-weekly or monthly) to monitor progress, give constructive feedback, update tasks based on achievements, and gather the intern\'s perspective','Verify that the intern is compiling the learning log regularly','Maintain updated contact with the school'])}
+      ${colSch(['Maintain updated contact with the company and the intern'])}
+    </div>
+    <div style="margin-top:.75rem">${colStu(['Participate in monitoring meetings with the company tutor','Maintain updated contact with the school'])}</div>`},
+  {label:"Assessment",q:"How did it go? Debrief and learning",content:`
+    <div class="step-q">Assessment — How did it go? Debrief and learning</div>
+    <div class="step-cols">
+      ${colBiz(['Organise a debrief session with the intern to jointly reflect on the experience','Issue a formal certificate of internship completion','If the experience was positive: invite the intern to stay in contact for future opportunities, and potentially join an alumni network','Compile the self-assessment report','Organise an assessment session with the school'])}
+      ${colSch(['Organise an assessment meeting with the intern to reflect on the experience, strengths, weaknesses, and areas for improvement','Compile the self-assessment report','Organise a joint assessment session with the company'])}
+    </div>
+    <div style="margin-top:.75rem">${colStu(['Participate in the debrief with company and school tutors, using it as an opportunity to reflect on learning, develop self-awareness, and identify areas to focus on','Share feedback with both tutors'])}</div>`},
+];
+
+let step=0;
+function setStep(i,btn){step=i;document.querySelectorAll('.step-tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.getElementById('step-panel').innerHTML=STEPS[i].content;}
+document.getElementById('step-panel').innerHTML=STEPS[0].content;
+
+function show(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('on'));document.getElementById(id).classList.add('on');btn.classList.add('on');}
+</script>
+</body>
+</html>

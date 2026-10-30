@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge — Tech Bridge Academy</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--surface-0:#f5f4f0;--surface-1:#f0efe9;--surface-2:#fff;--text-primary:#1a1a18;--text-secondary:#5f5e5a;--text-muted:#888780;--border:#e0dfd8;--border-strong:#c8c7c0;--radius:8px;--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{font-family:var(--font-sans);background:var(--surface-0);color:var(--text-primary)}
+.page{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.site-header{display:flex;align-items:center;gap:12px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--border)}
+.site-logo{font-size:15px;font-weight:500;color:#185FA5}
+.site-logo span{color:var(--text-muted);font-weight:400}
+.breadcrumb{font-size:12px;color:var(--text-muted);margin-left:auto}
+.sec-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
+.sec-btn{font-size:12px;padding:5px 12px;border-radius:99px;border:0.5px solid var(--border);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.sec-btn.on{background:#185FA5;color:#fff;border-color:#185FA5}
+.section{display:none}.section.on{display:block}
+.intro-box{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:1rem;padding:.75rem 1rem;background:var(--surface-1);border-radius:var(--radius);border-left:2px solid var(--border-strong)}
+.intro-box.warn{border-left-color:#E24B4A}
+.intro-box.green{border-left-color:#0F6E56}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:1rem}
+.feat-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.feat-icon{font-size:20px;color:#185FA5;margin-bottom:.5rem}
+.feat-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:.25rem}
+.feat-body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem}
+.type-card{border-radius:12px;overflow:hidden;border:0.5px solid var(--border)}
+.type-head{padding:.7rem 1rem;display:flex;align-items:center;gap:8px}
+.type-head.ind{background:#185FA5}
+.type-head.grp{background:#0F6E56}
+.type-head.hack{background:#854F0B}
+.type-head svg{color:#fff;flex-shrink:0}
+.type-head span{font-size:13px;font-weight:500;color:#fff}
+.type-body{background:var(--surface-2);padding:.65rem .85rem}
+.type-body p{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.comp-col{border-radius:12px;overflow:hidden;border:0.5px solid}
+.comp-col.tech{border-color:#B5D4F4}.comp-col.trans{border-color:#9FE1CB}
+.comp-head{padding:.75rem 1rem;display:flex;align-items:center;gap:8px}
+.comp-col.tech .comp-head{background:#185FA5}.comp-col.trans .comp-head{background:#0F6E56}
+.comp-head svg{color:#fff}.comp-head span{font-size:13px;font-weight:500;color:#fff}
+.comp-body{background:var(--surface-2);padding:.5rem .75rem}
+.comp-item{display:flex;gap:8px;padding:.45rem .25rem;border-bottom:0.5px solid var(--border);align-items:flex-start}
+.comp-item:last-child{border-bottom:none}
+.comp-n{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
+.comp-col.tech .comp-n{background:#E6F1FB;color:#0C447C}
+.comp-col.trans .comp-n{background:#E1F5EE;color:#085041}
+.comp-text{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1rem}
+.vs-head{display:grid;grid-template-columns:1fr 1fr}
+.vs-th{padding:.6rem 1rem;font-size:13px;font-weight:500;text-align:center}
+.vs-th.pw{background:#185FA5;color:#fff}
+.vs-th.ch{background:#0F6E56;color:#fff}
+.vs-row{display:grid;grid-template-columns:1fr 1fr;border-top:0.5px solid var(--border)}
+.vs-row:nth-child(even){background:var(--surface-1)}
+.vs-cell{padding:.55rem 1rem;font-size:12px;color:var(--text-secondary);line-height:1.5;border-right:0.5px solid var(--border)}
+.vs-cell:last-child{border-right:none}
+.vs-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);display:block;margin-bottom:2px}
+.stepper-nav{display:flex;gap:0;margin-bottom:.85rem;border-radius:var(--radius);overflow:hidden;border:0.5px solid var(--border)}
+.step-tab{flex:1;padding:7px 4px;font-size:11px;font-weight:500;text-align:center;cursor:pointer;border:none;background:var(--surface-1);color:var(--text-secondary);transition:all .15s;border-right:0.5px solid var(--border)}
+.step-tab:last-child{border-right:none}
+.step-tab.on{background:#185FA5;color:#fff}
+.step-panel{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem}
+.step-q{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.65rem}
+.step-body{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:.6rem}
+.sub-points{margin-top:.5rem;display:flex;flex-direction:column;gap:4px}
+.sub-point{display:flex;gap:8px;font-size:12px;color:var(--text-secondary);line-height:1.5;padding:.35rem .5rem;background:var(--surface-1);border-radius:var(--radius)}
+.sub-point svg{flex-shrink:0;margin-top:1px;color:#185FA5}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem}
+.role-col{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.role-head{display:flex;align-items:center;gap:7px;margin-bottom:.65rem}
+.role-icon svg{width:18px;height:18px}
+.role-icon.school svg{color:#185FA5}
+.role-icon.biz svg{color:#0F6E56}
+.role-icon.stu svg{color:#854F0B}
+.role-name{font-size:12px;font-weight:500;color:var(--text-primary)}
+.role-list{font-size:11px;color:var(--text-secondary);line-height:1.7}
+.role-list li{list-style:none;padding-left:12px;position:relative}
+.role-list li::before{content:"·";position:absolute;left:2px;color:var(--text-muted)}
+.aval-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:1rem}
+.aval-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.aval-icon{font-size:20px;color:#185FA5;margin-bottom:.35rem}
+.aval-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:.3rem}
+.aval-body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.ex-grid{display:grid;gap:8px;margin-bottom:1rem}
+.ex-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.9rem 1rem}
+.ex-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#185FA5;margin-bottom:.35rem}
+.ex-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:.4rem}
+.ex-problem{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:.4rem}
+.ex-why{font-size:12px;color:#085041;background:#E1F5EE;border-radius:var(--radius);padding:.4rem .7rem;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="site-header">
+  <div class="site-logo">Tech Bridge <span>Academy</span></div>
+  <div class="breadcrumb">Bridge Area · Educational Collaboration · Section 2</div>
+</div>
+
+<nav class="sec-nav">
+  <button class="sec-btn on" onclick="show('what',this)">What it is</button>
+  <button class="sec-btn" onclick="show('types',this)">Types</button>
+  <button class="sec-btn" onclick="show('comp',this)">Competences</button>
+  <button class="sec-btn" onclick="show('vs',this)">Challenge vs Project Work</button>
+  <button class="sec-btn" onclick="show('how',this)">How it works</button>
+  <button class="sec-btn" onclick="show('roles',this)">Roles</button>
+  <button class="sec-btn" onclick="show('aval',this)">Assessment</button>
+  <button class="sec-btn" onclick="show('ex',this)">Examples</button>
+</nav>
+
+<!-- WHAT IT IS -->
+<div id="what" class="section on">
+  <div class="intro-box">A Challenge is a teaching strategy in which students are called to face an authentic problem — proposed by the school or, preferably, by a company — and elaborate the solution they consider most effective within a defined time. Its design derives from Problem Based Learning (PBL): an approach in which learning develops through processes of investigation, research, and reflection activated by the need to understand and resolve complex problems.</div>
+  <div class="card-grid">
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="feat-title">Authentic problem</div>
+      <div class="feat-body">Students face a real, open-ended problem with no single correct answer — proposed by a company from its actual operational context.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/><line x1="9.7" y1="17" x2="14.3" y2="17"/></svg></div>
+      <div class="feat-title">Investigation process</div>
+      <div class="feat-body">Students must understand the problem, collect information, formulate hypotheses, compare alternative solutions, motivate their choices, and present their work publicly.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg></div>
+      <div class="feat-title">Competitive dimension</div>
+      <div class="feat-body">Participants — individually or in groups — present their proposal to a panel of judges. Competition increases engagement and stimulates critical comparison between different approaches.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+      <div class="feat-title">Open-ended solution</div>
+      <div class="feat-body">The final solution can take very different forms: a prototype, a procedure, an organisational process, an algorithm, a simulation, an improvement proposal. What characterises the Challenge is the cognitive process, not the type of final product.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9l3 3l-3 3"/><line x1="13" y1="15" x2="16" y2="15"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
+      <div class="feat-title">Defined timeframe</div>
+      <div class="feat-body">Participation modes, timelines, and final evaluation criteria are made explicit at the outset. The challenge can run over several weeks, giving students adequate time for analysis and solution-building.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 7h14"/><path d="M5 12h14"/><path d="M5 17h14"/></svg></div>
+      <div class="feat-title">Scalable company involvement</div>
+      <div class="feat-body">Minimum: design, launch, and final evaluation. Maximum: design and launch + company labs and equipment + evaluation and award ceremony.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPES -->
+<div id="types" class="section">
+  <div class="intro-box">A Challenge can be individual or group-based. Both modalities have specific advantages and can be chosen according to the learning objectives pursued. A special intensive format — the Hackathon — exists for contexts where time pressure is itself a learning variable.</div>
+  <div class="type-grid">
+    <div class="type-card">
+      <div class="type-head ind">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/></svg>
+        <span>Individual</span>
+      </div>
+      <div class="type-body">
+        <p>The main objective is to assess personal performance or highly specialised technical and professional competences. Used in professional competitions, programming contests, CAD design competitions, or technical competitions where the result depends primarily on the individual's performance.</p>
+      </div>
+    </div>
+    <div class="type-card">
+      <div class="type-head grp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg>
+        <span>Group</span>
+      </div>
+      <div class="type-body">
+        <p>Develops not only technical and professional competences but also transversal ones — especially the ability to work in a team. The solution is the result of a collective knowledge-building process. Groups of four to six students with different competences and personal characteristics are recommended. The most widely used format in school-business collaboration pathways.</p>
+      </div>
+    </div>
+    <div class="type-card">
+      <div class="type-head hack">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        <span>Hackathon</span>
+      </div>
+      <div class="type-body">
+        <p>An intensive event in which teams work on solving the problem within a very limited time (for example, 24 or 48 hours), characterised by particularly intense work rhythms and strong time pressure. The Challenge, by contrast, is a broader and more flexible device that can run over several weeks, leaving students adequate time for problem analysis, information research, and solution construction.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETENCES -->
+<div id="comp" class="section">
+  <div class="intro-box">The Challenge is particularly effective in developing both technical and professional competences and transversal competences. Students do not simply apply already-known procedures, but learn to select and integrate different knowledge to face new situations.</div>
+  <div class="comp-grid">
+    <div class="comp-col tech">
+      <div class="comp-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg>
+        <span>Technical and professional</span>
+      </div>
+      <div class="comp-body">
+        <div class="comp-item"><div class="comp-n">1</div><div class="comp-text">Analyse complex problems</div></div>
+        <div class="comp-item"><div class="comp-n">2</div><div class="comp-text">Identify cause-effect relationships</div></div>
+        <div class="comp-item"><div class="comp-n">3</div><div class="comp-text">Collect and interpret data</div></div>
+        <div class="comp-item"><div class="comp-n">4</div><div class="comp-text">Use technical documentation</div></div>
+        <div class="comp-item"><div class="comp-n">5</div><div class="comp-text">Compare different possible solutions</div></div>
+        <div class="comp-item"><div class="comp-n">6</div><div class="comp-text">Make reasoned decisions</div></div>
+        <div class="comp-item"><div class="comp-n">7</div><div class="comp-text">Assess technical, organisational, and economic feasibility</div></div>
+        <div class="comp-item"><div class="comp-n">8</div><div class="comp-text">Document the process followed</div></div>
+      </div>
+    </div>
+    <div class="comp-col trans">
+      <div class="comp-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h14l-4 -4"/><path d="M17 14h-14l4 4"/></svg>
+        <span>Transversal</span>
+      </div>
+      <div class="comp-body">
+        <div class="comp-item"><div class="comp-n">1</div><div class="comp-text">Collaborate with people who have different competences</div></div>
+        <div class="comp-item"><div class="comp-n">2</div><div class="comp-text">Organise work and manage time</div></div>
+        <div class="comp-item"><div class="comp-n">3</div><div class="comp-text">Make decisions and negotiate different points of view</div></div>
+        <div class="comp-item"><div class="comp-n">4</div><div class="comp-text">Face situations of uncertainty</div></div>
+        <div class="comp-item"><div class="comp-n">5</div><div class="comp-text">Communicate effectively</div></div>
+        <div class="comp-item"><div class="comp-n">6</div><div class="comp-text">Sustain and argue one's choices</div></div>
+        <div class="comp-item"><div class="comp-n">7</div><div class="comp-text">Adapt to changes</div></div>
+        <div class="comp-item"><div class="comp-n">8</div><div class="comp-text">Take individual and collective responsibility</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VS PROJECT WORK -->
+<div id="vs" class="section">
+  <div class="intro-box">Project Work and Challenge share many elements: both are grounded in authentic situations, require the integrated mobilisation of technical and transversal competences, and promote active learning in which students take a leading role. The difference lies not in the final result but in the educational logic that guides the learning process.</div>
+  <div class="vs-grid">
+    <div class="vs-head">
+      <div class="vs-th pw">Project Work</div>
+      <div class="vs-th ch">Challenge</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell"><span class="vs-label">Starting point</span>A commission — students are given an assignment to design and deliver</div>
+      <div class="vs-cell"><span class="vs-label">Starting point</span>An open problem — characterised by incomplete information and multiple possible interpretations</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell"><span class="vs-label">Problem definition</span>Generally already defined — the pathway focuses on designing, planning, and delivering the response</div>
+      <div class="vs-cell"><span class="vs-label">Problem definition</span>Must be progressively understood, deepened, and redefined through research and reflection</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell"><span class="vs-label">Learning logic</span>Students learn by designing and delivering</div>
+      <div class="vs-cell"><span class="vs-label">Learning logic</span>Students learn by investigating, analysing, comparing, and deciding</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell"><span class="vs-label">Main development</span>Capacity to manage a project and transform an idea into a concrete realisation</div>
+      <div class="vs-cell"><span class="vs-label">Main development</span>Capacity to face new problems, build knowledge collaboratively, and make motivated decisions</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell"><span class="vs-label">Competitive element</span>Not present — the focus is on the quality of the product delivered</div>
+      <div class="vs-cell"><span class="vs-label">Competitive element</span>Present — teams compete and a final award recognises the best solution</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell"><span class="vs-label">Relationship</span>The two devices are complementary, not alternative — together they cover the full spectrum of WBL learning modes</div>
+      <div class="vs-cell"><span class="vs-label">Relationship</span>The two devices are complementary, not alternative — together they cover the full spectrum of WBL learning modes</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" class="section">
+  <div class="intro-box">Like all work-based learning devices, the Challenge is structured in five phases. During the delivery phase, students follow an internal process articulated in four steps — from problem understanding to final presentation.</div>
+  <div class="stepper-nav">
+    <button class="step-tab on" onclick="setStep(0,this)">1 Ideation</button>
+    <button class="step-tab" onclick="setStep(1,this)">2 Planning</button>
+    <button class="step-tab" onclick="setStep(2,this)">3 Delivery</button>
+    <button class="step-tab" onclick="setStep(3,this)">4 Monitoring</button>
+    <button class="step-tab" onclick="setStep(4,this)">5 Assessment</button>
+  </div>
+  <div id="step-panel" class="step-panel"></div>
+</div>
+
+<!-- ROLES -->
+<div id="roles" class="section">
+  <div class="intro-box">The quality of a Challenge depends largely on collaboration between company, school, and students. Each party plays a specific and complementary role.</div>
+  <div class="role-grid">
+    <div class="role-col">
+      <div class="role-head">
+        <div class="role-icon school"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg></div>
+        <div class="role-name">School / VET centre</div>
+      </div>
+      <ul class="role-list">
+        <li>Prepare students for the Challenge</li>
+        <li>Organise work groups</li>
+        <li>Facilitate the learning process</li>
+        <li>Support teams throughout the pathway</li>
+        <li>Coordinate the assessment process together with the company</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-head">
+        <div class="role-icon biz"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg></div>
+        <div class="role-name">Company</div>
+      </div>
+      <ul class="role-list">
+        <li>Identify an authentic situation on which to build the Challenge</li>
+        <li>Collaborate with the school in defining learning objectives</li>
+        <li>Make data, information, and technical documentation available</li>
+        <li>Accompany the groups through the company tutor</li>
+        <li>Participate in the final assessment</li>
+        <li>Assign a recognition or award to the best solutions (optional)</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-head">
+        <div class="role-icon stu"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 11l2 2l4 -4"/></svg></div>
+        <div class="role-name">Students</div>
+      </div>
+      <ul class="role-list">
+        <li>Understand the problem</li>
+        <li>Collect information and formulate hypotheses</li>
+        <li>Analyse data and make shared decisions</li>
+        <li>Document the work carried out</li>
+        <li>Present and argue the elaborated solution</li>
+        <li>Participate responsibly — the effectiveness of the Challenge depends on the full engagement of every team member</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ASSESSMENT -->
+<div id="aval" class="section">
+  <div class="intro-box">Assessment should not be limited to the quality of the final solution. One of the main strengths of the Challenge is the possibility of observing the entire process through which students face a complex problem. For this reason, assessment should consider three complementary dimensions simultaneously.</div>
+  <div class="aval-grid">
+    <div class="aval-card">
+      <div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/><line x1="9.7" y1="17" x2="14.3" y2="17"/></svg></div>
+      <div class="aval-title">Quality of the analysis process</div>
+      <div class="aval-body">Capacity to understand the problem and identify its essential elements; formulate pertinent questions; collect and use reliable information; formulate and verify hypotheses; critically compare possible alternatives; use a coherent working method.</div>
+    </div>
+    <div class="aval-card">
+      <div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <div class="aval-title">Quality of the proposed solution</div>
+      <div class="aval-body">Coherence with the initial problem; effectiveness of the proposal; technical and organisational feasibility; degree of innovation; sustainability of the solution; quality of the documentation produced. In most Challenges there is no single correct answer — assessment recognises the quality of the proposal and the solidity of the motivations supporting it.</div>
+    </div>
+    <div class="aval-card">
+      <div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg></div>
+      <div class="aval-title">Quality of team collaboration</div>
+      <div class="aval-body">Active participation of all members; mutual listening; balanced task distribution; integration of different competences; constructive conflict management; assumption of responsibility; capacity to make shared decisions. Collaboration is not merely an organisational tool — it is itself an important learning objective.</div>
+    </div>
+  </div>
+  <div class="intro-box" style="border-left-color:#185FA5">The preferred assessment tool is the evaluation rubric, which makes observation criteria and expected proficiency levels explicit. It allows school and company to share a common language of assessment and integrates all evidence collected during the activity: teacher and company tutor observations, products made, technical documentation, final presentation, and student self-assessment.</div>
+</div>
+
+<!-- EXAMPLES -->
+<div id="ex" class="section">
+  <div class="intro-box">Three examples of Challenges in the mechanical and mechatronic sector. Each example shows the problem, what students are asked to do, and why it qualifies as a Challenge rather than a Project Work.</div>
+  <div class="ex-grid">
+    <div class="ex-card">
+      <div class="ex-tag">Example 1 · Manufacturing efficiency</div>
+      <div class="ex-title">Reduce format changeover times on an automated line</div>
+      <div class="ex-problem">A mechatronic company finds that format changeover on an automated line takes excessive time, resulting in productivity losses. Teams must analyse the production process, identify the main causes of inefficiencies, and propose a solution that reduces changeover times without compromising quality and safety.</div>
+      <div class="ex-why">Why it is a Challenge: students are not asked to design a new system or build a prototype, but to understand a real problem, collect information, compare different hypotheses, and identify the most convincing solution.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-tag">Example 2 · Technical diagnostics</div>
+      <div class="ex-title">Diagnose a functioning anomaly in an automatic machine</div>
+      <div class="ex-problem">During the final testing of an automatic machine, the production cycle stops in an apparently random way. The company has not yet been able to identify the cause of the malfunction with certainty. Teams must collect information, consult technical documentation, analyse sensors and actuators, formulate different hypotheses, and propose the most convincing solution, motivating it on the basis of the evidence collected.</div>
+      <div class="ex-why">Why it is a Challenge: the problem has no already-known solution and requires a genuine process of technical investigation.</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-tag">Example 3 · Ergonomics and production</div>
+      <div class="ex-title">Improve an assembly workstation</div>
+      <div class="ex-problem">Operators in an assembly department report fatigue and frequent errors during some repetitive operations. Teams must observe the process, analyse the ergonomic, organisational, and productive aspects, compare possible interventions, and propose a solution that simultaneously improves operator wellbeing, work quality, and productivity.</div>
+      <div class="ex-why">Why it is a Challenge: the problem involves technical, organisational, and ergonomic aspects and requires integrating different competences to find a balanced and sustainable solution.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const STEPS=[
+  {label:"Ideation",q:"Why? What authentic problem? What learning opportunity?",body:"School and company jointly identify an authentic problem that can represent a real learning opportunity. The problem should: be real; be significant for the company; have no unique solution; be sufficiently open to stimulate research; be compatible with students' level of preparation.",sub:[]},
+  {label:"Planning",q:"Who? What? When? How?",body:"School and company elaborate the Challenge brief, making explicit in detail:",sub:["The context","The problem","The objectives","The constraints","The available resources","The timelines","The assessment criteria"]},
+  {label:"Delivery",q:"How? Four steps inside this phase",body:"The company presents the Challenge question and students begin to work through four steps:",sub:["Problem understanding — students clarify what is really required, what information they already have, what is missing, what data must be collected, which competences will need to be activated","Research and exploration — groups consult technical documentation, observe production processes, collect data, interview operators, compare different hypotheses of solution","Elaborating the solution — the team selects the most convincing proposal, deepens, verifies and documents it; where possible, develops prototypes, simulations, models, or improvement plans","Final presentation and comparison — each group presents its proposal, illustrating the problem analysed, the path followed, the hypotheses considered, the solution chosen, and the motivations behind the decisions taken"]},
+  {label:"Monitoring",q:"How is it going? Formative function",body:"During the Challenge, school and company accompany the teams by observing the progress of work, offering support, and collecting useful evidence on the learning process. Monitoring has a predominantly formative function: it helps students reflect on the path taken, reorient work when necessary, and progressively document activities carried out.",sub:["School and company compile the observation sheet and timeline","Students compile the learning log, documenting their work with photos, videos, etc."]},
+  {label:"Assessment",q:"How did it go? Three dimensions",body:"Assessment concludes the Challenge and takes into consideration not only the quality of the proposed solution, but also the process followed by the team and the capacity to collaborate, argue, and motivate choices.",sub:["School and company compile the assessment rubric and the school-company self-assessment report","Students compile the self-assessment sheet and the experience evaluation form"]},
+];
+let step=0;
+function setStep(i,btn){step=i;document.querySelectorAll('.step-tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderStep();}
+function renderStep(){
+  const s=STEPS[step];
+  const chkSvg='<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>';
+  const subHtml=s.sub.length?`<div class="sub-points">${s.sub.map(p=>`<div class="sub-point">${chkSvg}<span>${p}</span></div>`).join('')}</div>`:'';
+  document.getElementById('step-panel').innerHTML=`<div class="step-q">${s.label} — ${s.q}</div><div class="step-body">${s.body}</div>${subHtml}`;
+}
+renderStep();
+function show(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('on'));document.getElementById(id).classList.add('on');btn.classList.add('on');}
+</script>
+</body>
+</html>

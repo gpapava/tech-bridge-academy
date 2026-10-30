@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Work — Tech Bridge Academy</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --surface-0:#f5f4f0;--surface-1:#f0efe9;--surface-2:#ffffff;
+  --text-primary:#1a1a18;--text-secondary:#5f5e5a;--text-muted:#888780;
+  --border:#e0dfd8;--border-strong:#c8c7c0;--radius:8px;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+body{font-family:var(--font-sans);background:var(--surface-0);color:var(--text-primary);padding:0}
+.page{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.site-header{display:flex;align-items:center;gap:12px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--border)}
+.site-logo{font-size:15px;font-weight:500;color:#185FA5}
+.site-logo span{color:var(--text-muted);font-weight:400}
+.breadcrumb{font-size:12px;color:var(--text-muted);margin-left:auto}
+.sec-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
+.sec-btn{font-size:12px;padding:5px 12px;border-radius:99px;border:0.5px solid var(--border);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;transition:all .15s}
+.sec-btn.on{background:#185FA5;color:#fff;border-color:#185FA5}
+.section{display:none}.section.on{display:block}
+.sec-intro{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:1rem;padding:.75rem 1rem;background:var(--surface-1);border-radius:var(--radius);border-left:2px solid var(--border-strong)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:1rem}
+.feat-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.feat-icon{font-size:20px;color:#185FA5;margin-bottom:.5rem}
+.feat-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:.25rem}
+.feat-body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.comp-col{border-radius:12px;overflow:hidden;border:0.5px solid}
+.comp-col.tech{border-color:#B5D4F4}
+.comp-col.trans{border-color:#9FE1CB}
+.comp-head{padding:.75rem 1rem;display:flex;align-items:center;gap:8px}
+.comp-col.tech .comp-head{background:#185FA5}
+.comp-col.trans .comp-head{background:#0F6E56}
+.comp-head i{font-size:20px;color:#fff}
+.comp-head span{font-size:13px;font-weight:500;color:#fff}
+.comp-body{background:var(--surface-2);padding:.5rem .75rem}
+.comp-item{display:flex;gap:8px;padding:.45rem .25rem;border-bottom:0.5px solid var(--border);align-items:flex-start}
+.comp-item:last-child{border-bottom:none}
+.comp-n{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
+.comp-col.tech .comp-n{background:#E6F1FB;color:#0C447C}
+.comp-col.trans .comp-n{background:#E1F5EE;color:#085041}
+.comp-text{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.stepper-nav{display:flex;gap:0;margin-bottom:.85rem;border-radius:var(--radius);overflow:hidden;border:0.5px solid var(--border)}
+.step-tab{flex:1;padding:7px 4px;font-size:11px;font-weight:500;text-align:center;cursor:pointer;border:none;background:var(--surface-1);color:var(--text-secondary);transition:all .15s;border-right:0.5px solid var(--border)}
+.step-tab:last-child{border-right:none}
+.step-tab.on{background:#185FA5;color:#fff}
+.step-panel{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem}
+.step-q{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.5rem}
+.step-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.step-col-label{font-size:11px;font-weight:500;margin-bottom:.35rem}
+.step-col-label.school{color:#0C447C}
+.step-col-label.stu{color:#633806}
+.step-body{font-size:13px;color:var(--text-secondary);line-height:1.6}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem}
+.role-col{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.role-head{display:flex;align-items:center;gap:7px;margin-bottom:.65rem}
+.role-icon{font-size:18px}
+.role-icon.school{color:#185FA5}
+.role-icon.biz{color:#0F6E56}
+.role-icon.stu{color:#854F0B}
+.role-name{font-size:12px;font-weight:500;color:var(--text-primary)}
+.role-list{font-size:11px;color:var(--text-secondary);line-height:1.7}
+.role-list li{list-style:none;padding-left:12px;position:relative}
+.role-list li::before{content:"·";position:absolute;left:2px;color:var(--text-muted)}
+.aval-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:1rem}
+.aval-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:.85rem 1rem}
+.aval-icon{font-size:20px;color:#185FA5;margin-bottom:.35rem}
+.aval-title{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:.3rem}
+.aval-body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.tl-wrap{margin-bottom:1rem}
+.tl-row{display:grid;grid-template-columns:90px 1fr;gap:0;margin-bottom:6px}
+.tl-label{font-size:11px;font-weight:500;padding:.5rem .6rem .5rem 0;text-align:right;border-right:2px solid;padding-right:10px;line-height:1.4}
+.tl-label.school{color:#0C447C;border-color:#185FA5}
+.tl-label.stu{color:#633806;border-color:#EAA838}
+.tl-phases{display:flex;gap:4px;padding:.4rem 0 .4rem 10px;flex-wrap:wrap}
+.tl-phase{font-size:11px;padding:3px 8px;border-radius:var(--radius);border:0.5px solid;white-space:nowrap}
+.tl-phase.school{background:#E6F1FB;color:#0C447C;border-color:#B5D4F4}
+.tl-phase.stu{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.tl-phase.sync{background:#E1F5EE;color:#085041;border-color:#9FE1CB}
+.tl-note{font-size:11px;color:var(--text-muted);padding:.4rem 0 .4rem 10px;font-style:italic}
+.key-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:1rem}
+.key-item{display:flex;align-items:flex-start;gap:8px;padding:.65rem .75rem;background:var(--surface-2);border:0.5px solid var(--border);border-radius:var(--radius)}
+.key-num{width:20px;height:20px;border-radius:50%;background:#E6F1FB;color:#0C447C;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.key-text{font-size:12px;color:var(--text-secondary);line-height:1.5}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="site-header">
+  <div class="site-logo">Tech Bridge <span>Academy</span></div>
+  <div class="breadcrumb">Bridge Area · Educational Collaboration · Section 2</div>
+</div>
+
+<nav class="sec-nav" aria-label="Sections">
+  <button class="sec-btn on" onclick="show('what',this)">What it is</button>
+  <button class="sec-btn" onclick="show('comp',this)">Competences</button>
+  <button class="sec-btn" onclick="show('how',this)">How it works</button>
+  <button class="sec-btn" onclick="show('roles',this)">Roles</button>
+  <button class="sec-btn" onclick="show('aval',this)">Assessment</button>
+  <button class="sec-btn" onclick="show('tl',this)">The two timelines</button>
+  <button class="sec-btn" onclick="show('keys',this)">Key principles</button>
+  <button class="sec-btn" onclick="show('examples',this)">Examples</button>
+</nav>
+
+<!-- WHAT IT IS -->
+<div id="what" class="section on">
+  <div class="sec-intro">Project Work is a teaching strategy based on the idea that learning is activated and developed effectively when students face situations to resolve. Students learn while developing and elaborating projects autonomously — whether producing a process or developing a product — and in this generative work they must integrate the experiences and competences they have acquired.</div>
+  <div class="card-grid">
+    <div class="feat-card"><div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12l5 5l10 -10"/><path d="M2 12l5 5m5 -5l5 -5"/></svg></div><div class="feat-title">Authentic</div><div class="feat-body">Connected to reality and to students' interests and curiosities — not a theoretical exercise.</div></div>
+    <div class="feat-card"><div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 0 1 -1v-3h-4a2 2 0 0 0 -2 2h-4a2 2 0 0 0 -2 2v4a1 1 0 0 1 -1 1h-1a2 2 0 0 0 0 4h1a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3v-4a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-4z"/></svg></div><div class="feat-title">Complex enough</div><div class="feat-body">Challenging enough for students to feel stretched by the task, but not so difficult as to overwhelm them.</div></div>
+    <div class="feat-card"><div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg></div><div class="feat-title">Feasible</div><div class="feat-body">Built on the overall capabilities students already possess — both content knowledge and project management skills.</div></div>
+    <div class="feat-card"><div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg></div><div class="feat-title">Commissioned work</div><div class="feat-body">Configured as a commission co-designed by school and company together as joint clients.</div></div>
+    <div class="feat-card"><div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg></div><div class="feat-title">Individual or group</div><div class="feat-body">Can be carried out individually or in small, mixed groups. Group work adds relational competences and requires more time.</div></div>
+    <div class="feat-card"><div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"/></svg></div><div class="feat-title">Intrinsically motivating</div><div class="feat-body">Exploits the appeal of working creatively and autonomously to produce something real — indirect motivation for learning.</div></div>
+  </div>
+  <div class="sec-intro" style="border-left-color:#E24B4A;margin-top:.25rem">The most common errors arise when: clear rules are missing; assessment criteria are not communicated in detail; or teachers do not provide adequate support and feedback opportunities.</div>
+</div>
+
+<!-- COMPETENCES -->
+<div id="comp" class="section">
+  <div class="comp-grid">
+    <div class="comp-col tech">
+      <div class="comp-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg><span>Technical and professional</span></div>
+      <div class="comp-body">
+        <div class="comp-item"><div class="comp-n">1</div><div class="comp-text">Analyse complex problems</div></div>
+        <div class="comp-item"><div class="comp-n">2</div><div class="comp-text">Identify cause-effect relationships</div></div>
+        <div class="comp-item"><div class="comp-n">3</div><div class="comp-text">Collect and interpret data</div></div>
+        <div class="comp-item"><div class="comp-n">4</div><div class="comp-text">Use technical documentation</div></div>
+        <div class="comp-item"><div class="comp-n">5</div><div class="comp-text">Compare possible solutions</div></div>
+        <div class="comp-item"><div class="comp-n">6</div><div class="comp-text">Make reasoned decisions</div></div>
+        <div class="comp-item"><div class="comp-n">7</div><div class="comp-text">Assess technical, organisational and economic feasibility</div></div>
+        <div class="comp-item"><div class="comp-n">8</div><div class="comp-text">Document the process followed</div></div>
+        <div class="comp-item"><div class="comp-n">9</div><div class="comp-text">Apply CAD and technical tools</div></div>
+        <div class="comp-item"><div class="comp-n">10</div><div class="comp-text">Produce technical deliverables</div></div>
+      </div>
+    </div>
+    <div class="comp-col trans">
+      <div class="comp-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h14l-4 -4"/><path d="M17 14h-14l4 4"/></svg><span>Transversal</span></div>
+      <div class="comp-body">
+        <div class="comp-item"><div class="comp-n">1</div><div class="comp-text">Organise work autonomously</div></div>
+        <div class="comp-item"><div class="comp-n">2</div><div class="comp-text">Plan activities and timelines</div></div>
+        <div class="comp-item"><div class="comp-n">3</div><div class="comp-text">Manage time effectively</div></div>
+        <div class="comp-item"><div class="comp-n">4</div><div class="comp-text">Collaborate in a group</div></div>
+        <div class="comp-item"><div class="comp-n">5</div><div class="comp-text">Communicate effectively</div></div>
+        <div class="comp-item"><div class="comp-n">6</div><div class="comp-text">Take individual and collective responsibility</div></div>
+        <div class="comp-item"><div class="comp-n">7</div><div class="comp-text">Adapt to changes and unexpected situations</div></div>
+        <div class="comp-item"><div class="comp-n">8</div><div class="comp-text">Reflect critically on one's own work</div></div>
+        <div class="comp-item"><div class="comp-n">9</div><div class="comp-text">Present and argue choices to an external client</div></div>
+        <div class="comp-item"><div class="comp-n">10</div><div class="comp-text">Transfer learning to new situations</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" class="section">
+  <div class="sec-intro">Like all work-based learning devices, Project Work is structured in five phases. School and company work at time T to design the device; students begin their own process at time T+1 when they receive the commission.</div>
+  <div class="stepper-nav">
+    <button class="step-tab on" onclick="setStep(0,this)">1 Ideation</button>
+    <button class="step-tab" onclick="setStep(1,this)">2 Planning</button>
+    <button class="step-tab" onclick="setStep(2,this)">3 Delivery</button>
+    <button class="step-tab" onclick="setStep(3,this)">4 Monitoring</button>
+    <button class="step-tab" onclick="setStep(4,this)">5 Assessment</button>
+  </div>
+  <div id="step-panel" class="step-panel"></div>
+</div>
+
+<!-- ROLES -->
+<div id="roles" class="section">
+  <div class="role-grid">
+    <div class="role-col">
+      <div class="role-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg><div class="role-name">School / VET centre</div></div>
+      <ul class="role-list">
+        <li>Define the Project Work's learning objectives in line with the curriculum exit profile</li>
+        <li>Co-design the commission with the company</li>
+        <li>Prepare the project brief and planning documents</li>
+        <li>Define preparatory or follow-up activities</li>
+        <li>Prepare monitoring and assessment tools</li>
+        <li>Support students during the delivery phase</li>
+        <li>Evaluate product and learning process together with the company</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h18"/><path d="M5 21v-12l5 4v-4l5 4h4v8"/><path d="M14 21v-4"/><path d="M17 12v-7h2v7"/></svg><div class="role-name">Company</div></div>
+      <ul class="role-list">
+        <li>Define a real need and co-design the commission with the school</li>
+        <li>Designate a company tutor</li>
+        <li>Provide data, technical documentation, and context</li>
+        <li>If the PW is hosted at the company: provide workspace, equipment, and safety compliance</li>
+        <li>Support and accompany students during delivery</li>
+        <li>Provide feedback and evaluate the outputs jointly with the school</li>
+      </ul>
+    </div>
+    <div class="role-col">
+      <div class="role-head"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 11l2 2l4 -4"/></svg><div class="role-name">Students</div></div>
+      <ul class="role-list">
+        <li>Organise themselves to respond to the commission</li>
+        <li>Develop an initial project concept</li>
+        <li>Plan the activities to be carried out</li>
+        <li>Monitor the progress of each activity</li>
+        <li>Deliver the completed product</li>
+        <li>Present outcomes to all parties involved in assessment</li>
+        <li>Self-assess the experience</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ASSESSMENT -->
+<div id="aval" class="section">
+  <div class="sec-intro">Assessment should consider both the product and the learning process. The assessment rubric is the primary tool: it makes evaluation criteria explicit and creates a shared language between school and company. Four proficiency levels are used: not achieved — basic — intermediate — advanced.</div>
+  <div class="aval-grid">
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="9"/></svg></div><div class="aval-title">Coherence with the commission</div><div class="aval-body">Does the solution respond to the needs and requirements stated in the commission? Does it show understanding of the problem?</div></div>
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/><line x1="9.7" y1="17" x2="14.3" y2="17"/></svg></div><div class="aval-title">Technical quality</div><div class="aval-body">Is the solution technically plausible, feasible, and attentive to assembly, safety, and maintenance?</div></div>
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="9" x2="10" y2="9"/></svg></div><div class="aval-title">Documentation</div><div class="aval-body">Are the technical deliverables complete, clear, and consistent? Is the technical report adequate and comprehensible?</div></div>
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg></div><div class="aval-title">Application of competences</div><div class="aval-body">Are technical and professional competences applied correctly, with autonomy and precision across the different dimensions of the problem?</div></div>
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg></div><div class="aval-title">Organisation and collaboration</div><div class="aval-body">Does the group work autonomously? Are roles distributed? Is the process documented and deadlines respected?</div></div>
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="3" y1="4" x2="21" y2="4"/><path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10"/><line x1="12" y1="16" x2="12" y2="20"/><line x1="9" y1="20" x2="15" y2="20"/><path d="M8 12l3 -3l2 2l3 -3"/></svg></div><div class="aval-title">Presentation and argumentation</div><div class="aval-body">Is the final presentation clear, technical, and convincing? Can the group respond pertinently to the client's questions?</div></div>
+    <div class="aval-card"><div class="aval-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"/><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg></div><div class="aval-title">Critical reflection</div><div class="aval-body">Does the group analyse the process critically, motivate their choices, and propose realistic future developments?</div></div>
+  </div>
+</div>
+
+<!-- TWO TIMELINES -->
+<div id="tl" class="section">
+  <div class="sec-intro">Project Work operates on two parallel timelines that converge at the delivery phase. School and company design the device at time T; students begin their own project process at time T+1 when they receive the commission. From the delivery phase onwards, both processes are synchronised.</div>
+  <div class="tl-wrap">
+    <div class="tl-row">
+      <div class="tl-label school">School +<br>company<br><small>(T)</small></div>
+      <div class="tl-phases">
+        <span class="tl-phase school">Ideation — define objectives, commission, tools</span>
+        <span class="tl-phase school">Planning — complete project brief, assessment criteria</span>
+        <span class="tl-phase sync">Delivery — support students</span>
+        <span class="tl-phase sync">Monitoring — progress check, observation sheet</span>
+        <span class="tl-phase sync">Assessment — evaluate product and learning outcomes</span>
+      </div>
+    </div>
+    <div style="height:6px"></div>
+    <div class="tl-row">
+      <div class="tl-label stu">Students<br><small>(T+1)</small></div>
+      <div class="tl-phases">
+        <span class="tl-phase stu" style="opacity:.35;font-style:italic">— waiting for commission —</span>
+        <span class="tl-phase stu">Receive commission → concept design → operational plan</span>
+        <span class="tl-phase sync">Delivery — implement plan, keep learning log</span>
+        <span class="tl-phase sync">Monitoring — track progress, update timeline</span>
+        <span class="tl-phase sync">Assessment — present work, self-assess</span>
+      </div>
+    </div>
+    <div class="tl-note">Phases in green involve school, company, and students simultaneously.</div>
+  </div>
+  <div class="card-grid" style="margin-top:.5rem">
+    <div class="feat-card"><div class="feat-icon" style="color:#0C447C"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg></div><div class="feat-title">School + company design first</div><div class="feat-body">Objectives, commission, assessment criteria, and tools are ready before students start.</div></div>
+    <div class="feat-card"><div class="feat-icon" style="color:#633806"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3"/><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5"/></svg></div><div class="feat-title">Students receive the commission</div><div class="feat-body">The commission is the handoff point. Students then run their own 5-phase process from concept to delivery.</div></div>
+    <div class="feat-card"><div class="feat-icon" style="color:#085041"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7h5l3.5 5h9.5"/><path d="M3 17h5l3.495 -5"/></svg></div><div class="feat-title">Convergence at delivery</div><div class="feat-body">From the delivery phase onwards, monitoring and assessment happen synchronously across all three parties.</div></div>
+  </div>
+</div>
+
+<!-- KEY PRINCIPLES -->
+<div id="keys" class="section">
+  <div class="sec-intro">Eight key principles to keep in mind when designing and running a Project Work — from the initial brief to the final transfer of learning.</div>
+  <div class="key-grid">
+    <div class="key-item"><div class="key-num">1</div><div class="key-text">Start from a real need — the commission must connect to an authentic professional context</div></div>
+    <div class="key-item"><div class="key-num">2</div><div class="key-text">Design jointly — school and company co-design the commission and the learning pathway</div></div>
+    <div class="key-item"><div class="key-num">3</div><div class="key-text">Make learning outcomes explicit — define expected competences before students begin</div></div>
+    <div class="key-item"><div class="key-num">4</div><div class="key-text">Support students with progressive tools — briefs, planning sheets, intermediate checkpoints</div></div>
+    <div class="key-item"><div class="key-num">5</div><div class="key-text">Monitor throughout the process — do not wait for the final delivery to identify problems</div></div>
+    <div class="key-item"><div class="key-num">6</div><div class="key-text">Assess both process and product — the how matters as much as the what</div></div>
+    <div class="key-item"><div class="key-num">7</div><div class="key-text">Promote self-assessment — students should reflect on their own learning journey</div></div>
+    <div class="key-item"><div class="key-num">8</div><div class="key-text">Foster transfer — connect the PW experience back to classroom learning and future contexts</div></div>
+  </div>
+</div>
+
+
+<!-- EXAMPLES -->
+<div id="examples" class="section">
+  <div class="sec-intro">The following examples show how a Project Work commission is structured in the mechanical and mechatronic sector. Each example includes the project idea, the commission brief, the expected learning outcomes, and the assessment criteria — ready to be adapted to your context.</div>
+  <div class="card-grid" style="grid-template-columns:1fr 1fr">
+    <div class="feat-card" style="cursor:pointer;border:0.5px solid #B5D4F4" onclick="window.open('pw_example_1_en.html','_blank')">
+      <div class="feat-icon" style="color:#185FA5"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="9" x2="10" y2="9"/></svg></div>
+      <div class="feat-title">Example 1 — Tensioner system for an industrial unwinder</div>
+      <div class="feat-body" style="margin-bottom:.75rem">Mechanical engineering · 40–50 hours · EQF adaptable. Students design an improved tensioner group for an industrial unwinding machine — analysis, CAD modelling, technical documentation, final presentation to the company client.</div>
+      <div style="font-size:12px;color:#185FA5;font-weight:500">See full example →</div>
+    </div>
+    <div class="feat-card" style="cursor:pointer;border:0.5px solid #B5D4F4" onclick="window.open('pw_example_2_en.html','_blank')">
+      <div class="feat-icon" style="color:#185FA5"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="9" x2="10" y2="9"/></svg></div>
+      <div class="feat-title">Example 2 — Embossing unit improvement for tissue paper line</div>
+      <div class="feat-body" style="margin-bottom:.75rem">Mechanical and mechatronic engineering · 40–50 hours · EQF adaptable. Students analyse a tissue paper converting line's embossing unit, identify critical issues, and develop a technically grounded improvement proposal.</div>
+      <div style="font-size:12px;color:#185FA5;font-weight:500">See full example →</div>
+    </div>
+  </div>
+  <div class="sec-intro" style="border-left-color:#0F6E56;margin-top:.25rem">These examples are from Italy and represent one possible approach. Schools and companies from other partner countries can contribute their own examples using the same structure — contact the Academy coordination team to submit a new example.</div>
+</div>
+
+</div>
+
+<script>
+const STEPS=[
+  {label:"Ideation",q:"Why? What need to meet? What objectives? What resources?",school:"School and company jointly sign a partnership agreement (designating school and company tutors) and co-design the commission. They produce the project brief and the commission sheet to hand to students.",stu:"Students have not yet started — they are waiting for the commission."},
+  {label:"Planning",q:"Who? What? When? How much?",school:"School and company complete the operational project sheet, specifying the characteristics of the expected product, learning outcomes, timeline, phases, tools and materials, monitoring methods, and assessment criteria.",stu:"Students receive the commission sheet, elaborate a preliminary concept, and compile their operational plan."},
+  {label:"Delivery",q:"How?",school:"School and company support and accompany students throughout the delivery phase, providing feedback and making themselves available for consultations.",stu:"Students implement their operational plan, keeping a learning log that documents activities, problems encountered, solutions adopted, and what they learned."},
+  {label:"Monitoring",q:"How is it going?",school:"School and company verify progress against the plan by compiling the timeline and the observation sheet — checking that delivery is on track with what was planned.",stu:"Students also track their own progress by updating the student timeline, flagging delays or problems to their tutors."},
+  {label:"Assessment",q:"How did it go?",school:"School and company evaluate the product and learning outcomes using the assessment rubric and scoring grid, then jointly compile the school-company self-assessment report.",stu:"Students present their work to all parties involved in assessment, compile their self-assessment sheet, and fill in the experience evaluation form."},
+];
+let step=0;
+function setStep(i,btn){
+  step=i;
+  document.querySelectorAll('.step-tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderStep();
+}
+function renderStep(){
+  const s=STEPS[step];
+  document.getElementById('step-panel').innerHTML=`
+    <div class="step-q">${s.label} — ${s.q}</div>
+    <div class="step-cols">
+      <div><div class="step-col-label school"><svg style="margin-right:4px" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg>School + company (T)</div><div class="step-body">${s.school}</div></div>
+      <div><div class="step-col-label stu"><svg style="margin-right:4px" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 11l2 2l4 -4"/></svg>Students (T+1)</div><div class="step-body">${s.stu}</div></div>
+    </div>`;
+}
+renderStep();
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

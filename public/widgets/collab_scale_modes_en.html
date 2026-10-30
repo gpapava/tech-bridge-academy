@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How schools and businesses collaborate — Tech Bridge Academy</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --surface-0:#f5f4f0;--surface-1:#f0efe9;--surface-2:#ffffff;
+  --text-primary:#1a1a18;--text-secondary:#5f5e5a;--text-muted:#888780;
+  --border:#e0dfd8;--border-strong:#c8c7c0;--radius:8px;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+body{font-family:var(--font-sans);background:var(--surface-0);color:var(--text-primary);padding:0}
+.page{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.site-header{display:flex;align-items:center;gap:12px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--border)}
+.site-logo{font-size:15px;font-weight:500;color:#185FA5}
+.site-logo span{color:var(--text-muted);font-weight:400}
+.breadcrumb{font-size:12px;color:var(--text-muted);margin-left:auto}
+.intro-card{background:var(--surface-2);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;border:0.5px solid var(--border)}
+.intro-title{font-size:16px;font-weight:500;color:var(--text-primary);margin-bottom:.5rem}
+.intro-body{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.intro-legend{display:flex;align-items:center;gap:6px;margin-top:.85rem;padding-top:.85rem;border-top:0.5px solid var(--border);flex-wrap:wrap;font-size:12px;color:var(--text-secondary)}
+.intro-legend strong{font-weight:500;color:var(--text-primary)}
+.role-row{display:flex;gap:6px;margin-bottom:1.1rem}
+.role-btn{flex:1;padding:8px 0;font-size:13px;border-radius:99px;border:0.5px solid var(--border-strong);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s}
+.role-btn.on{background:#185FA5;color:#fff;border-color:#185FA5}
+.stair-list{display:flex;flex-direction:column;gap:3px}
+.stair-btn{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:6px;border:1.5px solid transparent;cursor:pointer;text-align:left;width:100%;transition:filter .12s}
+.stair-btn:hover{filter:brightness(.93)}
+.stair-btn.open{filter:brightness(.88);border-color:rgba(255,255,255,.35)}
+.s-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.s-name{font-size:13px;font-weight:500;flex:1;line-height:1.25}
+.s-eff{font-size:11px;opacity:.75;margin-top:2px}
+.s-chev{font-size:14px;opacity:.65;flex-shrink:0;transition:transform .15s}
+.stair-btn.open .s-chev{transform:rotate(90deg)}
+.panel{background:var(--surface-2);border:0.5px solid var(--border);border-radius:0 0 10px 10px;padding:1.1rem 1.25rem;margin-top:-3px;margin-bottom:4px}
+.p-desc{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:.9rem}
+.p-sec{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.5rem;margin-top:.85rem}
+.p-purposes{display:flex;flex-direction:column;gap:6px}
+.pip-row{display:flex;align-items:flex-start;gap:10px}
+.pip-name{font-size:12px;color:var(--text-secondary);width:114px;flex-shrink:0;padding-top:1px}
+.pip-dots{display:flex;gap:3px;padding-top:3px;flex-shrink:0}
+.pdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pdot.filled{background:#185FA5}
+.pdot.empty{background:var(--border-strong)}
+.pip-desc{font-size:11px;color:var(--text-muted);flex:1;line-height:1.5}
+.pip-none .pip-name,.pip-none .pip-dots,.pip-none .pip-desc{opacity:.35}
+.acc-toggle{font-size:12px;color:#185FA5;cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-bottom:.5rem;background:none;border:none;padding:0;margin-top:.1rem}
+.acc-body{display:none}
+.acc-body.open{display:block}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
+.res-box{background:var(--surface-1);border-radius:var(--radius);padding:.6rem .75rem}
+.res-lbl{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:.3rem}
+.res-val{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.gw-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:6px 12px;border-radius:var(--radius);border:0.5px solid #185FA5;color:#185FA5;background:transparent;cursor:pointer;margin-right:6px;margin-top:.4rem;text-decoration:none}
+.gw-btn:hover{background:#E6F1FB}
+.commit-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.25rem;padding-top:.85rem;border-top:0.5px solid var(--border)}
+.leg-i{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary)}
+.leg-d{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="site-header">
+  <div class="site-logo">Tech Bridge <span>Academy</span></div>
+  <div class="breadcrumb">Bridge Area · Educational Collaboration</div>
+</div>
+
+<div class="intro-card">
+  <div class="intro-title">How schools and businesses collaborate — a practical guide</div>
+  <div class="intro-body">This guide provides an overview of the main forms of school-business collaboration. For each one, it highlights the <strong>purposes</strong> it can serve and the <strong>commitment required</strong> from the company — so you can identify the forms that best match your objectives and the resources you can put in place.<br><br>Select your role to see the resources and skills relevant to your perspective, then explore each level to find the right starting point.</div>
+  <div class="intro-legend"><strong>Purposes:</strong>&nbsp; how strongly each form serves a given goal &nbsp;·&nbsp; ●●● strong &nbsp;·&nbsp; ●● present &nbsp;·&nbsp; ● marginal &nbsp;·&nbsp; – absent</div>
+</div>
+
+<div class="role-row">
+  <button class="role-btn on" id="btn-sme" onclick="setRole('sme',this)"><i class="ti ti-building-factory-2" aria-hidden="true"></i> I am a business</button>
+  <button class="role-btn" id="btn-school" onclick="setRole('school',this)"><i class="ti ti-school" aria-hidden="true"></i> I am a school / VET centre</button>
+</div>
+
+<div class="stair-list" id="stair-list"></div>
+
+<div class="commit-legend">
+  <div class="leg-i"><div class="leg-d" style="background:#5BAFD4"></div>Low commitment</div>
+  <div class="leg-i"><div class="leg-d" style="background:#55B08A"></div>Medium commitment</div>
+  <div class="leg-i"><div class="leg-d" style="background:#D49830"></div>Medium – high commitment</div>
+  <div class="leg-i"><div class="leg-d" style="background:#C85535"></div>High commitment</div>
+  <div class="leg-i"><div class="leg-d" style="background:#8B6BBF"></div>Very high commitment</div>
+</div>
+</div>
+
+<script>
+const COLORS=[
+  {bg:"#C8E8F5",text:"#1A5C78"},{bg:"#A0D8EE",text:"#134F6A"},
+  {bg:"#80CBA8",text:"#1A5C3A"},{bg:"#5CB890",text:"#144D30"},
+  {bg:"#48AE80",text:"#0F4028"},{bg:"#F5CC70",text:"#6B4A0A"},
+  {bg:"#EAA838",text:"#5C3A08"},{bg:"#D96848",text:"#6B2010"},
+  {bg:"#C85535",text:"#5C1800"},{bg:"#A080CC",text:"#3D2060"},
+];
+const PURPOSES=[
+  {name:"Informative",desc:"Transfer knowledge about the world of work, company organisation, and professions."},
+  {name:"Orientating",desc:"Help students discover professions, sectors, and working contexts."},
+  {name:"Educational",desc:"Develop technical and transversal competences."},
+  {name:"Productive",desc:"Generate original and innovative solutions."},
+  {name:"Selective",desc:"Allow the company to identify and assess potential future collaborators."},
+  {name:"Employment",desc:"Facilitate access to the labour market."},
+  {name:"Remunerated",desc:"Provide remuneration or financial support for the student."},
+  {name:"Certifying",desc:"Allow the certification or validation of acquired competences."},
+];
+const GW_URL={
+  "Project Work":"/bridge/educational-collaboration/project-work",
+  "Internship":"/bridge/educational-collaboration/internship",
+  "Challenge":"/bridge/educational-collaboration/challenge",
+  "Co-Design":"/bridge/co-design"
+};
+const GW={
+  "Project Work":"Explore Project Work →",
+  "Internship":"Explore Internship →",
+  "Challenge":"Explore Challenge →",
+  "Co-Design":"Explore Co-Design →"
+};
+const MODES=[
+  {name:"Testimonials in school",effort:"Low commitment",
+   desc:"Professionals from a company come to school to present the characteristics of professional roles and sectors, the local labour market, and ways of entering it.",
+   purposes:[3,2,1,0,0,0,0,0],
+   sme:{know:"Company history and evolution, vision, mission and values, organisational structure, professional roles, required competences, sector and market trends, recruitment procedures.",skills:"Communicating clearly, engaging and arousing curiosity, adapting language to a student audience.",tools:"Company presentation (slides, video), brochure, product samples.",org:"One professional available and time to prepare the session."},
+   school:{know:"The company's role in the local sector, how it recruits, what it looks for in candidates.",skills:"Briefing the speaker, framing the session for students, facilitating questions.",tools:"Welcome materials, student reflection sheet.",org:"Coordination with the company contact, logistical preparation of the classroom."},
+   gateway:[]},
+  {name:"Company visits",effort:"Low – medium commitment",
+   desc:"Welcoming classes at the company to present and show the business as a whole and/or to focus on specific aspects (for example, the production process).",
+   purposes:[2,3,1,0,0,0,0,0],
+   sme:{know:"Company history, vision, mission and values, production processes, organisational structure, professional roles, safety standards.",skills:"Planning the visit route, welcoming groups, explaining activities and processes.",tools:"Visitable departments, personal protective equipment, meeting rooms, illustrative materials.",org:"Company contact person and staff involved during the visit."},
+   school:{know:"The company's production context, safety requirements, which departments are accessible.",skills:"Preparing students before the visit, structuring observation tasks, debriefing afterwards.",tools:"Student observation guide, pre-visit briefing materials.",org:"Coordination with the company, transport logistics, parental consent if minors."},
+   gateway:[]},
+  {name:"Co-design of learning scenarios",effort:"Medium commitment",
+   desc:"School and company collaborate on designing learning scenarios based on authentic professional situations where problems must be solved, activities carried out, or decisions made. The company provides cases, data and documentation; the school transforms them into learning scenarios to develop technical and transversal competences — without students necessarily being present at the company.",
+   purposes:[1,1,3,1,0,0,0,0],
+   sme:{know:"Company processes, technologies used, professional cases, recurring problems, quality standards.",skills:"Identifying professionally significant situations, collaborating with teachers, making procedures and decision criteria explicit.",tools:"Technical documentation, photographs, videos, data.",org:"Participation in design meetings and dialogue with the school."},
+   school:{know:"How to translate professional situations into learning tasks, competence-based curriculum design.",skills:"Co-designing with company partners, selecting and adapting authentic materials for classroom use.",tools:"Curriculum design frameworks, scenario templates, competency descriptors.",org:"Time for joint design sessions, coordination with the company contact."},
+   gateway:["Co-Design"]},
+  {name:"Professional lessons from the company",effort:"Medium commitment",
+   desc:"Technical lessons delivered at school by professionals from partner companies. These can be aimed at students, at teachers, or at both; they can take place at school or at the company.",
+   purposes:[2,1,3,0,0,0,0,0],
+   sme:{know:"Sector technologies, processes and innovations, competences required by the professions, teaching strategies.",skills:"Transferring knowledge, engaging students.",tools:"Teaching materials (slides, video, cards), software, prototypes, products.",org:"Availability of professionals competent in teaching."},
+   school:{know:"Which company professionals are suitable to deliver sessions, how to integrate external lessons into the curriculum.",skills:"Briefing the company professional, co-designing the session structure, integrating the lesson into ongoing teaching.",tools:"Session planning template, evaluation form for students and teacher.",org:"Coordination with the company, scheduling within the school timetable."},
+   gateway:[]},
+  {name:"Observational placements / shadowing",effort:"Medium commitment",
+   desc:"The student or teacher is hosted at the company to observe the daily work of a professional in a specific role, with the opportunity to ask questions of the person being observed.",
+   purposes:[1,3,3,0,1,0,0,0],
+   sme:{know:"Professional role, work organisation, operational procedures.",skills:"Guiding observation, explaining work carried out, stimulating questions and reflection.",tools:"Workstation, personal protective equipment, optional observation diary, compliance with health and safety regulations.",org:"One professional available to accompany the student or teacher for the entire experience."},
+   school:{know:"What the student is expected to observe, how to structure a reflective observation experience.",skills:"Preparing the student for the placement, designing the observation guide, debriefing and integrating learning.",tools:"Observation diary template, structured reflection guide.",org:"Coordination with the company, health and safety compliance if minors."},
+   gateway:[]},
+  {name:"Project Work",effort:"Medium – high commitment",
+   desc:"Students — individually or in groups — are given the task of developing projects independently (developing a product, devising a service or process). Project Work is configured as commissioned work, where the commission is co-designed by school and company together as joint clients. Participation modes, timescales, and final evaluation criteria are made explicit. The level of company involvement can vary: from minimum (co-design only) to maximum (co-design and launch + hosting at the company + equipment + evaluation).",
+   purposes:[1,1,3,3,2,0,0,2],
+   sme:{know:"Company processes, needs, technical constraints, quality criteria, technologies used.",skills:"Defining a commission, co-designing the pathway, supervising and accompanying students, providing feedback, evaluating the outputs.",tools:"Company data, technical documentation; if held at the company: software and equipment, site access, health and safety compliance.",org:"Company contact and tutor, design meetings with the school, spaces and equipment if the PW is held at the company."},
+   school:{know:"How to design and manage a project-based learning experience, how to co-define the commission with the company.",skills:"Facilitating the project process, supporting student autonomy, managing the relationship with the company client.",tools:"Project brief template, project planning tool, evaluation rubric.",org:"Time allocation for design meetings with the company, internal coordination for cross-curricular projects."},
+   gateway:["Project Work"]},
+  {name:"Challenge",effort:"Medium – high commitment",
+   desc:"Students are placed in front of a challenge and in competition with each other (individually, between groups from the same class, the same school, or different schools). The challenge starts from a stated problem and consists in researching and presenting a possible solution. The teaching strategy used is Problem Based Learning. Participation modes, timescales, and final evaluation criteria are stated; at the end, the student or group that presented the best solution is rewarded. As with Project Work, the level of company involvement can vary: from minimum (design and launch + evaluation and award) to maximum (design and launch + company labs and equipment + evaluation and award).",
+   purposes:[1,1,2,3,1,0,0,1],
+   sme:{know:"Real company problems, improvement objectives, evaluation criteria and procedures.",skills:"Formulating a clear challenge, presenting it to students, supervising the work, providing feedback, evaluating the proposals.",tools:"Project brief, data, images and examples, challenge regulations; if held at the company: equipment, health and safety compliance, evaluation panel, possible final award.",org:"Company contact and tutor, design meetings with the school, spaces and equipment if the challenge is held at the company, evaluation panel, optional final award."},
+   school:{know:"Problem Based Learning methodology, how to co-design a challenge brief with a company partner.",skills:"Setting up the competitive structure, supporting student teams, managing the evaluation panel and award ceremony.",tools:"Challenge brief template, evaluation rubric, student team planning tool.",org:"Coordination with the company, internal organisation of student teams and timelines."},
+   gateway:["Challenge"]},
+  {name:"Curricular internship",effort:"High commitment",
+   desc:"Formative experiences carried out by the student at a host company, to facilitate future professional choices through direct knowledge of the world of work and the connection between theory and professional practice. The trainee carries out tasks under the supervision of a company tutor who acts as facilitator, coach, and assessor. Duration varies and is generally determined by the study programme and applicable national or regional regulations.",
+   purposes:[1,2,3,2,3,2,0,3],
+   sme:{know:"Learning objectives, tasks assignable to students, health and safety regulations, the role of the company tutor.",skills:"Planning the placement, accompanying and supervising the trainee's activity, assigning coherent tasks, giving feedback, evaluating learning outcomes.",tools:"Workstation, tools, personal protective equipment, compliance with health and safety regulations.",org:"Company tutor, time dedicated to accompaniment and monitoring."},
+   school:{know:"The regulatory framework for curricular internships in the relevant national/regional context, how to define learning objectives jointly with the company.",skills:"Co-designing the learning plan with the company, supporting the student during the placement, managing the evaluation process.",tools:"Learning plan template, mid-placement monitoring form, final evaluation rubric.",org:"Internal coordination between the school tutor and the company tutor, administrative management of the placement agreement."},
+   gateway:["Internship"]},
+  {name:"Apprenticeship",effort:"High commitment",
+   desc:"A form of work-based learning that structurally integrates training carried out at a company with that provided by an educational or training institution. It is based on a contract between apprentice and employer, includes remuneration, and leads to the achievement of a recognised qualification. Specific regulatory frameworks vary by country.",
+   purposes:[1,2,3,3,3,3,3,3],
+   sme:{know:"Professional profile, competences to develop, apprenticeship regulations in the relevant country, individual training pathway.",skills:"Co-designing the pathway, coordinating with the school, training on the job, monitoring and evaluating progress, giving feedback.",tools:"Workstation, professional tools, training record system.",org:"Company tutor, continuous coordination with the training institution, medium-to-long term investment."},
+   school:{know:"National apprenticeship regulatory framework, how to co-design the individual training plan with the company.",skills:"Supporting the apprentice and the company tutor throughout the pathway, managing the relationship between workplace and classroom learning.",tools:"Individual training plan template, monitoring log, final qualification assessment tools.",org:"Ongoing coordination with the company, administrative management of the apprenticeship contract."},
+   gateway:[]},
+  {name:"Territorial training ecosystems",effort:"Very high commitment",
+   desc:"Networks of schools and companies — which may also include other organisations (higher technical institutions, universities, public bodies, Chambers of Commerce, trade associations…) — aimed at building systematic interconnections between the training system and businesses. These networks are designed to improve alignment between productive sector needs and training pathways, and to stimulate innovation. Companies are involved both in designing and delivering training, and all the collaboration modes listed above can find a place within these systems.",
+   purposes:[3,3,3,3,3,3,3,3],
+   sme:{know:"Professional needs, labour market trends, the educational and training system, funding opportunities and territorial networks.",skills:"Working in partnership, sharing information, co-designing pathways, participating in network governance.",tools:"Meeting rooms, collaborative platforms, shared labs, communication tools.",org:"Involvement of company leadership, ongoing participation in working groups, willingness to invest in the partnership."},
+   school:{know:"Territorial ecosystem governance models, how to engage multiple actors in a shared training strategy.",skills:"Facilitating multi-stakeholder processes, representing the school in governance bodies, co-designing system-level training pathways.",tools:"Partnership canvas, governance framework, shared planning tools.",org:"Leadership commitment, staff time for ongoing participation in network working groups."},
+   gateway:[]},
+];
+
+let role='sme',openIdx=null,accOpen={};
+
+function setRole(r,btn){
+  role=r;
+  document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  render();
+}
+
+function dots(n){
+  return Array.from({length:3},(_,i)=>`<span class="pdot ${i<n?'filled':'empty'}"></span>`).join('');
+}
+
+function render(){
+  const list=document.getElementById('stair-list');
+  list.innerHTML='';
+  MODES.forEach((m,i)=>{
+    const c=COLORS[i];
+    const isOpen=openIdx===i;
+    const indent=Math.min(i,4)*12;
+    const wrap=document.createElement('div');
+
+    const btn=document.createElement('button');
+    btn.className='stair-btn'+(isOpen?' open':'');
+    btn.style.cssText=`background:${c.bg};color:${c.text};padding-left:${14+indent}px`;
+    btn.setAttribute('aria-expanded',String(isOpen));
+    btn.innerHTML=`<div class="s-num" style="color:${c.text}">${i+1}</div><div><div class="s-name">${m.name}</div><div class="s-eff">${m.effort}</div></div><i class="ti ti-chevron-right s-chev" aria-hidden="true"></i>`;
+    btn.onclick=()=>{openIdx=openIdx===i?null:i;render();};
+    wrap.appendChild(btn);
+
+    if(isOpen){
+      const panel=document.createElement('div');
+      panel.className='panel';
+      const rd=role==='sme'?m.sme:m.school;
+      const isAcc=!!accOpen[i];
+
+      const purposeRows=PURPOSES.map((p,pi)=>{
+        const v=m.purposes[pi];
+        return`<div class="pip-row${v===0?' pip-none':''}">
+          <span class="pip-name">${p.name}</span>
+          <span class="pip-dots">${dots(v)}</span>
+          <span class="pip-desc">${p.desc}</span>
+        </div>`;
+      }).join('');
+
+      const gwHtml=m.gateway.length
+        ? `<div class="p-sec">Explore in depth</div>${m.gateway.map(g=>`<a class="gw-btn" href="${GW_URL[g]}" target="_top"><i class="ti ti-arrow-right" aria-hidden="true"></i>${GW[g]}</a>`).join('')}`
+        : '';
+
+      panel.innerHTML=`
+        <div class="p-desc">${m.desc}</div>
+        <div class="p-sec">Purposes</div>
+        <div class="p-purposes">${purposeRows}</div>
+        <div class="p-sec" style="margin-top:.85rem">Resources required</div>
+        <button class="acc-toggle" onclick="toggleAcc(${i})">
+          <i class="ti ti-${isAcc?'chevron-up':'chevron-down'}" aria-hidden="true"></i>
+          ${isAcc?'Hide details':'Show details'}
+        </button>
+        <div class="acc-body${isAcc?' open':''}">
+          <div class="res-grid">
+            <div class="res-box"><div class="res-lbl">Knowledge</div><div class="res-val">${rd.know}</div></div>
+            <div class="res-box"><div class="res-lbl">Skills</div><div class="res-val">${rd.skills}</div></div>
+            <div class="res-box"><div class="res-lbl">Tools and structures</div><div class="res-val">${rd.tools}</div></div>
+            <div class="res-box"><div class="res-lbl">Organisational commitment</div><div class="res-val">${rd.org}</div></div>
+          </div>
+        </div>
+        ${gwHtml}
+      `;
+      wrap.appendChild(panel);
+    }
+    list.appendChild(wrap);
+  });
+}
+
+function toggleAcc(i){accOpen[i]=!accOpen[i];render();}
+render();
+</script>
+</body>
+</html>
