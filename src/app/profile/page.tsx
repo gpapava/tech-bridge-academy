@@ -444,7 +444,7 @@ export default function ProfilePage() {
                 )}
 
                 {locationResults.length > 0 && (
-                  <ul className="absolute z-10 mt-1 w-full rounded-xl border border-slate-200 bg-white shadow-lg max-h-56 overflow-auto">
+                  <ul className="mt-2 w-full rounded-xl border border-slate-200 bg-white shadow-sm max-h-56 overflow-auto">
                     {locationResults.map((r, i) => (
                       <li key={i}>
                         <button
