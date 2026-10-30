@@ -138,6 +138,18 @@ export default function ProfilePage() {
     setLocationResults([]);
   };
 
+  const [customSector, setCustomSector] = useState("");
+  const [customRegion, setCustomRegion] = useState("");
+
+  const addCustom = (key: "sectors" | "regions", value: string, reset: () => void) => {
+    const v = value.trim();
+    if (!v) return;
+    setForm((f) =>
+      f[key].some((x) => x.toLowerCase() === v.toLowerCase()) ? f : { ...f, [key]: [...f[key], v] }
+    );
+    reset();
+  };
+
   const handleSectorToggle = (sector: string) => {
     setForm((f) => ({
       ...f,
@@ -341,7 +353,7 @@ export default function ProfilePage() {
               <h2 className="font-semibold text-slate-900 mb-2">Sectors *</h2>
               <p className="text-sm text-slate-500 mb-4">Select all sectors relevant to your organisation.</p>
               <div className="flex flex-wrap gap-2">
-                {SECTORS.map((sector) => (
+                {[...SECTORS, ...form.sectors.filter((s) => !(SECTORS as readonly string[]).includes(s))].map((sector) => (
                   <button
                     key={sector}
                     type="button"
@@ -356,6 +368,17 @@ export default function ProfilePage() {
                   </button>
                 ))}
               </div>
+              <div className="flex gap-2 mt-4">
+                <input
+                  type="text"
+                  value={customSector}
+                  onChange={(e) => setCustomSector(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addCustom("sectors", customSector, () => setCustomSector("")); } }}
+                  className="input flex-1"
+                  placeholder="Not in the list? Type your sector and press Add"
+                />
+                <button type="button" className="btn-secondary px-4" onClick={() => addCustom("sectors", customSector, () => setCustomSector(""))}>Add</button>
+              </div>
               {form.sectors.length === 0 && (
                 <p className="text-xs text-red-500 mt-2">Please select at least one sector.</p>
               )}
@@ -366,7 +389,7 @@ export default function ProfilePage() {
               <h2 className="font-semibold text-slate-900 mb-2">Regions *</h2>
               <p className="text-sm text-slate-500 mb-4">Select all regions where your organisation operates or is interested in collaborating.</p>
               <div className="flex flex-wrap gap-2">
-                {REGIONS.map((region) => (
+                {[...REGIONS, ...form.regions.filter((r) => !(REGIONS as readonly string[]).includes(r))].map((region) => (
                   <button
                     key={region}
                     type="button"
@@ -380,6 +403,17 @@ export default function ProfilePage() {
                     {region}
                   </button>
                 ))}
+              </div>
+              <div className="flex gap-2 mt-4">
+                <input
+                  type="text"
+                  value={customRegion}
+                  onChange={(e) => setCustomRegion(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addCustom("regions", customRegion, () => setCustomRegion("")); } }}
+                  className="input flex-1"
+                  placeholder="Not in the list? Type your region (e.g. Poland – Silesia) and press Add"
+                />
+                <button type="button" className="btn-secondary px-4" onClick={() => addCustom("regions", customRegion, () => setCustomRegion(""))}>Add</button>
               </div>
             </section>
 
